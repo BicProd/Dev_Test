@@ -1,0 +1,56 @@
+{
+ "creation": "2020-11-30 20:44:31.233328",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "language_skills",
+  "listening",
+  "reading",
+  "writing",
+  "speaking"
+ ],
+ "fields": [
+  {
+   "fieldname": "language_skills",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Language Skills (Kemampuan Bahasa)"
+  },
+  {
+   "fieldname": "listening",
+   "fieldtype": "Rating",
+   "in_list_view": 1,
+   "label": "Listening (Mendengar)"
+  },
+  {
+   "fieldname": "reading",
+   "fieldtype": "Rating",
+   "in_list_view": 1,
+   "label": "Reading (Mendengar)"
+  },
+  {
+   "fieldname": "writing",
+   "fieldtype": "Rating",
+   "in_list_view": 1,
+   "label": "Writing (Menulis)"
+  },
+  {
+   "fieldname": "speaking",
+   "fieldtype": "Rating",
+   "in_list_view": 1,
+   "label": "Speaking (Bicara)"
+  }
+ ],
+ "istable": 1,
+ "modified": "2021-01-29 09:41:44.595883",
+ "modified_by": "Administrator",
+ "module": "HR",
+ "name": "Language Skills",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

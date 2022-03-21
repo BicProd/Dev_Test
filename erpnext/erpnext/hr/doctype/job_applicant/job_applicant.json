@@ -1,0 +1,290 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2013-01-29 19:25:37",
+ "description": "Applicant for a Job",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "applicant_name",
+  "email_id",
+  "status",
+  "grade",
+  "column_break_3",
+  "job_title",
+  "designation",
+  "source",
+  "source_name",
+  "job_application_form",
+  "section_break_18",
+  "company_name",
+  "current_position",
+  "section_break_6",
+  "cover_letter",
+  "resume_attachment",
+  "applicant_information_section",
+  "sex",
+  "religion",
+  "parent_email_address",
+  "column_break_15",
+  "telephone",
+  "date_of_birth",
+  "current_address",
+  "column_break_27",
+  "marital_status",
+  "nik_ktp",
+  "living_status",
+  "section_break_29",
+  "applicant_education",
+  "applicant_experience",
+  "company"
+ ],
+ "fields": [
+  {
+   "bold": 1,
+   "fieldname": "applicant_name",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_standard_filter": 1,
+   "label": "Applicant Name",
+   "reqd": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "email_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Email Address",
+   "options": "Email",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Open\nReplied\nRejected\nHold\nAccepted",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break",
+   "width": "50%"
+  },
+  {
+   "fieldname": "job_title",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Job Opening",
+   "options": "Job Opening"
+  },
+  {
+   "fieldname": "source",
+   "fieldtype": "Link",
+   "label": "Source",
+   "options": "Job Applicant Source"
+  },
+  {
+   "depends_on": "eval: doc.source==\"Employee Referral\" ",
+   "fieldname": "source_name",
+   "fieldtype": "Link",
+   "label": "Source Name",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "section_break_6",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "cover_letter",
+   "fieldtype": "Attach",
+   "label": "Cover Letter"
+  },
+  {
+   "fieldname": "resume_attachment",
+   "fieldtype": "Attach",
+   "label": "Resume Attachment"
+  },
+  {
+   "depends_on": "eval:!doc.__islocal",
+   "fieldname": "job_application_form",
+   "fieldtype": "Link",
+   "label": "Job Application Form",
+   "options": "Job Application Form",
+   "read_only": 1
+  },
+  {
+   "fieldname": "applicant_information_section",
+   "fieldtype": "Section Break",
+   "label": "Applicant Information"
+  },
+  {
+   "fetch_from": "job_application_form.sex",
+   "fieldname": "sex",
+   "fieldtype": "Data",
+   "label": "Sex",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_15",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "job_application_form.religion",
+   "fieldname": "religion",
+   "fieldtype": "Data",
+   "label": "Religion",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_18",
+   "fieldtype": "Section Break",
+   "label": "Job Experience"
+  },
+  {
+   "fetch_from": "job_title.designation",
+   "fieldname": "designation",
+   "fieldtype": "Link",
+   "label": "Designation",
+   "options": "Designation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "company_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Company Name"
+  },
+  {
+   "fieldname": "current_position",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Current Position"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "series",
+   "options": "HR-APP-.YYYY.-.",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "job_application_form.date_of_birth",
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of Birth",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "job_application_form.current_address",
+   "fieldname": "current_address",
+   "fieldtype": "Data",
+   "label": "Current Address",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "job_application_form.parent_email_address",
+   "fieldname": "parent_email_address",
+   "fieldtype": "Data",
+   "label": "Address in Identity Card",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "job_application_form.telephone",
+   "fieldname": "telephone",
+   "fieldtype": "Data",
+   "label": "Phone Number",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "job_application_form.marital_status",
+   "fieldname": "marital_status",
+   "fieldtype": "Data",
+   "label": "Marital Status",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "job_application_form.nik_ktp",
+   "fieldname": "nik_ktp",
+   "fieldtype": "Data",
+   "label": "NIK",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "job_application_form.living_status",
+   "fieldname": "living_status",
+   "fieldtype": "Select",
+   "label": "Living Status",
+   "options": "House\nRent\nDorm\nParent's house\nOthers",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_27",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_29",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "applicant_education",
+   "fieldtype": "Table",
+   "label": "Applicant Education",
+   "options": "Applicant Education",
+   "read_only": 1
+  },
+  {
+   "fieldname": "applicant_experience",
+   "fieldtype": "Table",
+   "label": "Applicant Experience",
+   "options": "Applicant Experience",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "job_title.grade",
+   "fieldname": "grade",
+   "fieldtype": "Link",
+   "label": "Grade",
+   "options": "Employee Grade",
+   "read_only": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  }
+ ],
+ "icon": "fa fa-user",
+ "idx": 1,
+ "links": [],
+ "modified": "2021-10-27 17:25:36.073147",
+ "modified_by": "Administrator",
+ "module": "HR",
+ "name": "Job Applicant",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "email_id",
+ "show_preview_popup": 1,
+ "sort_field": "modified",
+ "sort_order": "ASC",
+ "title_field": "email_id"
+}

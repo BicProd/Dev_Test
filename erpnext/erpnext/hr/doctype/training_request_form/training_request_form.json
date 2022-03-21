@@ -1,0 +1,358 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "field:event_name",
+ "creation": "2016-08-08 04:53:58.355206",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "requested_by",
+  "employee_name",
+  "column_break_3",
+  "department",
+  "job_grade",
+  "holiday_list",
+  "column_break_6",
+  "created_on",
+  "event_details_column",
+  "event_name",
+  "event_status",
+  "type",
+  "column_break_2",
+  "training_date",
+  "attach",
+  "company",
+  "section_break_4",
+  "trainer_name",
+  "trainer_email",
+  "price",
+  "bank",
+  "column_break_7",
+  "supplier",
+  "contact_number",
+  "account_number",
+  "account_holder_name",
+  "section_break_9",
+  "course",
+  "location",
+  "address",
+  "column_break_12",
+  "start_time",
+  "end_time",
+  "section_break_35",
+  "section_break_15",
+  "introduction",
+  "section_break_18",
+  "employees",
+  "amended_from",
+  "ques1",
+  "hod_email"
+ ],
+ "fields": [
+  {
+   "fieldname": "event_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Training Name",
+   "no_copy": 1,
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "event_status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Event Status",
+   "options": "Scheduled\nCompleted\nCancelled",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Type",
+   "options": "\nSeminar\nWebinar\nWorkshop\nConference\nTraining\nExam\nCertification",
+   "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Company",
+   "options": "Company",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_4",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "trainer_name",
+   "fieldtype": "Link",
+   "label": "Speaker's Name",
+   "options": "Speaker Training"
+  },
+  {
+   "fieldname": "trainer_email",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Vendor's Email"
+  },
+  {
+   "fieldname": "column_break_7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Vendor",
+   "options": "Supplier",
+   "reqd": 1
+  },
+  {
+   "fieldname": "contact_number",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Vendor's Telephone Number"
+  },
+  {
+   "fieldname": "section_break_9",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "course",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "in_standard_filter": 1,
+   "label": "Course",
+   "options": "Course",
+   "read_only": 1
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Venue",
+   "options": "Offline\nOnline",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_12",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "start_time",
+   "fieldtype": "Time",
+   "label": "Start Time",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_time",
+   "fieldtype": "Time",
+   "label": "End Time"
+  },
+  {
+   "fieldname": "section_break_15",
+   "fieldtype": "Section Break",
+   "label": "Event Details"
+  },
+  {
+   "fieldname": "introduction",
+   "fieldtype": "Text Editor",
+   "hidden": 1,
+   "label": "Event Details",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_18",
+   "fieldtype": "Section Break",
+   "label": "Attendees"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "employees",
+   "fieldtype": "Table",
+   "label": "Employees",
+   "options": "Training Attendee"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Training Request Form",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "price",
+   "fieldtype": "Currency",
+   "label": "Total Price"
+  },
+  {
+   "fieldname": "requested_by",
+   "fieldtype": "Link",
+   "label": "Requested By",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "requested_by.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "requested_by.department",
+   "fieldname": "department",
+   "fieldtype": "Data",
+   "label": "Department",
+   "read_only": 1
+  },
+  {
+   "fieldname": "event_details_column",
+   "fieldtype": "Section Break",
+   "label": "Training Details"
+  },
+  {
+   "fetch_from": "requested_by.grade",
+   "fieldname": "job_grade",
+   "fieldtype": "Data",
+   "label": "Job Grade",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "created_on",
+   "fieldtype": "Data",
+   "label": "Created On "
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.location=='Offline'",
+   "fieldname": "address",
+   "fieldtype": "Data",
+   "label": "Address"
+  },
+  {
+   "description": "Maximum file size 100MB.",
+   "fieldname": "attach",
+   "fieldtype": "Attach",
+   "label": "Please attach the brochure/advertisement of the event you participated. Attached file can only be in the form of PDF, JPG, or PNG."
+  },
+  {
+   "depends_on": "eval:doc.price >0",
+   "fieldname": "bank",
+   "fieldtype": "Select",
+   "label": "Bank",
+   "options": "\nBank Rakyat Indonesia (BRI)\nBank Mandiri\nBank Central Asia (BCA)\nBank Negara Indonesia (BNI)\nBank Tabungan Negara (BTN)\nBank CIMB Niaga\nBank BTPN\nPanin Bank\nBank OCBC NISP\nBank Maybank Indonesia"
+  },
+  {
+   "depends_on": "eval:doc.price >0",
+   "fieldname": "account_number",
+   "fieldtype": "Data",
+   "label": "Account Number"
+  },
+  {
+   "depends_on": "eval:doc.price >0",
+   "fieldname": "account_holder_name",
+   "fieldtype": "Data",
+   "label": "Account Holder Name"
+  },
+  {
+   "fieldname": "hod_email",
+   "fieldtype": "Data",
+   "label": "HOD Email",
+   "options": "Email",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_35",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "ques1",
+   "fieldtype": "Small Text",
+   "label": "What is your Purpose/Goal of this training?"
+  },
+  {
+   "fetch_from": "requested_by.holiday_list",
+   "fieldname": "holiday_list",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Holiday List",
+   "options": "Holiday List",
+   "read_only": 1
+  },
+  {
+   "fieldname": "training_date",
+   "fieldtype": "Date",
+   "label": "Training Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_time",
+   "fieldtype": "Time",
+   "label": "End Time"
+  }
+ ],
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2021-12-09 10:15:04.733942",
+ "modified_by": "Administrator",
+ "module": "HR",
+ "name": "Training Request Form",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "import": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HRGA Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "event_name",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "event_name"
+}

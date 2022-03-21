@@ -1,0 +1,73 @@
+{
+ "allow_copy": 0, 
+ "allow_import": 0, 
+ "allow_rename": 0, 
+ "autoname": "hash",
+ "creation": "2013-02-22 01:27:44",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "key_result",
+  "kra",
+  "column_break_4",
+  "subject",
+  "per_weightage"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "description": "Key Performance Area",
+   "fieldname": "kra",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "KRA",
+   "oldfieldname": "kra",
+   "oldfieldtype": "Small Text",
+   "options": "Task",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "per_weightage",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Weight (%)",
+   "oldfieldname": "per_weightage",
+   "oldfieldtype": "Currency",
+   "print_width": "100px",
+   "reqd": 1,
+   "width": "100px"
+  },
+  {
+   "fetch_from": "kra.parent_subject",
+   "fieldname": "key_result",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Key Result",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "kra.subject",
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Subject",
+   "read_only": 1
+  }
+ ],
+ "idx": 1,
+ "istable": 1,
+ "modified": "2021-03-25 13:59:29.260130",
+ "modified_by": "Administrator",
+ "module": "HR",
+ "name": "Appraisal Template Goal",
+ "owner": "ashwini@webnotestech.com",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
