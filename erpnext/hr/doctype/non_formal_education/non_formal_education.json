@@ -1,0 +1,70 @@
+{
+ "creation": "2020-11-30 20:33:51.597642",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "non_formal_education",
+  "institution",
+  "city",
+  "from_year",
+  "to_years",
+  "certificate"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "non_formal_education",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Non Formal Education (Pendidikan Non-Formal)"
+  },
+  {
+   "columns": 2,
+   "fieldname": "institution",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Institution (Institusi)"
+  },
+  {
+   "columns": 2,
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "City (Kota)"
+  },
+  {
+   "columns": 1,
+   "fieldname": "from_year",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "From (Year) (Dari Tahun)"
+  },
+  {
+   "columns": 1,
+   "fieldname": "to_years",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "To (Years) (Sampai Tahun)"
+  },
+  {
+   "columns": 2,
+   "fieldname": "certificate",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Certificate (Sertifikat)",
+   "options": "\nYes\nNo"
+  }
+ ],
+ "istable": 1,
+ "modified": "2021-01-29 09:39:24.507202",
+ "modified_by": "Administrator",
+ "module": "HR",
+ "name": "Non Formal Education",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

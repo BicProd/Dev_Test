@@ -1,0 +1,108 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2020-12-08 17:53:31.670658",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "power_bi_file",
+  "request_type",
+  "column_break_4",
+  "create_date",
+  "deadline",
+  "status_tracker_section",
+  "status_tracker",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "series",
+   "options": "Issue-",
+   "read_only": 1
+  },
+  {
+   "fieldname": "power_bi_file",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Power BI Report",
+   "reqd": 1
+  },
+  {
+   "fieldname": "request_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Request Type",
+   "options": "Feature Request\nBug",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "create_date",
+   "fieldtype": "Date",
+   "label": "Create Date"
+  },
+  {
+   "fieldname": "deadline",
+   "fieldtype": "Date",
+   "label": "Deadline"
+  },
+  {
+   "fieldname": "status_tracker_section",
+   "fieldtype": "Section Break",
+   "label": "Status Tracker"
+  },
+  {
+   "fieldname": "status_tracker",
+   "fieldtype": "Table",
+   "label": "Status Tracker",
+   "options": "Issue Tracker"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Text Editor",
+   "label": "Remarks"
+  }
+ ],
+ "links": [],
+ "modified": "2021-08-03 17:50:41.883501",
+ "modified_by": "Administrator",
+ "module": "Information Technology",
+ "name": "POWERBI tracker",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR Management Trainee",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

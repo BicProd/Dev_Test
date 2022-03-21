@@ -1,0 +1,241 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2020-12-18 10:05:54.635694",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "date",
+  "sales",
+  "sales_executive",
+  "attendance",
+  "column_break_4",
+  "communication",
+  "venue",
+  "customer_section",
+  "customer",
+  "contact",
+  "email",
+  "mobile",
+  "column_break_12",
+  "customer_name",
+  "address",
+  "objective_section",
+  "development",
+  "claim",
+  "column_break_17",
+  "payment",
+  "visit_schedule",
+  "section_break_20",
+  "discussion",
+  "discussion_claim",
+  "discussion_payment",
+  "discussion_visit_schedule",
+  "follow_up",
+  "attach_file_1",
+  "attach_file_2"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": "VISIT-",
+   "read_only": 1
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fetch_from": "sales.employee_name",
+   "fieldname": "sales_executive",
+   "fieldtype": "Data",
+   "label": "Sales Executive",
+   "read_only": 1
+  },
+  {
+   "fieldname": "communication",
+   "fieldtype": "Select",
+   "label": "Communication",
+   "options": "\nVideo Call\nE-mail\nCall\nVisit Customer\nMessenger"
+  },
+  {
+   "fieldname": "venue",
+   "fieldtype": "Select",
+   "label": "Venue",
+   "options": "\nFactory\nOffice\nOthers"
+  },
+  {
+   "fieldname": "customer_section",
+   "fieldtype": "Section Break",
+   "label": "Customer"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer ",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "attendance",
+   "fieldtype": "Small Text",
+   "label": "Attendance"
+  },
+  {
+   "fetch_from": "customer.customer_primary_contact",
+   "fieldname": "contact",
+   "fieldtype": "Data",
+   "label": "Contact",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "customer.email_id",
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "customer.mobile_no",
+   "fieldname": "mobile",
+   "fieldtype": "Data",
+   "label": "Mobile",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_12",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "customer.primary_address",
+   "fieldname": "address",
+   "fieldtype": "Text",
+   "label": "Address",
+   "read_only": 1
+  },
+  {
+   "fieldname": "objective_section",
+   "fieldtype": "Section Break",
+   "label": "Objective"
+  },
+  {
+   "default": "0",
+   "fieldname": "development",
+   "fieldtype": "Check",
+   "in_standard_filter": 1,
+   "label": "Development"
+  },
+  {
+   "default": "0",
+   "fieldname": "claim",
+   "fieldtype": "Check",
+   "in_standard_filter": 1,
+   "label": "Claim"
+  },
+  {
+   "fieldname": "column_break_17",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "payment",
+   "fieldtype": "Check",
+   "in_standard_filter": 1,
+   "label": "Payment"
+  },
+  {
+   "default": "0",
+   "fieldname": "visit_schedule",
+   "fieldtype": "Check",
+   "in_standard_filter": 1,
+   "label": "Visit Schedule"
+  },
+  {
+   "fieldname": "section_break_20",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval:doc.development == 1",
+   "fieldname": "discussion",
+   "fieldtype": "Text Editor",
+   "label": "Discussion (Development)"
+  },
+  {
+   "fieldname": "follow_up",
+   "fieldtype": "Small Text",
+   "label": "Follow Up"
+  },
+  {
+   "fieldname": "attach_file_1",
+   "fieldtype": "Attach",
+   "label": "Attach Document"
+  },
+  {
+   "fieldname": "attach_file_2",
+   "fieldtype": "Attach",
+   "label": "Attach Media"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sales",
+   "fieldtype": "Link",
+   "label": "Sales",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "customer.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.claim == 1",
+   "fieldname": "discussion_claim",
+   "fieldtype": "Text Editor",
+   "label": "Discussion (Claim)"
+  },
+  {
+   "depends_on": "eval:doc.payment == 1",
+   "fieldname": "discussion_payment",
+   "fieldtype": "Text Editor",
+   "label": "Discussion (Payment)"
+  },
+  {
+   "depends_on": "eval:doc.visit_schedule == 1",
+   "fieldname": "discussion_visit_schedule",
+   "fieldtype": "Text Editor",
+   "label": "Discussion (Visit Schedule)"
+  }
+ ],
+ "modified": "2021-01-06 16:13:30.208865",
+ "modified_by": "Administrator",
+ "module": "CRM",
+ "name": "Sales Visit Report",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

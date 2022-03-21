@@ -1,0 +1,243 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2020-11-20 11:20:53.866200",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "customer_code",
+  "customer_name",
+  "customer_group",
+  "column_break_9",
+  "customer_primary_contact",
+  "position",
+  "sales",
+  "sales_name",
+  "market_segment_section",
+  "market_segment",
+  "incumbent_supplier",
+  "column_break_17",
+  "application",
+  "end_user",
+  "production_details_section",
+  "machine_origin",
+  "output",
+  "formula",
+  "monthly_consumption_mt_section",
+  "monthly_consumption_mt",
+  "section_break_27",
+  "project_development_section",
+  "project_development_tab",
+  "remarks",
+  "company_analysis_section",
+  "payment",
+  "product_knowledge",
+  "column_break_42",
+  "size"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "MAR-.YYYY.-",
+   "read_only": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "customer_code",
+   "fieldtype": "Link",
+   "label": "Customer Code",
+   "options": "Customer"
+  },
+  {
+   "fetch_from": "customer_code.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Customer Name"
+  },
+  {
+   "fetch_from": "customer_code.customer_group",
+   "fieldname": "customer_group",
+   "fieldtype": "Link",
+   "label": "Customer Group",
+   "options": "Customer Group"
+  },
+  {
+   "fetch_from": "customer_code.customer_primary_contact",
+   "fieldname": "customer_primary_contact",
+   "fieldtype": "Link",
+   "label": "Customer Primary Contact",
+   "options": "Contact"
+  },
+  {
+   "fetch_from": "customer_primary_contact.designation",
+   "fieldname": "position",
+   "fieldtype": "Data",
+   "label": "Position"
+  },
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "customer_code.sales_executive",
+   "fieldname": "sales",
+   "fieldtype": "Link",
+   "label": "Sales",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "sales.employee_name",
+   "fieldname": "sales_name",
+   "fieldtype": "Data",
+   "label": "Sales Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "market_segment_section",
+   "fieldtype": "Section Break",
+   "label": "Market Segment"
+  },
+  {
+   "fieldname": "market_segment",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Market Segment",
+   "options": "Market Segment"
+  },
+  {
+   "fieldname": "incumbent_supplier",
+   "fieldtype": "Data",
+   "label": "Incumbent supplier"
+  },
+  {
+   "fieldname": "column_break_17",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "application",
+   "fieldtype": "Data",
+   "label": "Application"
+  },
+  {
+   "fieldname": "end_user",
+   "fieldtype": "Data",
+   "label": "Existing End User"
+  },
+  {
+   "fieldname": "production_details_section",
+   "fieldtype": "Section Break",
+   "label": "Production Details"
+  },
+  {
+   "fieldname": "machine_origin",
+   "fieldtype": "Text",
+   "label": "Machine Origin"
+  },
+  {
+   "fieldname": "formula",
+   "fieldtype": "Text",
+   "label": "Formula"
+  },
+  {
+   "fieldname": "monthly_consumption_mt_section",
+   "fieldtype": "Section Break",
+   "label": "Monthly Consumption (MT)"
+  },
+  {
+   "fieldname": "monthly_consumption_mt",
+   "fieldtype": "Table",
+   "label": "Monthly Consumption (MT)",
+   "options": "Monthly Consumption"
+  },
+  {
+   "fieldname": "section_break_27",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "project_development_section",
+   "fieldtype": "Section Break",
+   "label": "Project Development"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "company_analysis_section",
+   "fieldtype": "Section Break",
+   "label": "Company Analysis"
+  },
+  {
+   "fieldname": "payment",
+   "fieldtype": "Rating",
+   "label": "Payment"
+  },
+  {
+   "fieldname": "product_knowledge",
+   "fieldtype": "Rating",
+   "label": "Product Knowledge"
+  },
+  {
+   "fieldname": "column_break_42",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "size",
+   "fieldtype": "Rating",
+   "label": "Size"
+  },
+  {
+   "fieldname": "project_development_tab",
+   "fieldtype": "Table",
+   "label": "Project Development",
+   "options": "Project Development"
+  },
+  {
+   "fieldname": "output",
+   "fieldtype": "Small Text",
+   "label": "Output"
+  }
+ ],
+ "modified": "2021-01-13 14:47:52.814638",
+ "modified_by": "Administrator",
+ "module": "CRM",
+ "name": "Marketing",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Marketing",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_seen": 1
+}
