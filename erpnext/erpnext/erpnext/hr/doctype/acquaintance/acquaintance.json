@@ -1,0 +1,43 @@
+{
+ "actions": [],
+ "creation": "2020-12-01 09:09:31.501235",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "name1",
+  "department",
+  "relationship"
+ ],
+ "fields": [
+  {
+   "fieldname": "name1",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Name (Nama)"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Department (Departmen)"
+  },
+  {
+   "fieldname": "relationship",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Relationship (Hubungan)"
+  }
+ ],
+ "istable": 1,
+ "modified": "2021-01-29 09:46:49.683854",
+ "modified_by": "Administrator",
+ "module": "HR",
+ "name": "acquaintance",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

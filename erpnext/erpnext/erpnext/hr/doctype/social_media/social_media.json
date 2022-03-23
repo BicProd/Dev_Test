@@ -1,0 +1,36 @@
+{
+ "creation": "2020-12-01 08:30:35.948597",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "social_media",
+  "usernameemail"
+ ],
+ "fields": [
+  {
+   "fieldname": "social_media",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Social Media (Media Social)",
+   "options": "Instagram\nFacebook\nTwitter\nLinkedIn"
+  },
+  {
+   "fieldname": "usernameemail",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Username/Email (Nama Pengguna/E-mail)"
+  }
+ ],
+ "istable": 1,
+ "modified": "2021-01-29 09:43:39.330230",
+ "modified_by": "Administrator",
+ "module": "HR",
+ "name": "Social Media",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

@@ -1,0 +1,148 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "field:kra_title",
+ "creation": "2012-07-03 13:30:39",
+ "doctype": "DocType",
+ "document_type": "Setup",
+ "engine": "InnoDB",
+ "field_order": [
+  "kra_title",
+  "department",
+  "description",
+  "start_date",
+  "end_date",
+  "weight_1",
+  "goals",
+  "okr_weight_total",
+  "weight_2",
+  "routine",
+  "routine_weight_total",
+  "quartal"
+ ],
+ "fields": [
+  {
+   "fieldname": "kra_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Appraisal Template Title",
+   "oldfieldname": "kra_title",
+   "oldfieldtype": "Data",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "hidden": 1,
+   "label": "Description",
+   "oldfieldname": "description",
+   "oldfieldtype": "Small Text",
+   "print_width": "300px",
+   "width": "300px"
+  },
+  {
+   "fieldname": "goals",
+   "fieldtype": "Table",
+   "label": "OKR",
+   "oldfieldname": "kra_sheet",
+   "oldfieldtype": "Table",
+   "options": "Appraisal Template Goal"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "quartal",
+   "fieldtype": "Select",
+   "label": "Quartal",
+   "options": "Q1\nQ2\nQ3\nQ4",
+   "reqd": 1
+  },
+  {
+   "fieldname": "routine",
+   "fieldtype": "Table",
+   "label": "Routine",
+   "options": "Appraisal Template Goal 2"
+  },
+  {
+   "fieldname": "weight_1",
+   "fieldtype": "Int",
+   "label": "OKR Weight %",
+   "reqd": 1
+  },
+  {
+   "fieldname": "weight_2",
+   "fieldtype": "Int",
+   "label": "Routine Weight %",
+   "reqd": 1
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department",
+   "reqd": 1
+  },
+  {
+   "fieldname": "okr_weight_total",
+   "fieldtype": "Float",
+   "label": "OKR Weight Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "routine_weight_total",
+   "fieldtype": "Float",
+   "label": "Routine Weigth Total",
+   "read_only": 1
+  }
+ ],
+ "icon": "icon-file-text",
+ "idx": 1,
+ "links": [],
+ "modified": "2021-10-26 15:37:52.750802",
+ "modified_by": "Administrator",
+ "module": "HR",
+ "name": "Appraisal Template",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Employee"
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

@@ -1,0 +1,116 @@
+{
+ "actions": [],
+ "creation": "2020-11-20 11:33:14.925731",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "status",
+  "item_class",
+  "application",
+  "supplier",
+  "supplier_name",
+  "column_break_5",
+  "end_user",
+  "existing_description",
+  "projected_quantity_bula",
+  "sample_description",
+  "column_break_9",
+  "update",
+  "section_break_12",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_class",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Class",
+   "options": "Item Group",
+   "reqd": 1
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Supplier",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "existing_description",
+   "fieldtype": "Data",
+   "label": "existing description"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "projected_quantity_bula",
+   "fieldtype": "Data",
+   "label": "projected quantity/ bula"
+  },
+  {
+   "fieldname": "update",
+   "fieldtype": "Text",
+   "label": "update"
+  },
+  {
+   "fieldname": "sample_description",
+   "fieldtype": "Data",
+   "label": "sample description"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "New Opp\nFunded Program\nIndustrial Trial\nEnd User Approval\nSample Approved\nOrders\nWon\nOn-Hold\nTerminated",
+   "reqd": 1
+  },
+  {
+   "fieldname": "application",
+   "fieldtype": "Data",
+   "label": "Application",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_user",
+   "fieldtype": "Data",
+   "label": "End User"
+  },
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_12",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Text",
+   "label": "Remarks"
+  },
+  {
+   "fetch_from": "supplier.supplier_name",
+   "fieldname": "supplier_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Supplier Name",
+   "read_only": 1
+  }
+ ],
+ "istable": 1,
+ "modified": "2021-01-13 14:51:35.206587",
+ "modified_by": "Administrator",
+ "module": "CRM",
+ "name": "Project Development",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

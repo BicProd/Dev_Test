@@ -1,0 +1,35 @@
+{
+ "creation": "2020-12-01 10:35:36.265965",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "family_relation",
+  "type_of_sickness"
+ ],
+ "fields": [
+  {
+   "fieldname": "family_relation",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Family Relationship (Hubungan Keluarga)"
+  },
+  {
+   "fieldname": "type_of_sickness",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Type of Sickness (Jenis Penyakit)"
+  }
+ ],
+ "istable": 1,
+ "modified": "2021-01-29 09:47:30.726388",
+ "modified_by": "Administrator",
+ "module": "HR",
+ "name": "Family Sick",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

@@ -1,0 +1,236 @@
+{
+ "actions": [],
+ "autoname": "format:Survey-{employee_name}-{type_of_event_you_follow}-{#####}",
+ "creation": "2016-08-08 06:35:34.158568",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "employee_name",
+  "column_break_3",
+  "department",
+  "job_grade",
+  "course",
+  "section_break_3",
+  "event",
+  "type_of_event_you_follow",
+  "event_name",
+  "trainer_name",
+  "vendor1",
+  "date",
+  "cost",
+  "reason",
+  "reason_1",
+  "feedback_1",
+  "ques1",
+  "feedback",
+  "rating",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "in_standard_filter": 1,
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "bold": 1,
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "employee.department",
+   "fieldname": "department",
+   "fieldtype": "Read Only",
+   "label": "Department",
+   "options": "Department",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "training_event.course",
+   "fieldname": "course",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Course",
+   "options": "Course",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "event.event_name",
+   "fieldname": "event_name",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Event Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "event.trainer_name",
+   "fieldname": "trainer_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Speaker Name",
+   "options": "Speaker Training",
+   "read_only": 1
+  },
+  {
+   "description": "(relevant to the new knowledge you gained from participating in this event)",
+   "fieldname": "feedback",
+   "fieldtype": "Small Text",
+   "label": "What suggestions/inputs can you provide for the company's future improvement?",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Survey",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fetch_from": "employee.grade",
+   "fieldname": "job_grade",
+   "fieldtype": "Read Only",
+   "label": "Job Grade",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_3",
+   "fieldtype": "Section Break",
+   "label": "Training/Seminar/Webinar DETAILS"
+  },
+  {
+   "fetch_from": "event.type",
+   "fieldname": "type_of_event_you_follow",
+   "fieldtype": "Data",
+   "label": "Type of event you follow",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "event.start_time",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "event.price",
+   "fieldname": "cost",
+   "fieldtype": "Currency",
+   "label": "Cost",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Select",
+   "label": "Reason you participate",
+   "options": "\nInteresting topic, I will definitely gain more knowledge after participating\nMy superior asked me to participate\nPlenty of free time\nHe/she is a good speaker\nOther",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.reason=='Other'",
+   "fieldname": "reason_1",
+   "fieldtype": "Data",
+   "label": "Reason"
+  },
+  {
+   "fieldname": "feedback_1",
+   "fieldtype": "Data",
+   "label": "After participating in this event, I understand more about : ",
+   "reqd": 1
+  },
+  {
+   "fieldname": "event",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Training Event",
+   "options": "Training Request Form",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "event.ques1",
+   "fieldname": "ques1",
+   "fieldtype": "Data",
+   "label": "What is your Purpose/Goal/Expectation of this training?",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rating",
+   "fieldtype": "Rating",
+   "label": "Rating"
+  },
+  {
+   "fetch_from": "event.supplier",
+   "fieldname": "vendor1",
+   "fieldtype": "Link",
+   "label": "Vendor",
+   "options": "Vendor",
+   "read_only": 1
+  }
+ ],
+ "is_submittable": 1,
+ "modified": "2021-02-07 17:16:58.886037",
+ "modified_by": "Administrator",
+ "module": "HR",
+ "name": "Survey",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Employee",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Survey Administrator",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "employee_name",
+ "sort_order": "ASC",
+ "title_field": "employee_name"
+}
