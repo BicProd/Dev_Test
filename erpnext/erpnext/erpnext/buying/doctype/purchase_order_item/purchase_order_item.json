@@ -15,6 +15,7 @@
   "item_name",
   "column_break_4",
   "schedule_date",
+  "lead_time_days",
   "expected_delivery_date",
   "section_break_5",
   "description",
@@ -144,7 +145,7 @@
    "fieldname": "schedule_date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Required By",
+   "label": "Estimated Time of Arrival (ETA)",
    "oldfieldname": "schedule_date",
    "oldfieldtype": "Date",
    "print_hide": 1,
@@ -823,16 +824,22 @@
   {
    "fieldname": "item_type",
    "fieldtype": "Link",
-   "label": "Item Group",
+   "label": "Product Type",
    "options": "Item Group",
    "reqd": 1
+  },
+  {
+   "fetch_from": "item_code.lead_time_days",
+   "fieldname": "lead_time_days",
+   "fieldtype": "Int",
+   "label": "Lead time days"
   }
  ],
  "idx": 1,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-03-11 14:52:40.982556",
+ "modified": "2022-03-24 16:29:51.760338",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Purchase Order Item",
