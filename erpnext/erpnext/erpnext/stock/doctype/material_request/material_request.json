@@ -10,6 +10,7 @@
   "type_section",
   "naming_series",
   "title",
+  "po_classification",
   "material_request_type",
   "transfer_status",
   "customer",
@@ -278,6 +279,7 @@
    "label": "Warehouse"
   },
   {
+   "default": "WH PASAR KEMIS - BIC",
    "description": "Sets 'Target Warehouse' in each row of the Items table.",
    "fieldname": "set_warehouse",
    "fieldtype": "Link",
@@ -308,13 +310,19 @@
    "label": "Transfer Status",
    "options": "\nNot Started\nIn Transit\nCompleted",
    "read_only": 1
+  },
+  {
+   "fieldname": "po_classification",
+   "fieldtype": "Select",
+   "label": "PO Classification",
+   "options": "Transporter\nFreight\nRaw Material\nAuxiliary\nSparepart\nSlitting\nGA\nIT"
   }
  ],
  "icon": "fa fa-ticket",
  "idx": 70,
  "is_submittable": 1,
  "links": [],
- "modified": "2020-09-19 01:04:09.285862",
+ "modified": "2022-03-25 16:48:45.558035",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Material Request",
