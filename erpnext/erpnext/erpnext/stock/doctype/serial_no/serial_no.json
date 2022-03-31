@@ -15,12 +15,15 @@
   "item_code",
   "warehouse",
   "batch_no",
+  "sales_order",
   "column_break1",
   "item_name",
   "description",
   "item_group",
   "brand",
-  "sales_order",
+  "barcode_section",
+  "barcode_item",
+  "serial_number",
   "purchase_details",
   "column_break2",
   "purchase_document_type",
@@ -434,12 +437,28 @@
    "fieldname": "default_uom",
    "fieldtype": "Data",
    "label": "Default UOM"
+  },
+  {
+   "fetch_from": "item_code.barcode_item",
+   "fieldname": "barcode_item",
+   "fieldtype": "Barcode",
+   "label": "Barcode Item"
+  },
+  {
+   "fieldname": "barcode_section",
+   "fieldtype": "Section Break",
+   "label": "Barcode"
+  },
+  {
+   "fieldname": "serial_number",
+   "fieldtype": "Barcode",
+   "label": "Serial Number"
   }
  ],
  "icon": "fa fa-barcode",
  "idx": 1,
  "links": [],
- "modified": "2022-02-18 09:36:46.448794",
+ "modified": "2022-03-29 11:53:38.257758",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Serial No",

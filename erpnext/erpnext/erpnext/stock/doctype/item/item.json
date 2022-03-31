@@ -164,7 +164,9 @@
   {
    "fieldname": "naming_series",
    "fieldtype": "Data",
-   "label": "Series"
+   "hidden": 1,
+   "label": "Series",
+   "read_only": 1
   },
   {
    "bold": 1,
@@ -1151,7 +1153,7 @@
  "index_web_pages_for_search": 1,
  "links": [],
  "max_attachments": 1,
- "modified": "2022-03-22 11:59:08.677876",
+ "modified": "2022-03-29 10:45:35.890988",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Item",

@@ -165,7 +165,9 @@ class SellingController(StockController):
 			if d.meta.get_field("stock_qty"):
 				if not d.conversion_factor:
 					frappe.throw(_("Row {0}: Conversion Factor is mandatory").format(d.idx))
-				d.stock_qty = flt(d.qty) * flt(d.conversion_factor)
+
+				#d.stock_qty = flt(d.qty) * flt(d.conversion_factor)
+				d.stock_qty = flt(d.qty)
 
 	def validate_selling_price(self):
 		def throw_message(idx, item_name, rate, ref_rate_field):

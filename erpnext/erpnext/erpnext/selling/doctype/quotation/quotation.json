@@ -544,7 +544,8 @@
    "oldfieldname": "charge",
    "oldfieldtype": "Link",
    "options": "Sales Taxes and Charges Template",
-   "print_hide": 1
+   "print_hide": 1,
+   "reqd": 1
   },
   {
    "fieldname": "taxes",
@@ -1101,7 +1102,7 @@
    "fieldname": "company_type",
    "fieldtype": "Select",
    "label": "Company Type",
-   "options": "PT\nCV"
+   "options": "\nPT\nCV"
   },
   {
    "fieldname": "base_vat",
@@ -1126,7 +1127,7 @@
  "is_submittable": 1,
  "links": [],
  "max_attachments": 1,
- "modified": "2022-03-23 09:23:02.975836",
+ "modified": "2022-03-29 16:25:39.047445",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Quotation",

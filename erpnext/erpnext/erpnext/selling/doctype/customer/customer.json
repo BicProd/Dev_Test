@@ -140,7 +140,7 @@
    "fieldname": "company_type",
    "fieldtype": "Select",
    "label": "Company Type",
-   "options": "PT\nCV",
+   "options": "\nPT\nCV",
    "print_hide": 1
   },
   {
@@ -651,7 +651,7 @@
  "idx": 363,
  "image_field": "image",
  "links": [],
- "modified": "2022-03-22 11:34:00.440521",
+ "modified": "2022-03-29 16:10:18.318944",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Customer",
