@@ -423,6 +423,7 @@
   {
    "fieldname": "converted_by",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Converted By",
    "options": "User"
   },
@@ -448,7 +449,7 @@
   {
    "fieldname": "incumbent_supplier",
    "fieldtype": "Data",
-   "label": "Incumbent supplier"
+   "label": "Existing Supplier"
   },
   {
    "fieldname": "application",
@@ -549,7 +550,7 @@
  "icon": "fa fa-info-sign",
  "idx": 195,
  "links": [],
- "modified": "2022-03-18 09:57:08.236745",
+ "modified": "2022-04-01 16:15:30.713521",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "Opportunity",

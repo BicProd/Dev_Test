@@ -629,8 +629,9 @@ def get_price_list_rate(args, item_doc, out):
 				insert_item_price(args)
 			return {}
 
-		out.price_list_rate = flt(price_list_rate) * flt(args.plc_conversion_rate) \
-			/ flt(args.conversion_rate)
+		"""Jo out.price_list_rate = flt(price_list_rate) * flt(args.plc_conversion_rate) \
+			/ flt(args.conversion_rate)"""
+		out.price_list_rate = flt(price_list_rate)
 
 		if not out.price_list_rate and args.transaction_type=="buying":
 			from erpnext.stock.doctype.item.item import get_last_purchase_details
