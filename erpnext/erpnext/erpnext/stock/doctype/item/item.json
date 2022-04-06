@@ -24,6 +24,7 @@
   "item_group",
   "is_item_from_hub",
   "stock_uom",
+  "supplier",
   "column_break0",
   "disabled",
   "allow_alternative_item",
@@ -653,6 +654,7 @@
   {
    "fieldname": "supplier_items",
    "fieldtype": "Table",
+   "hidden": 1,
    "label": "Supplier Items",
    "options": "Item Supplier"
   },
@@ -1144,6 +1146,12 @@
    "fieldtype": "Data",
    "label": "Opportunity Name",
    "read_only": 1
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier"
   }
  ],
  "has_web_view": 1,
@@ -1153,7 +1161,7 @@
  "index_web_pages_for_search": 1,
  "links": [],
  "max_attachments": 1,
- "modified": "2022-03-29 10:45:35.890988",
+ "modified": "2022-04-05 12:38:08.934828",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Item",

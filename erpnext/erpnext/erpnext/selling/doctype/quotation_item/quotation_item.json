@@ -14,6 +14,7 @@
   "item_name",
   "col_break1",
   "delivery_on",
+  "supplier",
   "section_break_5",
   "description",
   "item_group",
@@ -656,7 +657,8 @@
    "fieldname": "stock_uom_1",
    "fieldtype": "Link",
    "label": "Stock UOM",
-   "options": "UOM"
+   "options": "UOM",
+   "read_only": 1
   },
   {
    "fieldname": "secondary_qty",
@@ -668,7 +670,8 @@
    "fieldname": "stock_uom_1",
    "fieldtype": "Link",
    "label": "Stock UOM",
-   "options": "UOM"
+   "options": "UOM",
+   "read_only": 1
   },
   {
    "fieldname": "stock_qty_section",
@@ -678,12 +681,18 @@
   {
    "fieldname": "column_break_18",
    "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "item_code.supplier",
+   "fieldname": "supplier",
+   "fieldtype": "Data",
+   "label": "Supplier"
   }
  ],
  "idx": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-03-29 10:04:06.686554",
+ "modified": "2022-04-05 16:46:13.176290",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Quotation Item",

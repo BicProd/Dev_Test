@@ -525,6 +525,7 @@
    "collapsible": 1,
    "fieldname": "company_analysis_section",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Company Analysis"
   },
   {
@@ -550,7 +551,7 @@
  "icon": "fa fa-info-sign",
  "idx": 195,
  "links": [],
- "modified": "2022-04-01 16:15:30.713521",
+ "modified": "2022-04-04 15:43:12.739215",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "Opportunity",
