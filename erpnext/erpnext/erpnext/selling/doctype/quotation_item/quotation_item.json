@@ -440,7 +440,6 @@
    "collapsible_depends_on": "eval:doc.warehouse",
    "fieldname": "item_balance",
    "fieldtype": "Section Break",
-   "hidden": 1,
    "label": "Planning"
   },
   {
@@ -480,7 +479,6 @@
   {
    "fieldname": "reference",
    "fieldtype": "Section Break",
-   "hidden": 1,
    "label": "Warehouse and Reference"
   },
   {
@@ -692,7 +690,7 @@
  "idx": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-04-05 16:46:13.176290",
+ "modified": "2022-04-06 13:56:06.593493",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Quotation Item",

@@ -40,6 +40,7 @@
   "items",
   "contact_info",
   "customer_address",
+  "cust_add",
   "address_display",
   "territory",
   "customer_group",
@@ -546,12 +547,19 @@
    "fieldname": "size",
    "fieldtype": "Rating",
    "label": "Size"
+  },
+  {
+   "fetch_from": "customer_address.address_line1",
+   "fieldname": "cust_add",
+   "fieldtype": "Data",
+   "label": "Customer Address Line1",
+   "read_only": 1
   }
  ],
  "icon": "fa fa-info-sign",
  "idx": 195,
  "links": [],
- "modified": "2022-04-04 15:43:12.739215",
+ "modified": "2022-04-08 16:02:49.805232",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "Opportunity",
@@ -590,6 +598,7 @@
  "subject_field": "title",
  "timeline_field": "party_name",
  "title_field": "title",
+ "track_changes": 1,
  "track_seen": 1,
  "track_views": 1
 }

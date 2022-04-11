@@ -8,6 +8,9 @@
  "engine": "InnoDB",
  "field_order": [
   "barcode",
+  "item_type",
+  "item_class",
+  "item_group",
   "item_code",
   "item_name",
   "col_break1",
@@ -22,11 +25,13 @@
   "quantity_and_rate",
   "qty",
   "stock_uom",
+  "secondary_qty",
   "col_break2",
   "uom",
   "conversion_factor",
   "stock_qty_sec_break",
   "stock_qty",
+  "stock_uom_1",
   "stock_qty_col_break",
   "secondary_qty",
   "returned_qty",
@@ -538,13 +543,9 @@
   {
    "fieldname": "item_group",
    "fieldtype": "Link",
-   "hidden": 1,
-   "label": "Item Group",
-   "oldfieldname": "item_group",
-   "oldfieldtype": "Link",
+   "label": "Item Sub Class",
    "options": "Item Group",
-   "print_hide": 1,
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "brand",
@@ -757,14 +758,47 @@
   {
    "fieldname": "secondary_qty",
    "fieldtype": "Float",
-   "label": "Qty 2 in Stock UOM"
+   "label": "Stock Qty"
+  },
+  {
+   "fetch_from": "item_code.stock_uom_1",
+   "fieldname": "stock_uom_1",
+   "fieldtype": "Link",
+   "label": "Stock UOM",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "item_type",
+   "fieldtype": "Link",
+   "label": "Product Type",
+   "options": "Item Group",
+   "reqd": 1
+  },
+  {
+   "fieldname": "item_class",
+   "fieldtype": "Link",
+   "label": "Item Class ",
+   "options": "Item Group",
+   "reqd": 1
+  },
+  {
+   "fieldname": "item_group",
+   "fieldtype": "Link",
+   "label": "Item Sub Class",
+   "options": "Item Group",
+   "reqd": 1
+  },
+  {
+   "fieldname": "secondary_qty",
+   "fieldtype": "Float",
+   "label": "Stock Qty"
   }
  ],
  "idx": 1,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-02-04 14:34:45.366918",
+ "modified": "2022-04-09 10:31:16.536457",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Delivery Note Item",
