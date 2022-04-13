@@ -7,6 +7,9 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "item_type",
+  "item_class",
+  "item_group",
   "item_code",
   "customer_item_code",
   "ensure_delivery_based_on_produced_serial_no",
@@ -20,12 +23,16 @@
   "image_section",
   "image",
   "image_view",
+  "stock_qty_section",
+  "secondary_qty",
+  "conversion_factor",
+  "column_break_16",
+  "stock_uom_1",
   "quantity_and_rate",
   "qty",
   "stock_uom",
   "col_break2",
   "uom",
-  "conversion_factor",
   "stock_qty",
   "section_break_16",
   "price_list_rate",
@@ -230,8 +237,7 @@
    "fieldtype": "Float",
    "label": "Qty as per Stock UOM",
    "no_copy": 1,
-   "print_hide": 1,
-   "read_only": 1
+   "print_hide": 1
   },
   {
    "fieldname": "section_break_16",
@@ -338,7 +344,6 @@
    "oldfieldtype": "Currency",
    "options": "currency",
    "print_width": "100px",
-   "read_only": 1,
    "width": "100px"
   },
   {
@@ -544,13 +549,8 @@
   {
    "fieldname": "item_group",
    "fieldtype": "Link",
-   "hidden": 1,
-   "label": "Item Group",
-   "oldfieldname": "item_group",
-   "oldfieldtype": "Link",
-   "options": "Item Group",
-   "print_hide": 1,
-   "read_only": 1
+   "label": "Item Sub Class",
+   "options": "Item Group"
   },
   {
    "fieldname": "billed_amt",
@@ -798,12 +798,51 @@
    "label": "Blanket Order",
    "no_copy": 1,
    "options": "Blanket Order"
+  },
+  {
+   "fieldname": "stock_qty_section",
+   "fieldtype": "Section Break",
+   "label": "Stock Qty"
+  },
+  {
+   "fieldname": "secondary_qty",
+   "fieldtype": "Float",
+   "label": "Stock Qty"
+  },
+  {
+   "fieldname": "column_break_16",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "item_code.stock_uom_1",
+   "fieldname": "stock_uom_1",
+   "fieldtype": "Link",
+   "label": "Stock UOM",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "item_type",
+   "fieldtype": "Link",
+   "label": "Product Type",
+   "options": "Item Group"
+  },
+  {
+   "fieldname": "item_class",
+   "fieldtype": "Link",
+   "label": "Item Class ",
+   "options": "Item Group"
+  },
+  {
+   "fieldname": "item_group",
+   "fieldtype": "Link",
+   "label": "Item Sub Class",
+   "options": "Item Group"
   }
  ],
  "idx": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-03-21 12:06:49.884567",
+ "modified": "2022-03-28 14:35:15.980757",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Sales Order Item",

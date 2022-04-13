@@ -12,6 +12,8 @@
  "engine": "InnoDB",
  "field_order": [
   "name_and_description_section",
+  "opportunity",
+  "opportunity_name",
   "naming_series",
   "item_code",
   "variant_of",
@@ -22,6 +24,7 @@
   "item_group",
   "is_item_from_hub",
   "stock_uom",
+  "supplier",
   "column_break0",
   "disabled",
   "allow_alternative_item",
@@ -162,7 +165,9 @@
   {
    "fieldname": "naming_series",
    "fieldtype": "Data",
-   "label": "Series"
+   "hidden": 1,
+   "label": "Series",
+   "read_only": 1
   },
   {
    "bold": 1,
@@ -649,6 +654,7 @@
   {
    "fieldname": "supplier_items",
    "fieldtype": "Table",
+   "hidden": 1,
    "label": "Supplier Items",
    "options": "Item Supplier"
   },
@@ -1127,6 +1133,25 @@
    "fieldname": "density",
    "fieldtype": "Float",
    "label": "Density"
+  },
+  {
+   "fieldname": "opportunity",
+   "fieldtype": "Link",
+   "label": "Opportunity",
+   "options": "Opportunity"
+  },
+  {
+   "fetch_from": "opportunity.opportunity_from",
+   "fieldname": "opportunity_name",
+   "fieldtype": "Data",
+   "label": "Opportunity Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier"
   }
  ],
  "has_web_view": 1,
@@ -1136,7 +1161,7 @@
  "index_web_pages_for_search": 1,
  "links": [],
  "max_attachments": 1,
- "modified": "2022-03-18 10:58:23.839394",
+ "modified": "2022-04-05 12:38:08.934828",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Item",

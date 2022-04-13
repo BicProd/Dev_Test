@@ -63,24 +63,32 @@ class Quotation(SellingController):
 
 		opp = frappe.get_doc("Opportunity", opportunity)
 		opp.set_status(status=status, update=True)
-
-	def declare_enquiry_lost(self, lost_reasons_list, detailed_reason=None):
+	
+	
+	@frappe.whitelist()
+	def declare_enquiry_lost(self, lost_reasons_list, competitors, detailed_reason=None):
 		if not self.has_sales_order():
-			get_lost_reasons = frappe.get_list('Quotation Lost Reason',
-			fields = ["name"])
-			lost_reasons_lst = [reason.get('name') for reason in get_lost_reasons]
-			frappe.db.set(self, 'status', 'Lost')
+			get_lost_reasons = frappe.get_list("Quotation Lost Reason", fields=["name"])
+			lost_reasons_lst = [reason.get("name") for reason in get_lost_reasons]
+			frappe.db.set(self, "status", "Lost")
 
 			if detailed_reason:
-				frappe.db.set(self, 'order_lost_reason', detailed_reason)
+				frappe.db.set(self, "order_lost_reason", detailed_reason)
 
 			for reason in lost_reasons_list:
-				if reason.get('lost_reason') in lost_reasons_lst:
-					self.append('lost_reasons', reason)
+				if reason.get("lost_reason") in lost_reasons_lst:
+					self.append("lost_reasons", reason)
 				else:
-					frappe.throw(_("Invalid lost reason {0}, please create a new lost reason").format(frappe.bold(reason.get('lost_reason'))))
+					frappe.throw(
+						_("Invalid lost reason {0}, please create a new lost reason").format(
+							frappe.bold(reason.get("lost_reason"))
+						)
+					)
 
-			self.update_opportunity('Lost')
+			for competitor in competitors:
+				self.append("competitors", competitor)
+
+			self.update_opportunity("Lost")
 			self.update_lead()
 			self.save()
 

@@ -140,7 +140,7 @@
    "fieldname": "company_type",
    "fieldtype": "Select",
    "label": "Company Type",
-   "options": "PT\nCV",
+   "options": "\nPT\nCV",
    "print_hide": 1
   },
   {
@@ -182,7 +182,8 @@
    "oldfieldtype": "Link",
    "options": "Lead",
    "print_hide": 1,
-   "report_hide": 1
+   "report_hide": 1,
+   "reqd": 1
   },
   {
    "fieldname": "image",
@@ -650,7 +651,7 @@
  "idx": 363,
  "image_field": "image",
  "links": [],
- "modified": "2022-03-21 10:24:20.492798",
+ "modified": "2022-03-29 16:10:18.318944",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Customer",

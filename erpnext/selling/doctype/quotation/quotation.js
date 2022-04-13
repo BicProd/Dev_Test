@@ -75,6 +75,7 @@ erpnext.selling.QuotationController = erpnext.selling.SellingController.extend({
 
 			if(doc.status!=="Ordered") {
 				this.frm.add_custom_button(__('Set as Lost'), () => {
+						cur_frm.set_value('status','Lost');
 						this.frm.trigger('set_as_lost_dialog');
 					});
 				}
@@ -197,6 +198,14 @@ erpnext.selling.QuotationController = erpnext.selling.SellingController.extend({
 				}
 			}
 		})
+	}
+});
+frappe.ui.form.on('Quotation Item', {
+	secondary_qty : function(frm, cdt, cdn) {
+		var d = locals[cdt][cdn];
+		var total = 0;
+		total = d.secondary_qty * d.conversion_factor;
+		frappe.model.set_value(cdt, cdn, "qty", total);
 	}
 });
 

@@ -285,6 +285,8 @@ def get_basic_details(args, item, overwrite_warehouse=True):
 		"item_name": item.item_name,
 		"description": cstr(item.description).strip(),
 		"image": cstr(item.image).strip(),
+		#code jo
+		"supplier":item.supplier,
 		"warehouse": warehouse,
 		"income_account": get_default_income_account(args, item_defaults, item_group_defaults, brand_defaults),
 		"expense_account": expense_account or get_default_expense_account(args, item_defaults, item_group_defaults, brand_defaults) ,
@@ -629,8 +631,9 @@ def get_price_list_rate(args, item_doc, out):
 				insert_item_price(args)
 			return {}
 
-		out.price_list_rate = flt(price_list_rate) * flt(args.plc_conversion_rate) \
-			/ flt(args.conversion_rate)
+		"""Jo out.price_list_rate = flt(price_list_rate) * flt(args.plc_conversion_rate) \
+			/ flt(args.conversion_rate)"""
+		out.price_list_rate = flt(price_list_rate)
 
 		if not out.price_list_rate and args.transaction_type=="buying":
 			from erpnext.stock.doctype.item.item import get_last_purchase_details

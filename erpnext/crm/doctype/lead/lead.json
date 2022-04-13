@@ -38,8 +38,9 @@
   "address_title",
   "address_line1",
   "address_line2",
-  "city",
-  "county",
+  "province",
+  "district",
+  "sub_district",
   "column_break2",
   "contact_html",
   "state",
@@ -262,24 +263,12 @@
   },
   {
    "depends_on": "eval: doc.__islocal",
-   "fieldname": "city",
-   "fieldtype": "Data",
-   "label": "City/Town",
-   "mandatory_depends_on": "eval: doc.address_title && doc.address_type"
-  },
-  {
-   "depends_on": "eval: doc.__islocal",
-   "fieldname": "county",
-   "fieldtype": "Data",
-   "label": "County"
-  },
-  {
-   "depends_on": "eval: doc.__islocal",
    "fieldname": "state",
    "fieldtype": "Data",
    "label": "State"
   },
   {
+   "default": "Indonesia",
    "depends_on": "eval: doc.__islocal",
    "fieldname": "country",
    "fieldtype": "Link",
@@ -356,6 +345,7 @@
   {
    "fieldname": "industry",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Industry",
    "oldfieldname": "industry",
    "oldfieldtype": "Link",
@@ -421,9 +411,8 @@
   },
   {
    "fieldname": "designation",
-   "fieldtype": "Link",
-   "label": "Designation",
-   "options": "Designation"
+   "fieldtype": "Data",
+   "label": "Designation"
   },
   {
    "collapsible": 1,
@@ -462,13 +451,35 @@
    "oldfieldname": "market_segment",
    "oldfieldtype": "Select",
    "options": "Market Segment"
+  },
+  {
+   "depends_on": "eval: doc.__islocal",
+   "fieldname": "province",
+   "fieldtype": "Link",
+   "label": "Province",
+   "mandatory_depends_on": "eval: doc.address_title && doc.address_type",
+   "options": "Province"
+  },
+  {
+   "depends_on": "eval: doc.__islocal",
+   "fieldname": "district",
+   "fieldtype": "Link",
+   "label": "District",
+   "options": "District"
+  },
+  {
+   "depends_on": "eval: doc.__islocal",
+   "fieldname": "sub_district",
+   "fieldtype": "Link",
+   "label": "Sub-District",
+   "options": "Sub Districts"
   }
  ],
  "icon": "fa fa-user",
  "idx": 5,
  "image_field": "image",
  "links": [],
- "modified": "2022-01-06 16:22:55.947044",
+ "modified": "2022-04-04 15:36:25.018075",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "Lead",
@@ -533,5 +544,5 @@
  "sort_field": "modified",
  "sort_order": "DESC",
  "subject_field": "title",
- "title_field": "title"
+ "title_field": "company_name"
 }

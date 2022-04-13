@@ -64,7 +64,16 @@ frappe.ui.form.on("Purchase Order Item", {
 		var total = 0;
 		total = d.secondary_qty * d.conversion_factor;
 		frappe.model.set_value(cdt, cdn, "qty", total);
-	}
+	},
+	rate : function(frm, cdt, cdn) {
+		var a = locals[cdt][cdn];
+		var b = a.base_price_list_rate;
+		if(a.rate > a.base_price_list_rate) {
+				frappe.model.set_value(cdt, cdn, "rate", b);
+				frappe.throw(__('Rate cannot be more than pricelist!'));
+			} 
+		
+	},
 	
 });
 

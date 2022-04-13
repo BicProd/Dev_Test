@@ -77,11 +77,13 @@
   "additional_discount_percentage",
   "discount_amount",
   "totals",
+  "base_vat",
   "base_grand_total",
   "base_rounding_adjustment",
   "base_in_words",
   "base_rounded_total",
   "column_break3",
+  "vat",
   "grand_total",
   "rounding_adjustment",
   "rounded_total",
@@ -538,23 +540,20 @@
   {
    "fieldname": "taxes_and_charges",
    "fieldtype": "Link",
-   "hidden": 1,
    "label": "Sales Taxes and Charges Template",
    "oldfieldname": "charge",
    "oldfieldtype": "Link",
    "options": "Sales Taxes and Charges Template",
    "print_hide": 1,
-   "read_only": 1
+   "reqd": 1
   },
   {
    "fieldname": "taxes",
    "fieldtype": "Table",
-   "hidden": 1,
    "label": "Sales Taxes and Charges",
    "oldfieldname": "other_charges",
    "oldfieldtype": "Table",
-   "options": "Sales Taxes and Charges",
-   "read_only": 1
+   "options": "Sales Taxes and Charges"
   },
   {
    "collapsible": 1,
@@ -584,8 +583,7 @@
    "oldfieldname": "other_charges_total",
    "oldfieldtype": "Currency",
    "options": "Company:company:default_currency",
-   "print_hide": 1,
-   "read_only": 1
+   "print_hide": 1
   },
   {
    "fieldname": "column_break_42",
@@ -596,8 +594,7 @@
    "fieldtype": "Currency",
    "label": "Total Taxes and Charges",
    "options": "currency",
-   "print_hide": 1,
-   "read_only": 1
+   "print_hide": 1
   },
   {
    "collapsible": 1,
@@ -755,13 +752,11 @@
    "label": "Payment Terms"
   },
   {
-   "fetch_from": "party_name.payment_terms",
    "fieldname": "payment_terms_template",
    "fieldtype": "Link",
    "label": "Payment Terms Template",
    "options": "Payment Terms Template",
-   "print_hide": 1,
-   "read_only": 1
+   "print_hide": 1
   },
   {
    "fieldname": "payment_schedule",
@@ -919,6 +914,7 @@
    "width": "50%"
   },
   {
+   "allow_on_submit": 1,
    "default": "Draft",
    "fieldname": "status",
    "fieldtype": "Select",
@@ -1057,6 +1053,7 @@
   {
    "fieldname": "delivery_on",
    "fieldtype": "Date",
+   "hidden": 1,
    "label": "Delivery on"
   },
   {
@@ -1106,7 +1103,24 @@
    "fieldname": "company_type",
    "fieldtype": "Select",
    "label": "Company Type",
-   "options": "PT\nCV"
+   "options": "\nPT\nCV"
+  },
+  {
+   "fieldname": "base_vat",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "VAT (Company Currency)",
+   "options": "Company:company:default_currency",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "vat",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "VAT",
+   "options": "currency",
+   "read_only": 1
   }
  ],
  "icon": "fa fa-shopping-cart",
@@ -1114,7 +1128,7 @@
  "is_submittable": 1,
  "links": [],
  "max_attachments": 1,
- "modified": "2022-03-21 10:24:42.393105",
+ "modified": "2022-04-06 09:38:35.122009",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Quotation",

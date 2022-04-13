@@ -1219,6 +1219,7 @@ erpnext.TransactionController = erpnext.taxes_and_totals.extend({
 		item.stock_uom_rate = flt(item.rate)/flt(item.conversion_factor);
 		refresh_field("stock_uom_rate", item.name, item.parentfield);
 	},
+
 	service_stop_date: function(frm, cdt, cdn) {
 		var child = locals[cdt][cdn];
 

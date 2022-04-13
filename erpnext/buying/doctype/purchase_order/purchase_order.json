@@ -10,6 +10,7 @@
  "field_order": [
   "supplier_section",
   "title",
+  "po_classification",
   "naming_series",
   "supplier",
   "get_items_from_open_material_requests",
@@ -18,7 +19,6 @@
   "company",
   "transaction_date",
   "schedule_date",
-  "etd",
   "order_confirmation_no",
   "order_confirmation_date",
   "amended_from",
@@ -223,7 +223,7 @@
    "fieldname": "transaction_date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Date",
+   "label": "ETD",
    "oldfieldname": "transaction_date",
    "oldfieldtype": "Date",
    "reqd": 1,
@@ -231,9 +231,11 @@
   },
   {
    "allow_on_submit": 1,
+   "default": "Today",
    "fieldname": "schedule_date",
    "fieldtype": "Date",
-   "label": "Required By"
+   "label": "Transaction date",
+   "reqd": 1
   },
   {
    "allow_on_submit": 1,
@@ -1126,11 +1128,6 @@
    "read_only": 1
   },
   {
-   "fieldname": "etd",
-   "fieldtype": "Date",
-   "label": "ETD"
-  },
-  {
    "collapsible": 1,
    "fieldname": "remarks_section",
    "fieldtype": "Section Break",
@@ -1140,13 +1137,19 @@
    "fieldname": "remarks",
    "fieldtype": "Text Editor",
    "label": "Remarks"
+  },
+  {
+   "fieldname": "po_classification",
+   "fieldtype": "Select",
+   "label": "PO Classification",
+   "options": "Transporter\nFreight\nRaw Material\nAuxiliary\nSparepart\nSlitting\nGA\nIT"
   }
  ],
  "icon": "fa fa-file-text",
  "idx": 105,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-03-16 14:32:32.045287",
+ "modified": "2022-03-25 14:27:41.787084",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Purchase Order",

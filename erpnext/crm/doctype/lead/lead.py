@@ -127,7 +127,7 @@ class Lead(SellingController):
 
 	def create_address(self):
 		address_fields = ["address_type", "address_title", "address_line1", "address_line2",
-			"city", "county", "state", "country", "pincode"]
+			"province", "district", "sub_district", "country", "pincode"]
 		info_fields = ["email_id", "phone", "fax"]
 
 		# do not create an address if no fields are available,

@@ -75,7 +75,7 @@ erpnext.SerialNoBatchSelector = Class.extend({
 				fieldtype:'Float',
 				read_only: me.has_batch && !me.has_serial_no,
 				label: __(me.has_batch && !me.has_serial_no ? 'Total Qty' : 'Qty'),
-				default: flt(me.item.stock_qty),
+				default: flt(me.item.secondary_qty),
 			},
 			{
 				fieldname: 'auto_fetch_button',
@@ -238,7 +238,7 @@ erpnext.SerialNoBatchSelector = Class.extend({
 	update_serial_no_item() {
 		// just updates serial no for the item
 		if(this.has_serial_no && !this.has_batch) {
-			this.map_row_values(this.item, this.values, 'serial_no', 'qty');
+			this.map_row_values(this.item, this.values, 'serial_no', 'secondary_qty');
 		}
 	},
 
@@ -273,7 +273,7 @@ erpnext.SerialNoBatchSelector = Class.extend({
 						row = this.frm.doc.items.find(i => i.batch_no === batch_no);
 					}
 					const values = {
-						'qty': serial_no.length,
+						//'qty': serial_no.length,
 						'serial_no': serial_no.join('\n')
 					}
 					this.map_row_values(row, values, 'serial_no',
@@ -289,7 +289,7 @@ erpnext.SerialNoBatchSelector = Class.extend({
 	},
 
 	map_row_values: function(row, values, number, qty_field, warehouse) {
-		row.qty = values[qty_field];
+		//row.qty = values[qty_field];
 		row.transfer_qty = flt(values[qty_field]) * flt(row.conversion_factor);
 		row[number] = values[number];
 		if(this.warehouse_details.type === 'Source Warehouse') {

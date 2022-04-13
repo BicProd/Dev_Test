@@ -294,8 +294,8 @@ def make_purchase_order(source_name, target_doc=None):
 			"field_map": [
 				["name", "material_request_item"],
 				["parent", "material_request"],
-				["uom", "stock_uom"],
 				["uom", "uom"],
+				["qty","qty"],
 				["sales_order", "sales_order"],
 				["sales_order_item", "sales_order_item"]
 			],

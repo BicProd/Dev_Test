@@ -174,7 +174,6 @@
    "default": "Open",
    "fieldname": "status",
    "fieldtype": "Select",
-   "in_standard_filter": 1,
    "label": "Status",
    "no_copy": 1,
    "options": "Open\nApproved\nRejected\nCancelled"
@@ -263,7 +262,7 @@
  "is_submittable": 1,
  "links": [],
  "max_attachments": 3,
- "modified": "2021-11-23 09:03:46.745627",
+ "modified": "2022-03-23 10:31:04.324920",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Leave Application",
