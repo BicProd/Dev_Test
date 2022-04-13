@@ -650,7 +650,7 @@
  "idx": 363,
  "image_field": "image",
  "links": [],
- "modified": "2021-07-25 17:27:58.022483",
+ "modified": "2022-03-21 10:24:20.492798",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Customer",
@@ -727,7 +727,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "Accounts Manager",
+   "role": "Finance Manager",
    "write": 1
   },
   {
@@ -739,6 +739,18 @@
    "read": 1,
    "report": 1,
    "role": "Customer Finance Approval",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales Executive",
    "share": 1,
    "write": 1
   }

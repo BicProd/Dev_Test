@@ -13,6 +13,7 @@
   "naming_series",
   "quotation_to",
   "party_name",
+  "company_type",
   "customer_name",
   "column_break1",
   "amended_from",
@@ -759,7 +760,8 @@
    "fieldtype": "Link",
    "label": "Payment Terms Template",
    "options": "Payment Terms Template",
-   "print_hide": 1
+   "print_hide": 1,
+   "read_only": 1
   },
   {
    "fieldname": "payment_schedule",
@@ -1097,6 +1099,14 @@
    "fieldname": "valid_till",
    "fieldtype": "Date",
    "label": "Valid Till"
+  },
+  {
+   "default": "PT",
+   "fetch_from": "party_name.company_type",
+   "fieldname": "company_type",
+   "fieldtype": "Select",
+   "label": "Company Type",
+   "options": "PT\nCV"
   }
  ],
  "icon": "fa fa-shopping-cart",
@@ -1104,7 +1114,7 @@
  "is_submittable": 1,
  "links": [],
  "max_attachments": 1,
- "modified": "2022-03-15 17:20:52.189513",
+ "modified": "2022-03-21 10:24:42.393105",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Quotation",

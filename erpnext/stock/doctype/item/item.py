@@ -67,10 +67,11 @@ class Item(WebsiteGenerator):
 				from frappe.model.naming import set_name_by_naming_series
 				set_name_by_naming_series(self)
 				#Agung
-				self.item_code = self.name
+				# self.item_code = self.name
 		#Agung
-		self.item_code = strip(self.item_code)
-		self.name = self.item_code
+		# self.item_code = strip(self.item_code)
+		# self.name = self.item_code
+		self.item_code = self.name
 
 	def before_insert(self):
 		if not self.description:

@@ -13,6 +13,7 @@
   "item_code",
   "item_name",
   "col_break1",
+  "delivery_on",
   "section_break_5",
   "description",
   "item_group",
@@ -29,6 +30,9 @@
   "valuation_rate",
   "section_break_16",
   "against_blanket_order",
+  "blanket_order",
+  "blanket_order_rate",
+  "column_break_26",
   "price_list_rate",
   "base_price_list_rate",
   "discount_and_margin",
@@ -617,15 +621,38 @@
    "label": "Valuation Rate"
   },
   {
+   "depends_on": "eval:doc.against_blanket_order",
+   "fieldname": "blanket_order_rate",
+   "fieldtype": "Currency",
+   "label": "Blanket Order Rate"
+  },
+  {
+   "default": "0",
    "fieldname": "against_blanket_order",
-   "fieldtype": "Data",
+   "fieldtype": "Check",
    "label": "Against Blanket Order"
+  },
+  {
+   "depends_on": "eval:doc.against_blanket_order",
+   "fieldname": "blanket_order",
+   "fieldtype": "Link",
+   "label": "Blanket Order",
+   "options": "Blanket Order"
+  },
+  {
+   "fieldname": "column_break_26",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "delivery_on",
+   "fieldtype": "Date",
+   "label": "Delivery on"
   }
  ],
  "idx": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-03-15 16:53:46.329056",
+ "modified": "2022-03-21 15:13:06.128891",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Quotation Item",
