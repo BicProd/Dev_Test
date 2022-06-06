@@ -68,7 +68,7 @@ erpnext.selling.QuotationController = erpnext.selling.SellingController.extend({
 		}
 
 		if(doc.docstatus == 1 && doc.status!=='Lost') {
-			if(!doc.valid_till || frappe.datetime.get_diff(doc.valid_till, frappe.datetime.get_today()) >= 0) {
+			if(!doc.valid_till || frappe.datetime.get_diff(doc.valid_till, frappe.datetime.get_today()) >= 0 && doc.status !== "Ordered") {
 				cur_frm.add_custom_button(__('Sales Order'),
 					cur_frm.cscript['Make Sales Order'], __('Create'));
 			}
@@ -80,11 +80,7 @@ erpnext.selling.QuotationController = erpnext.selling.SellingController.extend({
 					});
 				}
 
-			if(!doc.auto_repeat) {
-				cur_frm.add_custom_button(__('Subscription'), function() {
-					erpnext.utils.make_subscription(doc.doctype, doc.name)
-				}, __('Create'))
-			}
+		
 
 			cur_frm.page.set_inner_btn_group_as_primary(__('Create'));
 		}
@@ -206,6 +202,11 @@ frappe.ui.form.on('Quotation Item', {
 		var total = 0;
 		total = d.secondary_qty * d.conversion_factor;
 		frappe.model.set_value(cdt, cdn, "qty", total);
+	},
+	item_code: function(frm, cdt, cdn) {
+		var total = 0;
+		frappe.model.set_value(cdt, cdn, "qty", total);
+		frappe.model.set_value(cdt, cdn, "secondary_qty", total);
 	}
 });
 

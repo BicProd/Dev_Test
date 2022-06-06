@@ -328,8 +328,7 @@ def get_basic_details(args, item, overwrite_warehouse=True):
 	if item.stock_uom == args.stock_uom_1:
 		out.conversion_factor = 1.0
 	else:
-		out.conversion_factor = args.conversion_factor or \
-			get_conversion_factor(item.name, args.stock_uom_1).get("conversion_factor")
+		out.conversion_factor = get_conversion_factor(item.name, args.stock_uom_1).get("conversion_factor")
 
 	args.conversion_factor = out.conversion_factor
 	#out.stock_qty = out.qty * out.conversion_factor

@@ -495,16 +495,28 @@ def get_requested_item_qty(sales_order):
 		group by sales_order_item
 	""", sales_order))
 
+def get_requested_item_secon_qty(sales_order):
+	return frappe._dict(frappe.db.sql("""
+		select sales_order_item, sum(secondary_qty)
+		from `tabMaterial Request Item`
+		where docstatus = 1
+			and sales_order = %s
+		group by sales_order_item
+	""", sales_order))
+
 @frappe.whitelist()
 def make_material_request(source_name, target_doc=None):
 	requested_item_qty = get_requested_item_qty(source_name)
+	requested_item_secon_qty = get_requested_item_secon_qty(source_name)
 
 	def update_item(source, target, source_parent):
 		# qty is for packed items, because packed items don't have stock_qty field
 		qty = source.get("qty")
+		secondary_qty = source.get("secondary_qty")
 		target.project = source_parent.project
+		target.secondary_qty = secondary_qty - requested_item_secon_qty.get(source.name, 0)
 		target.qty = qty - requested_item_qty.get(source.name, 0)
-		target.stock_qty = flt(target.qty) * flt(target.conversion_factor)
+		target.stock_qty = flt(target.qty) #* flt(target.conversion_factor)
 
 	doc = get_mapped_doc("Sales Order", source_name, {
 		"Sales Order": {
@@ -576,6 +588,7 @@ def make_delivery_note(source_name, target_doc=None, skip_item_mapping=False):
 		target.base_amount = (flt(source.qty) - flt(source.delivered_qty)) * flt(source.base_rate)
 		target.amount = (flt(source.qty) - flt(source.delivered_qty)) * flt(source.rate)
 		target.qty = flt(source.qty) - flt(source.delivered_qty)
+		#target.secondary_qty = flt(source.qty) - flt(source.delivered_qty)
 
 		item = get_item_defaults(target.item_code, source_parent.company)
 		item_group = get_item_group_defaults(target.item_code, source_parent.company)

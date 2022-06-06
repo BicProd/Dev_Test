@@ -26,6 +26,7 @@
   "campaign_name",
   "image",
   "section_break_12",
+  "follow_up_by",
   "contact_by",
   "column_break_14",
   "contact_date",
@@ -195,12 +196,14 @@
    "label": "Follow Up"
   },
   {
+   "fetch_from": "follow_up_by.user_id",
    "fieldname": "contact_by",
    "fieldtype": "Link",
    "label": "Next Contact By",
    "oldfieldname": "contact_by",
    "oldfieldtype": "Link",
    "options": "User",
+   "read_only": 1,
    "width": "100px"
   },
   {
@@ -265,6 +268,7 @@
    "depends_on": "eval: doc.__islocal",
    "fieldname": "state",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "State"
   },
   {
@@ -473,13 +477,19 @@
    "fieldtype": "Link",
    "label": "Sub-District",
    "options": "Sub Districts"
+  },
+  {
+   "fieldname": "follow_up_by",
+   "fieldtype": "Link",
+   "label": "Follow Up by",
+   "options": "Employee"
   }
  ],
  "icon": "fa fa-user",
  "idx": 5,
  "image_field": "image",
  "links": [],
- "modified": "2022-04-04 15:36:25.018075",
+ "modified": "2022-04-19 12:41:53.121884",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "Lead",

@@ -119,7 +119,7 @@ erpnext.buying.PurchaseOrderController = erpnext.buying.BuyingController.extend(
 
 			if(!in_list(["Closed", "Delivered"], doc.status)) {
 				if(this.frm.doc.status !== 'Closed' && flt(this.frm.doc.per_received) < 100 && flt(this.frm.doc.per_billed) < 100) {
-					this.frm.add_custom_button(__('Update Items'), () => {
+					this.frm.add_custom_button(__('Update Itemss'), () => {
 						erpnext.utils.update_child_items({
 							frm: this.frm,
 							child_docname: "items",
@@ -163,21 +163,7 @@ erpnext.buying.PurchaseOrderController = erpnext.buying.BuyingController.extend(
 						cur_frm.add_custom_button(__('Purchase Invoice'),
 							this.make_purchase_invoice, __('Create'));
 
-					if(flt(doc.per_billed)==0 && doc.status != "Delivered") {
-						cur_frm.add_custom_button(__('Payment'), cur_frm.cscript.make_payment_entry, __('Create'));
-					}
-
-					if(flt(doc.per_billed)==0) {
-						this.frm.add_custom_button(__('Payment Request'),
-							function() { me.make_payment_request() }, __('Create'));
-					}
-
-					if(!doc.auto_repeat) {
-						cur_frm.add_custom_button(__('Subscription'), function() {
-							erpnext.utils.make_subscription(doc.doctype, doc.name)
-						}, __('Create'))
-					}
-
+					
 					if (doc.docstatus === 1 && !doc.inter_company_order_reference) {
 						let me = this;
 						let internal = me.frm.doc.is_internal_supplier;

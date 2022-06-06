@@ -88,11 +88,11 @@ frappe.ui.form.on("Item", {
 				[`<a href="/app/item/${frm.doc.variant_of}" onclick="location.reload()">${frm.doc.variant_of}</a>`]), true);
 		}
 
-		if (frappe.defaults.get_default("item_naming_by")!="Naming Series" || frm.doc.variant_of) {
-			frm.toggle_display("naming_series", true);
-		} else {
-			erpnext.toggle_naming_series();
-		}
+		// if (frappe.defaults.get_default("item_naming_by")!="Naming Series" || frm.doc.variant_of) {
+		// 	frm.toggle_display("naming_series", true);
+		// } else {
+		// 	erpnext.toggle_naming_series();
+		// }
 
 		erpnext.item.edit_prices_button(frm);
 		erpnext.item.toggle_attributes(frm);
@@ -153,9 +153,9 @@ frappe.ui.form.on("Item", {
 	is_fixed_asset: function(frm) {
 		// set serial no to false & toggles its visibility
 		frm.set_value('has_serial_no', 0);
-		frm.toggle_enable(['has_serial_no', 'serial_no_series'], !frm.doc.is_fixed_asset);
+		frm.toggle_enable(['has_serial_no', 'serial_no_series','item_class','item_group'], !frm.doc.is_fixed_asset);
 		frm.toggle_reqd(['asset_category'], frm.doc.is_fixed_asset);
-		frm.toggle_display(['has_serial_no', 'serial_no_series'], !frm.doc.is_fixed_asset);
+		frm.toggle_display(['has_serial_no', 'serial_no_series','item_class','item_group'], !frm.doc.is_fixed_asset);
 
 		frm.call({
 			method: "set_asset_naming_series",

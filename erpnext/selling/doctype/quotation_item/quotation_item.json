@@ -9,11 +9,13 @@
   "product_type",
   "item_class",
   "item_sub_class",
+  "brand",
+  "apel",
+  "col_break1",
   "customer_item_code",
   "item_code",
   "item_name",
-  "col_break1",
-  "delivery_on",
+  "delivery_date",
   "supplier",
   "section_break_5",
   "description",
@@ -81,7 +83,6 @@
   "item_tax_rate",
   "shopping_cart_section",
   "additional_notes",
-  "section_break_61",
   "page_break"
  ],
  "fields": [
@@ -557,15 +558,9 @@
   {
    "fieldname": "brand",
    "fieldtype": "Link",
-   "hidden": 1,
    "label": "Brand",
-   "oldfieldname": "brand",
-   "oldfieldtype": "Link",
    "options": "Brand",
-   "print_hide": 1,
-   "print_width": "150px",
-   "read_only": 1,
-   "width": "150px"
+   "reqd": 1
   },
   {
    "collapsible": 1,
@@ -578,10 +573,6 @@
    "fieldname": "additional_notes",
    "fieldtype": "Text",
    "label": "Additional Notes"
-  },
-  {
-   "fieldname": "section_break_61",
-   "fieldtype": "Section Break"
   },
   {
    "collapsible": 1,
@@ -645,12 +636,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "delivery_on",
-   "fieldtype": "Date",
-   "label": "Delivery on",
-   "reqd": 1
-  },
-  {
    "fetch_from": "item_code.stock_uom_1",
    "fieldname": "stock_uom_1",
    "fieldtype": "Link",
@@ -681,16 +666,35 @@
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "item_code.supplier",
+   "fieldname": "brand",
+   "fieldtype": "Link",
+   "label": "Brand",
+   "options": "Brand",
+   "reqd": 1
+  },
+  {
    "fieldname": "supplier",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Supplier",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "delivery_date",
+   "fieldtype": "Date",
+   "label": "Delivery on",
+   "reqd": 1
+  },
+  {
+   "fieldname": "apel",
    "fieldtype": "Data",
-   "label": "Supplier"
+   "label": "apel"
   }
  ],
  "idx": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-04-06 13:56:06.593493",
+ "modified": "2022-04-28 15:46:52.491076",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Quotation Item",

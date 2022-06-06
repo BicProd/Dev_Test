@@ -59,7 +59,6 @@
   "sec_warehouse",
   "set_warehouse",
   "rejected_warehouse",
-  "col_break_warehouse",
   "set_from_warehouse",
   "supplier_warehouse",
   "is_subcontracted",
@@ -92,8 +91,8 @@
   "base_taxes_and_charges_added",
   "base_taxes_and_charges_deducted",
   "base_total_taxes_and_charges",
-  "column_break_40",
   "taxes_and_charges_added",
+  "column_break_40",
   "taxes_and_charges_deducted",
   "total_taxes_and_charges",
   "section_break_44",
@@ -107,9 +106,9 @@
   "base_rounding_adjustment",
   "base_rounded_total",
   "base_in_words",
-  "column_break8",
   "grand_total",
   "rounding_adjustment",
+  "column_break8",
   "rounded_total",
   "in_words",
   "total_advance",
@@ -535,10 +534,6 @@
    "no_copy": 1,
    "options": "Warehouse",
    "print_hide": 1
-  },
-  {
-   "fieldname": "col_break_warehouse",
-   "fieldtype": "Column Break"
   },
   {
    "default": "No",
@@ -1399,7 +1394,7 @@
  "idx": 204,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-01-13 14:20:25.801153",
+ "modified": "2022-04-20 11:16:09.925741",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Purchase Invoice",

@@ -208,7 +208,7 @@ class StatusUpdater(Document):
 			item['max_allowed'] = flt(item[args['target_ref_field']] * (100+allowance)/100)
 			item['reduce_by'] = item[args['target_field']] - item['max_allowed']
 
-			self.limits_crossed_error(args, item, qty_or_amount)
+			#self.limits_crossed_error(args, item, qty_or_amount)
 
 	def limits_crossed_error(self, args, item, qty_or_amount):
 		'''Raise exception for limits crossed'''

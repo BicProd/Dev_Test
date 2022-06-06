@@ -7,13 +7,14 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "item_type",
+  "product_type",
   "item_class",
   "item_group",
   "item_code",
+  "apel",
+  "col_break1",
   "customer_item_code",
   "ensure_delivery_based_on_produced_serial_no",
-  "col_break1",
   "delivery_date",
   "item_name",
   "section_break_5",
@@ -112,7 +113,6 @@
    "oldfieldtype": "Link",
    "options": "Item",
    "print_width": "150px",
-   "reqd": 1,
    "width": "150px"
   },
   {
@@ -199,6 +199,7 @@
    "oldfieldname": "qty",
    "oldfieldtype": "Currency",
    "print_width": "100px",
+   "read_only": 1,
    "reqd": 1,
    "width": "100px"
   },
@@ -807,7 +808,8 @@
   {
    "fieldname": "secondary_qty",
    "fieldtype": "Float",
-   "label": "Stock Qty"
+   "label": "Stock Qty",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_16",
@@ -821,12 +823,6 @@
    "options": "UOM"
   },
   {
-   "fieldname": "item_type",
-   "fieldtype": "Link",
-   "label": "Product Type",
-   "options": "Item Group"
-  },
-  {
    "fieldname": "item_class",
    "fieldtype": "Link",
    "label": "Item Class ",
@@ -837,12 +833,23 @@
    "fieldtype": "Link",
    "label": "Item Sub Class",
    "options": "Item Group"
+  },
+  {
+   "fieldname": "product_type",
+   "fieldtype": "Link",
+   "label": "Product Type",
+   "options": "Item Group"
+  },
+  {
+   "fieldname": "apel",
+   "fieldtype": "Data",
+   "label": "apel"
   }
  ],
  "idx": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-03-28 14:35:15.980757",
+ "modified": "2022-04-28 15:46:42.442823",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Sales Order Item",

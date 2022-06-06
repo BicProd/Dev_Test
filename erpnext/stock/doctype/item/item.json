@@ -24,7 +24,6 @@
   "item_group",
   "is_item_from_hub",
   "stock_uom",
-  "supplier",
   "column_break0",
   "disabled",
   "allow_alternative_item",
@@ -43,13 +42,16 @@
   "image",
   "section_break_11",
   "brand",
+  "supplier",
   "description",
   "print_title_in_faktur",
   "print_title_in_dn",
   "sb_dimensions",
-  "length",
+  "original_weight",
   "width",
+  "length",
   "thickness",
+  "group_thickness",
   "density",
   "sb_barcodes",
   "barcodes",
@@ -176,8 +178,7 @@
    "in_global_search": 1,
    "label": "Item Code",
    "oldfieldname": "item_code",
-   "oldfieldtype": "Data",
-   "unique": 1
+   "oldfieldtype": "Data"
   },
   {
    "depends_on": "variant_of",
@@ -200,6 +201,7 @@
    "label": "Item Name",
    "oldfieldname": "item_name",
    "oldfieldtype": "Data",
+   "reqd": 1,
    "search_index": 1
   },
   {
@@ -223,6 +225,7 @@
    "read_only": 1
   },
   {
+   "default": "Kg",
    "fieldname": "stock_uom",
    "fieldtype": "Link",
    "ignore_user_permissions": 1,
@@ -1108,21 +1111,6 @@
    "label": "Dimensions"
   },
   {
-   "fieldname": "length",
-   "fieldtype": "Float",
-   "label": "Length"
-  },
-  {
-   "fieldname": "width",
-   "fieldtype": "Float",
-   "label": "Width"
-  },
-  {
-   "fieldname": "thickness",
-   "fieldtype": "Float",
-   "label": "Thickness"
-  },
-  {
    "fieldname": "stock_uom_1",
    "fieldtype": "Link",
    "label": "Stock UOM",
@@ -1132,7 +1120,8 @@
   {
    "fieldname": "density",
    "fieldtype": "Float",
-   "label": "Density"
+   "label": "Density",
+   "reqd": 1
   },
   {
    "fieldname": "opportunity",
@@ -1150,8 +1139,39 @@
   {
    "fieldname": "supplier",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Supplier",
    "options": "Supplier"
+  },
+  {
+   "fieldname": "group_thickness",
+   "fieldtype": "Float",
+   "label": "Group Thickness/GSM",
+   "reqd": 1
+  },
+  {
+   "fieldname": "original_weight",
+   "fieldtype": "Float",
+   "label": "% Paper",
+   "reqd": 1
+  },
+  {
+   "fieldname": "width",
+   "fieldtype": "Float",
+   "label": "Width",
+   "reqd": 1
+  },
+  {
+   "fieldname": "length",
+   "fieldtype": "Float",
+   "label": "Length",
+   "reqd": 1
+  },
+  {
+   "fieldname": "thickness",
+   "fieldtype": "Float",
+   "label": "Thickness/GSM",
+   "reqd": 1
   }
  ],
  "has_web_view": 1,
@@ -1161,7 +1181,7 @@
  "index_web_pages_for_search": 1,
  "links": [],
  "max_attachments": 1,
- "modified": "2022-04-05 12:38:08.934828",
+ "modified": "2022-05-10 06:32:24.253754",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Item",

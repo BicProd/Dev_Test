@@ -223,6 +223,14 @@ erpnext.TransactionController = erpnext.taxes_and_totals.extend({
 		}
 
 	},
+	before_save: function(){
+		this.recalculate_terms();
+		this.payment_terms_template();
+	},
+	validate: function(){
+		this.recalculate_terms();
+		this.payment_terms_template();
+	},
 	onload: function() {
 		var me = this;
 
@@ -336,6 +344,7 @@ erpnext.TransactionController = erpnext.taxes_and_totals.extend({
 		this.set_dynamic_labels();
 		this.setup_sms();
 		this.setup_quality_inspection();
+		this.recalculate_terms();
 		let scan_barcode_field = this.frm.get_field('scan_barcode');
 		if (scan_barcode_field && scan_barcode_field.get_value()) {
 			scan_barcode_field.set_value("");
@@ -557,7 +566,7 @@ erpnext.TransactionController = erpnext.taxes_and_totals.extend({
 							project: item.project || me.frm.doc.project,
 							qty: item.qty || 1,
 							stock_qty: item.stock_qty,
-							conversion_factor: item.conversion_factor,
+							//conversion_factor: item.conversion_factor,
 							weight_per_unit: item.weight_per_unit,
 							weight_uom: item.weight_uom,
 							manufacturer: item.manufacturer,
@@ -833,6 +842,7 @@ erpnext.TransactionController = erpnext.taxes_and_totals.extend({
 					() => me.frm.script_manager.trigger("currency"),
 					() => me.update_item_tax_map(),
 					() => me.apply_default_taxes(),
+					() => me.payment_terms_template(),
 					() => me.apply_pricing_rule()
 				]);
 			}
@@ -1993,7 +2003,7 @@ erpnext.TransactionController = erpnext.taxes_and_totals.extend({
 	payment_terms_template: function() {
 		var me = this;
 		const doc = this.frm.doc;
-		if(doc.payment_terms_template && doc.doctype !== 'Delivery Note') {
+		//if(doc.payment_terms_template && doc.doctype !== 'Delivery Note') {
 			var posting_date = doc.posting_date || doc.transaction_date;
 			frappe.call({
 				method: "erpnext.controllers.accounts_controller.get_payment_terms",
@@ -2009,7 +2019,7 @@ erpnext.TransactionController = erpnext.taxes_and_totals.extend({
 					}
 				}
 			})
-		}
+		//}
 	},
 
 	payment_term: function(doc, cdt, cdn) {

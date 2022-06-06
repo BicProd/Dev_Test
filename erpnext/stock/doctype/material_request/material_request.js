@@ -123,15 +123,6 @@ frappe.ui.form.on('Material Request', {
 						() => frm.events.make_stock_entry(frm), __('Create'));
 				}
 
-				if (frm.doc.material_request_type === "Purchase") {
-					frm.add_custom_button(__('Purchase Order'),
-						() => frm.events.make_purchase_order(frm), __('Create'));
-				}
-
-				if (frm.doc.material_request_type === "Purchase") {
-					frm.add_custom_button(__("Request for Quotation"),
-						() => frm.events.make_request_for_quotation(frm), __('Create'));
-				}
 
 				if (frm.doc.material_request_type === "Purchase") {
 					frm.add_custom_button(__("Supplier Quotation"),
@@ -213,7 +204,7 @@ frappe.ui.form.on('Material Request', {
 					material_request_type: frm.doc.material_request_type,
 					plc_conversion_rate: 1,
 					rate: item.rate,
-					conversion_factor: item.conversion_factor
+					//conversion_factor: item.conversion_factor
 				},
 				overwrite_warehouse: overwrite_warehouse
 			},

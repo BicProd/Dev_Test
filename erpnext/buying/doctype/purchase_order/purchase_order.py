@@ -354,9 +354,21 @@ def set_missing_values(source, target):
 	target.run_method("set_missing_values")
 	target.run_method("calculate_taxes_and_totals")
 
+def get_requested_item_secon_qty(purchase_order):
+	return frappe._dict(frappe.db.sql("""
+		select purchase_order_item, sum(secondary_qty)
+		from `tabPurchase Receipt Item`
+		where docstatus = 1
+			and purchase_order = %s
+		group by purchase_order_item
+	""", purchase_order))
+
 @frappe.whitelist()
 def make_purchase_receipt(source_name, target_doc=None):
+	requested_item_secon_qty = get_requested_item_secon_qty(source_name)
+
 	def update_item(obj, target, source_parent):
+		target.secondary_qty = flt(obj.secondary_qty) - requested_item_secon_qty.get(obj.name, 0)
 		target.qty = flt(obj.qty) - flt(obj.received_qty)
 		target.stock_qty = (flt(obj.qty) - flt(obj.received_qty)) 
 		target.amount = (flt(obj.qty) - flt(obj.received_qty)) * flt(obj.rate)

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div align="center">
     <img src="https://raw.githubusercontent.com/frappe/erpnext/develop/erpnext/public/images/erpnext-logo.png" height="128">
     <h2>ERPNext</h2>
@@ -110,7 +109,3 @@ Please note that it is not the goal of this policy to limit commercial activity 
 When in doubt about your use of the ERPNext name or logo, please contact Frappe Technologies for clarification.
 
 (inspired by WordPress)
-=======
-# Dev_Test
-
->>>>>>> 59ad0601b07bcd8ec3cda0d483396151f337b20b

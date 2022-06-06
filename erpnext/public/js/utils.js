@@ -511,6 +511,14 @@ erpnext.utils.update_child_items = function(opts) {
 		label: __('Qty'),
 		precision: get_precision("qty")
 	}, {
+		fieldtype:'Float',
+		fieldname:"secondary_qty",
+		default: 0,
+		read_only: 0,
+		in_list_view: 1,
+		label: __('Stock Qty'),
+		precision: get_precision("secondary_qty")
+	}, {
 		fieldtype:'Currency',
 		fieldname:"rate",
 		options: "currency",
@@ -526,7 +534,7 @@ erpnext.utils.update_child_items = function(opts) {
 			fieldtype: 'Date',
 			fieldname: frm.doc.doctype == 'Sales Order' ? "delivery_date" : "schedule_date",
 			in_list_view: 1,
-			label: frm.doc.doctype == 'Sales Order' ? __("Delivery Date") : __("Reqd by date"),
+			label: frm.doc.doctype == 'Sales Order' ? __("Delivery Date") : __("ETD"),
 			reqd: 1
 		})
 		fields.splice(3, 0, {
@@ -539,12 +547,12 @@ erpnext.utils.update_child_items = function(opts) {
 	}
 
 	const dialog = new frappe.ui.Dialog({
-		title: __("Update Items"),
+		title: __("Update Itemss"),
 		fields: [
 			{
 				fieldname: "trans_items",
 				fieldtype: "Table",
-				label: "Items",
+				label: "Itemss",
 				cannot_add_rows: cannot_add_row,
 				in_place_edit: false,
 				reqd: 1,
@@ -573,7 +581,7 @@ erpnext.utils.update_child_items = function(opts) {
 			this.hide();
 			refresh_field("items");
 		},
-		primary_action_label: __('Update')
+		primary_action_label: __('Updates')
 	});
 
 	frm.doc[opts.child_docname].forEach(d => {
@@ -585,6 +593,7 @@ erpnext.utils.update_child_items = function(opts) {
 			"schedule_date": d.schedule_date,
 			"conversion_factor": d.conversion_factor,
 			"qty": d.qty,
+			"secondary_qty": d.secondary_qty,
 			"rate": d.rate,
 			"uom": d.uom
 		});

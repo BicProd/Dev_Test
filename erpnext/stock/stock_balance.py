@@ -147,7 +147,7 @@ def get_indented_qty(item_code, warehouse):
 
 def get_ordered_qty(item_code, warehouse):
 	ordered_qty = frappe.db.sql("""
-		select sum((po_item.qty - po_item.received_qty)*po_item.conversion_factor)
+		select sum((po_item.qty - po_item.received_qty))
 		from `tabPurchase Order Item` po_item, `tabPurchase Order` po
 		where po_item.item_code=%s and po_item.warehouse=%s
 		and po_item.qty > po_item.received_qty and po_item.parent=po.name

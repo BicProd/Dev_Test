@@ -13,9 +13,9 @@
   "naming_series",
   "quotation_to",
   "party_name",
+  "column_break1",
   "company_type",
   "customer_name",
-  "column_break1",
   "amended_from",
   "company",
   "transaction_date",
@@ -82,9 +82,9 @@
   "base_rounding_adjustment",
   "base_in_words",
   "base_rounded_total",
-  "column_break3",
   "vat",
   "grand_total",
+  "column_break3",
   "rounding_adjustment",
   "rounded_total",
   "in_words",
@@ -382,6 +382,7 @@
    "width": "50%"
   },
   {
+   "default": "Standard Selling",
    "fieldname": "selling_price_list",
    "fieldtype": "Link",
    "label": "Price List",
@@ -413,12 +414,10 @@
    "default": "0",
    "fieldname": "ignore_pricing_rule",
    "fieldtype": "Check",
-   "hidden": 1,
    "label": "Ignore Pricing Rule",
    "no_copy": 1,
    "permlevel": 1,
-   "print_hide": 1,
-   "read_only": 1
+   "print_hide": 1
   },
   {
    "fieldname": "items_section",
@@ -553,7 +552,8 @@
    "label": "Sales Taxes and Charges",
    "oldfieldname": "other_charges",
    "oldfieldtype": "Table",
-   "options": "Sales Taxes and Charges"
+   "options": "Sales Taxes and Charges",
+   "read_only": 1
   },
   {
    "collapsible": 1,
@@ -1098,6 +1098,7 @@
    "label": "Valid Till"
   },
   {
+   "allow_on_submit": 1,
    "default": "PT",
    "fetch_from": "party_name.company_type",
    "fieldname": "company_type",
@@ -1128,7 +1129,7 @@
  "is_submittable": 1,
  "links": [],
  "max_attachments": 1,
- "modified": "2022-04-06 09:38:35.122009",
+ "modified": "2022-04-26 10:04:18.552863",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Quotation",

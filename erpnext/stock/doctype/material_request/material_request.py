@@ -240,8 +240,8 @@ def set_missing_values(source, target_doc):
 
 def update_item(obj, target, source_parent):
 	target.conversion_factor = obj.conversion_factor
-	target.qty = flt(flt(obj.stock_qty) - flt(obj.ordered_qty))/ target.conversion_factor
-	target.stock_qty = (target.qty * target.conversion_factor)
+	target.qty = flt(flt(obj.qty) - flt(obj.ordered_qty))
+	target.stock_qty = target.qty 
 	if getdate(target.schedule_date) < getdate(nowdate()):
 		target.schedule_date = None
 
@@ -295,7 +295,6 @@ def make_purchase_order(source_name, target_doc=None):
 				["name", "material_request_item"],
 				["parent", "material_request"],
 				["uom", "uom"],
-				["qty","qty"],
 				["sales_order", "sales_order"],
 				["sales_order_item", "sales_order_item"]
 			],

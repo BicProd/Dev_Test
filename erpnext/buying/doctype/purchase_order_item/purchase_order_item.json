@@ -12,12 +12,10 @@
   "item_group",
   "item_code",
   "supplier_part_no",
-  "item_name",
-  "test",
   "column_break_4",
+  "item_name",
   "schedule_date",
   "lead_time_days",
-  "expected_delivery_date",
   "section_break_5",
   "description",
   "col_break1",
@@ -87,14 +85,14 @@
   "expense_account",
   "manufacture_details",
   "manufacturer",
-  "manufacturer_part_no",
   "column_break_14",
+  "manufacturer_part_no",
   "bom",
   "include_exploded_items",
   "item_weight_details",
   "weight_per_unit",
-  "total_weight",
   "column_break_40",
+  "total_weight",
   "weight_uom",
   "accounting_dimensions_section",
   "project",
@@ -146,19 +144,11 @@
    "fieldname": "schedule_date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Estimated Time of Arrival (ETA)",
+   "label": "ETD",
    "oldfieldname": "schedule_date",
    "oldfieldtype": "Date",
    "print_hide": 1,
    "reqd": 1
-  },
-  {
-   "allow_on_submit": 1,
-   "bold": 1,
-   "fieldname": "expected_delivery_date",
-   "fieldtype": "Date",
-   "label": "Expected Delivery Date",
-   "search_index": 1
   },
   {
    "collapsible": 1,
@@ -791,7 +781,10 @@
   {
    "fieldname": "secondary_qty",
    "fieldtype": "Float",
-   "label": "Stock Qty"
+   "in_list_view": 1,
+   "label": "Stock Qty",
+   "reqd": 1,
+   "search_index": 1
   },
   {
    "fieldname": "column_break_15",
@@ -835,18 +828,13 @@
    "fieldname": "lead_time_days",
    "fieldtype": "Int",
    "label": "Lead time days"
-  },
-  {
-   "fieldname": "test",
-   "fieldtype": "Data",
-   "label": "test"
   }
  ],
  "idx": 1,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-04-01 14:58:33.680452",
+ "modified": "2022-06-06 10:48:03.455289",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Purchase Order Item",

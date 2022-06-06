@@ -33,7 +33,8 @@ class Customer(TransactionBase):
 	def autoname(self):
 		cust_master_name = frappe.defaults.get_global_default('cust_master_name')
 		if cust_master_name == 'Customer Name':
-			self.name = self.get_customer_name()
+			set_name_by_naming_series(self)
+			# self.name = self.get_customer_name()
 		else:
 			set_name_by_naming_series(self)
 

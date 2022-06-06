@@ -13,13 +13,14 @@
   "naming_series",
   "supplier",
   "supplier_name",
-  "column_break1",
   "company",
+  "column_break8",
   "transaction_date",
   "valid_till",
   "amended_from",
   "address_section",
   "supplier_address",
+  "column_break1",
   "contact_person",
   "address_display",
   "contact_display",
@@ -58,8 +59,8 @@
   "base_taxes_and_charges_added",
   "base_taxes_and_charges_deducted",
   "base_total_taxes_and_charges",
-  "column_break_37",
   "taxes_and_charges_added",
+  "column_break_37",
   "taxes_and_charges_deducted",
   "total_taxes_and_charges",
   "section_break_41",
@@ -73,8 +74,8 @@
   "base_rounding_adjustment",
   "base_in_words",
   "base_rounded_total",
-  "column_break4",
   "grand_total",
+  "column_break4",
   "rounding_adjustment",
   "rounded_total",
   "in_words",
@@ -150,10 +151,7 @@
   },
   {
    "fieldname": "column_break1",
-   "fieldtype": "Column Break",
-   "oldfieldtype": "Column Break",
-   "print_width": "50%",
-   "width": "50%"
+   "fieldtype": "Column Break"
   },
   {
    "default": "Today",
@@ -330,8 +328,7 @@
    "fieldname": "pricing_rules",
    "fieldtype": "Table",
    "label": "Pricing Rule Detail",
-   "options": "Pricing Rule Detail",
-   "read_only": 1
+   "options": "Pricing Rule Detail"
   },
   {
    "fieldname": "section_break_22",
@@ -795,6 +792,17 @@
    "fieldtype": "Date",
    "in_list_view": 1,
    "label": "Valid Till"
+  },
+  {
+   "fieldname": "column_break1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break8",
+   "fieldtype": "Column Break",
+   "oldfieldtype": "Column Break",
+   "print_width": "50%",
+   "width": "50%"
   }
  ],
  "icon": "fa fa-shopping-cart",
@@ -802,7 +810,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2020-12-03 15:18:29.073368",
+ "modified": "2022-04-20 10:26:05.014705",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Supplier Quotation",
