@@ -1,0 +1,343 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2022-05-24 10:50:47.965534",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "priority",
+  "subject",
+  "column_break_3",
+  "issue_type",
+  "status",
+  "issue_weight_section",
+  "issue_weight",
+  "requested_by_section",
+  "requested_by",
+  "employee_name",
+  "business_unit",
+  "column_break_9",
+  "department",
+  "position",
+  "assign_to_section",
+  "agent_id",
+  "column_break_18",
+  "agent_name",
+  "details_section",
+  "description",
+  "response_section",
+  "responded_on",
+  "resolution_section",
+  "plan_of_action",
+  "rating_section",
+  "rate",
+  "amended_from",
+  "signature",
+  "employee_id",
+  "emp",
+  "proof",
+  "section_break_33",
+  "attach_file",
+  "sign_user",
+  "sign_it_manager",
+  "column_break_37",
+  "sign_user_superior"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "IT-SUPP-.YYYY-.MM",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "default": "Low Priority",
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Priority",
+   "options": "Critical Priority\nHigh Priority\nIntermediate Priority\nLow Priority"
+  },
+  {
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "label": "Subject",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "issue_type",
+   "fieldtype": "Select",
+   "label": "Issue Type",
+   "options": "Hardware\nNetwork\nSoftware"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Open\nOn Progress\nDone\nClosed"
+  },
+  {
+   "fieldname": "issue_weight_section",
+   "fieldtype": "Section Break",
+   "label": "Issue weight"
+  },
+  {
+   "default": "\n\n<style>\ntable, td {\n  border: 1px solid black;\n  border-collapse: collapse;\n}\n</style>\n\n\n\n<table style=\"width: 100%;\">\n  <tbody><tr>\n    <th>Issue Type Priority Levels</th>\n    <th>Definition</th> \n    <th>Response Time</th>\n  </tr>\n  <tr>\n    <td>Critical (0)</td>\n    <td>BIC Group live system is at a halt and unable to process data. Critical Business Impact</td>\n    <td>Within 4 Hours</td>\n  </tr>\n  <tr>\n    <td>High (1)</td>\n    <td>Serious disruption of a BIC Group business function that limits the ability to conduct some portion of production business. Server or network response time impacting business applications</td>\n    <td>Within 6 Hours</td>\n  </tr>\n  <tr>\n    <td>Intermediate(2)</td>\n    <td>BIC Group live system continues to run without serious impact on production business</td>\n    <td>Within 1 Business Day</td>\n  </tr>\n <tr>\n    <td>Low (3)</td>\n    <td>Minor application issue. All questions and requests for information on use or implementation of software.  Non-critical hardware/software enhancement</td>\n    <td>Within 2 Business Day</td>\n  </tr>\n</tbody></table>\n\n\n",
+   "fieldname": "issue_weight",
+   "fieldtype": "HTML",
+   "hidden": 1,
+   "label": "Issue weight",
+   "options": "\n\n<style>\ntable,th, td {\n  border: 1px solid black;\n  border-collapse: collapse;\n}\n</style>\n\n\n\n<table style=\"width: 100%;\">\n  <tbody><tr>\n    <th>Issue Type Priority Levels</th>\n    <th>Definition</th> \n    <th>Response Time</th>\n  </tr>\n  <tr>\n    <td>Critical (0)</td>\n    <td>BIC Group live system is at a halt and unable to process data. Critical Business Impact</td>\n    <td>Within 4 Hours</td>\n  </tr>\n  <tr>\n    <td>High (1)</td>\n    <td>Serious disruption of a BIC Group business function that limits the ability to conduct some portion of production business. Server or network response time impacting business applications</td>\n    <td>Within 6 Hours</td>\n  </tr>\n  <tr>\n    <td>Intermediate(2)</td>\n    <td>BIC Group live system continues to run without serious impact on production business</td>\n    <td>Within 1 Business Day</td>\n  </tr>\n <tr>\n    <td>Low (3)</td>\n    <td>Minor application issue. All questions and requests for information on use or implementation of software.  Non-critical hardware/software enhancement</td>\n    <td>Within 2 Business Day</td>\n  </tr>\n</tbody></table>\n\n\n"
+  },
+  {
+   "fieldname": "requested_by_section",
+   "fieldtype": "Section Break",
+   "label": "Requested By"
+  },
+  {
+   "fieldname": "requested_by",
+   "fieldtype": "Link",
+   "label": "Requested By",
+   "options": "Employee",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "requested_by.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "business_unit",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Business Unit",
+   "options": "BIC\nIMF\nDGT\nDRC\nAJMET\nJSP\nWarehouse BIC\nRMP\nMPI\nBIO ECO"
+  },
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "requested_by.department",
+   "fieldname": "department",
+   "fieldtype": "Data",
+   "label": "Department",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "requested_by.designation",
+   "fieldname": "position",
+   "fieldtype": "Data",
+   "label": "Position",
+   "read_only": 1
+  },
+  {
+   "fieldname": "assign_to_section",
+   "fieldtype": "Section Break",
+   "label": "Assign To"
+  },
+  {
+   "fieldname": "agent_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Agent ID",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "column_break_18",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "agent_id.employee_name",
+   "fieldname": "agent_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Agent Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "details_section",
+   "fieldtype": "Section Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "depends_on": "eval:doc.status==\"On Progress\" || doc.status==\"Resolved\" ",
+   "fieldname": "response_section",
+   "fieldtype": "Section Break",
+   "label": "Response"
+  },
+  {
+   "default": "Today",
+   "fieldname": "responded_on",
+   "fieldtype": "Datetime",
+   "label": "Responded on",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:!doc.__islocal",
+   "fieldname": "resolution_section",
+   "fieldtype": "Section Break",
+   "label": "Resolution"
+  },
+  {
+   "fieldname": "plan_of_action",
+   "fieldtype": "Text Editor",
+   "label": "Plan of action"
+  },
+  {
+   "depends_on": "eval: doc.status==\"Resolved\" ",
+   "fieldname": "rating_section",
+   "fieldtype": "Section Break",
+   "label": "Rating"
+  },
+  {
+   "default": "5",
+   "fieldname": "rate",
+   "fieldtype": "Rating",
+   "label": "Rate"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "IT Support Request",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "signature",
+   "fieldtype": "Signature",
+   "label": "Signature"
+  },
+  {
+   "fieldname": "employee_id",
+   "fieldtype": "Link",
+   "label": "Employee ID",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "employee_id.employee_name",
+   "fieldname": "emp",
+   "fieldtype": "Data",
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "proof",
+   "fieldtype": "Attach",
+   "label": "Proof"
+  },
+  {
+   "fieldname": "section_break_33",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "attach_file",
+   "fieldtype": "Attach",
+   "label": "Attach file"
+  },
+  {
+   "fieldname": "sign_user",
+   "fieldtype": "Signature",
+   "label": "Sign user"
+  },
+  {
+   "fieldname": "sign_it_manager",
+   "fieldtype": "Signature",
+   "label": "Sign IT Manager"
+  },
+  {
+   "fieldname": "column_break_37",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sign_user_superior",
+   "fieldtype": "Signature",
+   "label": "Sign User Superior"
+  }
+ ],
+ "links": [],
+ "modified": "2022-05-24 10:51:21.687590",
+ "modified_by": "Administrator",
+ "module": "Information Technology",
+ "name": "ERPNext Bug",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Employee",
+   "set_user_permissions": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "NON BIC",
+   "set_user_permissions": 1,
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "subject",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "subject",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}
