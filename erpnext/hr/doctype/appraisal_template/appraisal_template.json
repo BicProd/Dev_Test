@@ -76,12 +76,14 @@
    "options": "Appraisal Template Goal 2"
   },
   {
+   "default": "0",
    "fieldname": "weight_1",
    "fieldtype": "Int",
    "label": "OKR Weight %",
    "reqd": 1
   },
   {
+   "default": "0",
    "fieldname": "weight_2",
    "fieldtype": "Int",
    "label": "Routine Weight %",
@@ -110,7 +112,7 @@
  "icon": "icon-file-text",
  "idx": 1,
  "links": [],
- "modified": "2021-10-26 15:37:52.750802",
+ "modified": "2022-01-12 13:48:53.068872",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Appraisal Template",

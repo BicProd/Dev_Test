@@ -33,8 +33,8 @@ class Customer(TransactionBase):
 	def autoname(self):
 		cust_master_name = frappe.defaults.get_global_default('cust_master_name')
 		if cust_master_name == 'Customer Name':
+			#self.name = self.get_customer_name()
 			set_name_by_naming_series(self)
-			# self.name = self.get_customer_name()
 		else:
 			set_name_by_naming_series(self)
 
@@ -397,7 +397,7 @@ def check_credit_limit(customer, company, ignore_outstanding_sales_order=False, 
 		customer_outstanding += flt(extra_amount)
 
 	credit_limit = get_credit_limit(customer, company)
-	if credit_limit > 0 and flt(customer_outstanding) > credit_limit:
+	if credit_limit >= 0 and flt(customer_outstanding) > credit_limit:
 		msgprint(_("Credit limit has been crossed for customer {0} ({1}/{2})")
 			.format(customer, customer_outstanding, credit_limit))
 
@@ -471,6 +471,23 @@ def get_customer_outstanding(customer, company, ignore_outstanding_sales_order=F
 			and per_billed < 100 and status != 'Closed'""", (customer, company))
 
 		outstanding_based_on_so = flt(outstanding_based_on_so[0][0]) if outstanding_based_on_so else 0.0
+	
+	outstanding_total = 0.0
+	outstanding_dn = 0.0
+	payment_paid = 0.0
+	outstanding_dn = frappe.db.sql("""
+			select sum(base_grand_total) from `tabDelivery Note` 
+			where customer=%s and company=%s and docstatus != 2
+			and status != 'Closed'""", (customer, company))
+	outstanding_dn = flt(outstanding_dn[0][0]) if outstanding_dn else 0.0
+
+	payment_paid = frappe.db.sql("""
+			select sum(paid_amount) from `tabPayment Entry` 
+			where party=%s and payment_type = "Receive" 
+			and docstatus = '1' and company=%s""", (customer, company))
+	payment_paid = flt(payment_paid[0][0]) if payment_paid else 0.0
+
+	outstanding_total = outstanding_dn - payment_paid
 
 	# Outstanding based on Delivery Note, which are not created against Sales Order
 	unmarked_delivery_note_items = frappe.db.sql("""select
@@ -495,7 +512,8 @@ def get_customer_outstanding(customer, company, ignore_outstanding_sales_order=F
 			outstanding_based_on_dn += ((flt(dn_item.amount) - flt(si_amount)) \
 				/ dn_item.base_net_total) * dn_item.base_grand_total
 
-	return outstanding_based_on_gle + outstanding_based_on_so + outstanding_based_on_dn
+	#return outstanding_based_on_gle + outstanding_based_on_so + outstanding_based_on_dn
+	return outstanding_based_on_gle + outstanding_based_on_dn
 
 
 def get_credit_limit(customer, company):

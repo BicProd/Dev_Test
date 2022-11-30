@@ -769,3 +769,9 @@ def get_total_days(date, frequency):
 		cint(frequency) * -1)
 
 	return date_diff(date, period_start_date)
+
+@frappe.whitelist()
+def set_asset_naming_series(item_code):
+	id = ()
+	id = frappe.db.sql("""SELECT t1.id FROM `tabItem Group` t1 LEFT JOIN `tabItem` t2 ON t1.name=t2.item_group WHERE t2.name=%s""", item_code)
+	return("BIC"+id[0][0]+".####")

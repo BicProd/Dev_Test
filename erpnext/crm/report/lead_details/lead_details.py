@@ -25,6 +25,12 @@ def get_columns():
 			"width": 120
 		},
 		{
+			"label": _("Organization Name"),
+			"fieldname": "company_name",
+			"fieldtype": "Data",
+			"width": 120
+		},
+		{
 			"fieldname":"status",
 			"label": _("Status"),
 			"fieldtype": "Data",
@@ -116,6 +122,7 @@ def get_data(filters):
 		SELECT
 			`tabLead`.name,
 			`tabLead`.lead_name,
+			`tabLead`.company_name,
 			`tabLead`.status,
 			`tabLead`.lead_owner,
 			`tabLead`.territory,

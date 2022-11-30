@@ -327,6 +327,7 @@ scheduler_events = {
 		"erpnext.hr.doctype.shift_type.shift_type.process_auto_attendance_for_all_shifts",
 		"erpnext.support.doctype.issue.issue.set_service_level_agreement_variance",
 		"erpnext.erpnext_integrations.connectors.shopify_connection.sync_old_orders",
+		"erpnext.selling.doctype.quotation.quotation.set_expired_status",
 		"erpnext.stock.doctype.repost_item_valuation.repost_item_valuation.repost_entries"
 	],
 	"daily": [
@@ -351,7 +352,6 @@ scheduler_events = {
 		"erpnext.support.doctype.service_level_agreement.service_level_agreement.check_agreement_status",
 		"erpnext.crm.doctype.email_campaign.email_campaign.send_email_to_leads_or_contacts",
 		"erpnext.crm.doctype.email_campaign.email_campaign.set_email_campaign_status",
-		"erpnext.selling.doctype.quotation.quotation.set_expired_status",
 		"erpnext.healthcare.doctype.patient_appointment.patient_appointment.update_appointment_status",
 		"erpnext.buying.doctype.supplier_quotation.supplier_quotation.set_expired_status",
 		"erpnext.accounts.doctype.process_statement_of_accounts.process_statement_of_accounts.send_auto_email",

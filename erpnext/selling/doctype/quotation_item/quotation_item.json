@@ -9,14 +9,12 @@
   "product_type",
   "item_class",
   "item_sub_class",
-  "brand",
-  "apel",
   "col_break1",
   "customer_item_code",
+  "brand",
   "item_code",
   "item_name",
   "delivery_date",
-  "supplier",
   "section_break_5",
   "description",
   "item_group",
@@ -32,7 +30,7 @@
   "qty",
   "stock_uom_1",
   "stock_uom",
-  "col_break2",
+  "col_break1",
   "conversion_factor",
   "stock_qty",
   "valuation_rate",
@@ -139,6 +137,7 @@
    "oldfieldname": "description",
    "oldfieldtype": "Small Text",
    "print_width": "300px",
+   "read_only": 1,
    "width": "300px"
   },
   {
@@ -185,15 +184,12 @@
    "width": "100px"
   },
   {
-   "fieldname": "col_break2",
-   "fieldtype": "Column Break"
-  },
-  {
    "columns": 1,
    "fieldname": "uom",
    "fieldtype": "Link",
    "label": "UOM",
    "options": "UOM",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -201,6 +197,7 @@
    "fieldtype": "Float",
    "label": "UOM Conversion Factor",
    "print_hide": 1,
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -224,6 +221,7 @@
    "options": "currency",
    "print_hide": 1,
    "print_width": "100px",
+   "read_only": 1,
    "width": "100px"
   },
   {
@@ -446,10 +444,11 @@
   {
    "fieldname": "warehouse",
    "fieldtype": "Link",
-   "label": "Warehouse",
+   "label": "Stock Warehouse",
    "options": "Warehouse",
    "print_hide": 1,
-   "report_hide": 1
+   "report_hide": 1,
+   "reqd": 1
   },
   {
    "fieldname": "column_break_30",
@@ -673,28 +672,20 @@
    "reqd": 1
   },
   {
-   "fieldname": "supplier",
-   "fieldtype": "Link",
-   "hidden": 1,
-   "label": "Supplier",
-   "options": "Supplier"
+   "fieldname": "col_break1",
+   "fieldtype": "Column Break"
   },
   {
    "fieldname": "delivery_date",
    "fieldtype": "Date",
    "label": "Delivery on",
    "reqd": 1
-  },
-  {
-   "fieldname": "apel",
-   "fieldtype": "Data",
-   "label": "apel"
   }
  ],
  "idx": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-04-28 15:46:52.491076",
+ "modified": "2022-11-04 15:06:58.228803",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Quotation Item",

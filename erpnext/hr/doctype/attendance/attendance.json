@@ -186,7 +186,7 @@
  "idx": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-08-19 15:47:30.925453",
+ "modified": "2022-03-24 11:50:44.671275",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Attendance",
@@ -228,7 +228,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "HR Manager",
+   "role": "HRGA Manager",
    "share": 1,
    "submit": 1,
    "write": 1
@@ -242,7 +242,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "Staff Legal",
+   "role": "HR Operation Staff",
    "share": 1,
    "submit": 1,
    "write": 1

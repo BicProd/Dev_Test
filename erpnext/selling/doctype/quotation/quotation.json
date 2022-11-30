@@ -8,12 +8,12 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "customer_section",
   "title",
   "naming_series",
   "quotation_to",
   "party_name",
-  "column_break1",
+  "so_reference",
+  "col_break44",
   "company_type",
   "customer_name",
   "amended_from",
@@ -135,11 +135,6 @@
  ],
  "fields": [
   {
-   "fieldname": "customer_section",
-   "fieldtype": "Section Break",
-   "options": "fa fa-user"
-  },
-  {
    "allow_on_submit": 1,
    "default": "{customer_name}",
    "fieldname": "title",
@@ -156,7 +151,7 @@
    "no_copy": 1,
    "oldfieldname": "naming_series",
    "oldfieldtype": "Select",
-   "options": "SAL-QTN-.YYYY.MM",
+   "options": "SAL-QTN-.YYYY.-.MM.-",
    "print_hide": 1,
    "reqd": 1,
    "set_only_once": 1
@@ -194,12 +189,6 @@
    "in_global_search": 1,
    "label": "Customer Name",
    "read_only": 1
-  },
-  {
-   "fieldname": "column_break1",
-   "fieldtype": "Column Break",
-   "oldfieldtype": "Column Break",
-   "width": "50%"
   },
   {
    "fieldname": "amended_from",
@@ -390,6 +379,7 @@
    "oldfieldtype": "Select",
    "options": "Price List",
    "print_hide": 1,
+   "reqd": 1,
    "width": "100px"
   },
   {
@@ -414,10 +404,12 @@
    "default": "0",
    "fieldname": "ignore_pricing_rule",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Ignore Pricing Rule",
    "no_copy": 1,
    "permlevel": 1,
-   "print_hide": 1
+   "print_hide": 1,
+   "read_only": 1
   },
   {
    "fieldname": "items_section",
@@ -552,8 +544,7 @@
    "label": "Sales Taxes and Charges",
    "oldfieldname": "other_charges",
    "oldfieldtype": "Table",
-   "options": "Sales Taxes and Charges",
-   "read_only": 1
+   "options": "Sales Taxes and Charges"
   },
   {
    "collapsible": 1,
@@ -708,7 +699,6 @@
   {
    "fieldname": "grand_total",
    "fieldtype": "Currency",
-   "in_list_view": 1,
    "label": "Grand Total",
    "oldfieldname": "grand_total_export",
    "oldfieldtype": "Currency",
@@ -752,6 +742,7 @@
    "label": "Payment Terms"
   },
   {
+   "fetch_from": "customer.payment_terms",
    "fieldname": "payment_terms_template",
    "fieldtype": "Link",
    "label": "Payment Terms Template",
@@ -761,7 +752,6 @@
   {
    "fieldname": "payment_schedule",
    "fieldtype": "Table",
-   "hidden": 1,
    "label": "Payment Schedule",
    "no_copy": 1,
    "options": "Payment Schedule",
@@ -778,7 +768,7 @@
    "options": "fa fa-legal"
   },
   {
-   "default": "Default Term and Conditions",
+   "default": "Default Terms and Conditions\n",
    "fieldname": "tc_name",
    "fieldtype": "Link",
    "hidden": 1,
@@ -791,6 +781,7 @@
    "report_hide": 1
   },
   {
+   "default": "Note: <br>\n\u00b7\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0The prices above are not binding, and are subject to change at any time without notice <br>\n\u00b7\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0The validity for claim and complaint is 90 days after the goods are received <br>\n\u00b7\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0If a claim occurs, BIC Group will only replace the goods that BIC Group supply <br>\n\u00b7\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0If a return occurs, customer will issue a goods return note, after the return process is complete <br>\n<br><br>\nHereby is the price quotation, and thank you for your attention and cooperation.",
    "fetch_from": "tc_name.terms",
    "fieldname": "terms",
    "fieldtype": "Text Editor",
@@ -977,7 +968,8 @@
    "fieldtype": "Link",
    "label": "Employee",
    "options": "Employee",
-   "print_hide": 1
+   "print_hide": 1,
+   "reqd": 1
   },
   {
    "fieldname": "html_104",
@@ -1098,13 +1090,11 @@
    "label": "Valid Till"
   },
   {
-   "allow_on_submit": 1,
-   "default": "PT",
    "fetch_from": "party_name.company_type",
    "fieldname": "company_type",
    "fieldtype": "Select",
    "label": "Company Type",
-   "options": "\nPT\nCV"
+   "options": "\nPT\nCV\nPERSONAL"
   },
   {
    "fieldname": "base_vat",
@@ -1122,6 +1112,18 @@
    "label": "VAT",
    "options": "currency",
    "read_only": 1
+  },
+  {
+   "fieldname": "col_break44",
+   "fieldtype": "Column Break",
+   "oldfieldtype": "Column Break",
+   "width": "50%"
+  },
+  {
+   "description": "SO From ESP. If none type 'NONE'",
+   "fieldname": "so_reference",
+   "fieldtype": "Data",
+   "label": "SO reference"
   }
  ],
  "icon": "fa fa-shopping-cart",
@@ -1129,7 +1131,7 @@
  "is_submittable": 1,
  "links": [],
  "max_attachments": 1,
- "modified": "2022-04-26 10:04:18.552863",
+ "modified": "2022-11-03 15:40:59.075962",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Quotation",
@@ -1224,5 +1226,8 @@
  "sort_field": "name",
  "sort_order": "DESC",
  "timeline_field": "party_name",
- "title_field": "title"
+ "title_field": "title",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
 }

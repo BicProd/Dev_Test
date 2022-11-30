@@ -73,7 +73,25 @@ frappe.ui.form.on('Asset', {
 		});
 	},
 
+	set_asset_naming : function(frm) {
+		if (frm.doc.item_code){
+			frappe.call({
+                method: "erpnext.assets.doctype.asset.asset.set_asset_naming_series",
+                args: {
+                    doctype: 'Item',
+                    item_code: frm.doc.item_code
+                },
+                callback: function(r) {
+                    // frm.set_df_property('naming_series', 'options', r.message);
+                    frm.set_value('naming_series', r.message);
+                    frm.refresh_field('naming_series');
+                }
+            });
+		}
+	},
+
 	refresh: function(frm) {
+		frm.trigger("set_asset_naming");
 		frappe.ui.form.trigger("Asset", "is_existing_asset");
 		frm.toggle_display("next_depreciation_date", frm.doc.docstatus < 1);
 		frm.events.make_schedules_editable(frm);
@@ -400,6 +418,10 @@ frappe.ui.form.on('Asset', {
 			});
 		}
 	}
+});
+
+frappe.ui.form.on("Asset", "item_code", function(frm) {
+    frm.trigger("set_asset_naming");
 });
 
 frappe.ui.form.on('Asset Finance Book', {

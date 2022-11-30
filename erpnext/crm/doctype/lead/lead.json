@@ -63,7 +63,8 @@
   "language",
   "unsubscribed",
   "blog_subscriber",
-  "title"
+  "title",
+  "market_segment"
  ],
  "fields": [
   {
@@ -489,7 +490,7 @@
  "idx": 5,
  "image_field": "image",
  "links": [],
- "modified": "2022-04-19 12:41:53.121884",
+ "modified": "2022-04-21 09:26:03.266110",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "Lead",
@@ -540,12 +541,6 @@
    "read": 1,
    "report": 1,
    "role": "Sales Manager"
-  },
-  {
-   "permlevel": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Sales User"
   }
  ],
  "search_fields": "lead_name,lead_owner,status",

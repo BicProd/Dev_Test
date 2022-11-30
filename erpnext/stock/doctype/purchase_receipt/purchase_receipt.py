@@ -189,7 +189,17 @@ class PurchaseReceipt(BuyingController):
 		update_serial_nos_after_submit(self, "items")
 
 		self.make_gl_entries()
-		self.repost_future_sle_and_gle()
+		#self.repost_future_sle_and_gle()
+
+		#Agung
+		frappe.db.sql("""update `tabShipment Parcel` set purchase_receipt_no=%s, shipped=1 where parent=%s and container_no=%s""", (self.name, self.shipment, self.container_no))
+		# if self.shipment:
+		# 	shipment = frappe.get_doc("Shipment", self.shipment)
+		# 	shipment.append("shipment_parcel",{
+		# 		"purchase_receipt_no":self.name,	
+		# 		"container_no":self.container_no
+		# 	})
+		# 	shipment.save()
 
 	def check_next_docstatus(self):
 		submit_rv = frappe.db.sql("""select t1.name
@@ -764,3 +774,7 @@ def get_item_account_wise_additional_cost(purchase_document):
 
 	return item_account_wise_cost
 
+#Agung
+@frappe.whitelist()
+def get_container_no_shipment_query(doctype,shipment):
+	return frappe.db.sql("""SELECT container_no FROM `tabShipment Parcel` where shipped=0 and parent=%s""", shipment)

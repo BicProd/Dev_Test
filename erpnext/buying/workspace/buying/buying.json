@@ -17,6 +17,7 @@
  "hide_custom": 0,
  "icon": "buying",
  "idx": 0,
+ "is_default": 0,
  "is_standard": 1,
  "label": "Buying",
  "links": [
@@ -35,6 +36,16 @@
    "link_to": "Material Request",
    "link_type": "DocType",
    "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "dependencies": "Item, Supplier",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Supplier Quotation",
+   "link_to": "Supplier Quotation",
+   "link_type": "DocType",
+   "onboard": 0,
    "type": "Link"
   },
   {
@@ -65,16 +76,6 @@
    "link_to": "Request for Quotation",
    "link_type": "DocType",
    "onboard": 1,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Item, Supplier",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Supplier Quotation",
-   "link_to": "Supplier Quotation",
-   "link_type": "DocType",
-   "onboard": 0,
    "type": "Link"
   },
   {
@@ -467,8 +468,8 @@
    "type": "Link"
   }
  ],
- "modified": "2020-12-01 13:38:38.615167",
- "modified_by": "Administrator",
+ "modified": "2022-06-14 15:30:56.531296",
+ "modified_by": "joanito.tony@bersaudarainti.com",
  "module": "Buying",
  "name": "Buying",
  "onboarding": "Buying",

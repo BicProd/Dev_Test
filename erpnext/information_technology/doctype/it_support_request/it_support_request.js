@@ -2,7 +2,9 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('IT Support Request', {
-	// refresh: function(frm) {
-
-	// }
+	status: function(frm) {
+		if (frm.doc.status == "Done") {
+			frm.set_value("finish_time", frappe.datetime.nowdate());
+		}
+	}
 });

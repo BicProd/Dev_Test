@@ -17,6 +17,7 @@
   "customer_name",
   "order_type",
   "skip_delivery_note",
+  "so_reference",
   "column_break1",
   "amended_from",
   "company",
@@ -103,8 +104,8 @@
   "payment_schedule_section",
   "payment_terms_template",
   "payment_schedule",
-  "remarks_section",
-  "remarks",
+  "notes_section",
+  "notes",
   "terms_section_break",
   "tc_name",
   "terms",
@@ -142,7 +143,8 @@
   "to_date",
   "column_break_108",
   "auto_repeat",
-  "update_auto_repeat_reference"
+  "update_auto_repeat_reference",
+  "workflow_state"
  ],
  "fields": [
   {
@@ -181,7 +183,7 @@
    "no_copy": 1,
    "oldfieldname": "naming_series",
    "oldfieldtype": "Select",
-   "options": "SAL-ORD-.YYYY.-",
+   "options": "SAL-ORD-.YYYY.-.MM.-",
    "print_hide": 1,
    "reqd": 1,
    "set_only_once": 1
@@ -288,7 +290,6 @@
    "hidden": 1,
    "hide_days": 1,
    "hide_seconds": 1,
-   "in_list_view": 1,
    "label": "Delivery Date",
    "no_copy": 1
   },
@@ -301,6 +302,7 @@
    "label": "Customer's Purchase Order",
    "oldfieldname": "po_no",
    "oldfieldtype": "Data",
+   "reqd": 1,
    "width": "100px"
   },
   {
@@ -1480,21 +1482,33 @@
    "read_only": 1
   },
   {
-   "fieldname": "remarks_section",
-   "fieldtype": "Section Break",
-   "label": "Remarks"
+   "fieldname": "workflow_state",
+   "fieldtype": "Data",
+   "label": "Workflow State"
   },
   {
-   "fieldname": "remarks",
+   "collapsible": 1,
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "notes",
    "fieldtype": "Text Editor",
-   "label": "Remarks"
+   "label": "Notes"
+  },
+  {
+   "description": "SO From ESP. If none type 'NONE'",
+   "fieldname": "so_reference",
+   "fieldtype": "Data",
+   "label": "SO reference"
   }
  ],
  "icon": "fa fa-file-text",
  "idx": 105,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-04-27 13:50:11.600564",
+ "modified": "2022-11-03 17:10:23.622938",
  "modified_by": "Administrator",
  "module": "Selling",
  "name": "Sales Order",
@@ -1570,5 +1584,6 @@
  "timeline_field": "customer",
  "title_field": "customer_name",
  "track_changes": 1,
- "track_seen": 1
+ "track_seen": 1,
+ "track_views": 1
 }

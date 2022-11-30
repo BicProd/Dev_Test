@@ -67,16 +67,13 @@ class Item(WebsiteGenerator):
 				from frappe.model.naming import set_name_by_naming_series
 				set_name_by_naming_series(self)
 				#Agung
-				self.item_code = self.name
-
+				# self.item_code = self.name
+		#Agung
 		# self.item_code = strip(self.item_code)
 		# self.name = self.item_code
-		# self.item_code = self.name
+		self.item_code = self.name
 
 	def before_insert(self):
-		#Agung
-		# self.item_code = self.item_name
-		self.item_code = self.name
 		if not self.description:
 			self.description = self.item_name
 
@@ -84,6 +81,8 @@ class Item(WebsiteGenerator):
 		# 	self.publish_in_hub = 1
 
 	def after_insert(self):
+		frappe.db.sql("""update `tabItem` set item_code=%s, barcode_item=%s where name=%s""", (self.name, self.name, self.name))
+		
 		'''set opening stock and item price'''
 		if self.standard_rate:
 			for default in self.item_defaults or [frappe._dict()]:
@@ -1310,3 +1309,9 @@ def update_variants(variants, template, publish_progress=True):
 def on_doctype_update():
 	# since route is a Text column, it needs a length for indexing
 	frappe.db.add_index("Item", ["route(500)"])
+
+@frappe.whitelist()
+def set_item_naming_series(item_class):
+	id = ()
+	id = frappe.db.sql("""SELECT id FROM `tabItem Group` WHERE name=%s""", item_class)
+	return(id[0][0]+".#####")

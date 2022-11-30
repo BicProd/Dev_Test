@@ -116,6 +116,7 @@
    "options": "currency"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "leave_encashment_amount_per_day",
    "fieldtype": "Currency",
    "label": "Leave Encashment Amount Per Day",
@@ -232,7 +233,7 @@
  "idx": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2020-09-30 11:30:32.190798",
+ "modified": "2022-03-30 10:57:05.577967",
  "modified_by": "Administrator",
  "module": "Payroll",
  "name": "Salary Structure",
@@ -263,7 +264,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "HR Manager",
+   "role": "HRGA Manager",
    "share": 1,
    "submit": 1,
    "write": 1

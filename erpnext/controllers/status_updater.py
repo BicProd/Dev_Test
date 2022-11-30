@@ -180,15 +180,6 @@ class StatusUpdater(Document):
 						item['idx'] = d.idx
 						item['target_ref_field'] = args['target_ref_field'].replace('_', ' ')
 
-						# if not item[args['target_ref_field']]:
-						# 	msgprint(_("Note: System will not check over-delivery and over-booking for Item {0} as quantity or amount is 0").format(item.item_code))
-						if args.get('no_allowance'):
-							item['reduce_by'] = item[args['target_field']] - item[args['target_ref_field']]
-							if item['reduce_by'] > .01:
-								self.limits_crossed_error(args, item, "qty")
-
-						elif item[args['target_ref_field']]:
-							self.check_overflow_with_allowance(item, args)
 
 	def check_overflow_with_allowance(self, item, args):
 		"""

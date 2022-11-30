@@ -28,12 +28,11 @@ def execute(filters=None):
 		bal = flt(credit_limit) - flt(outstanding_amt)
 
 		if customer_naming_type == "Naming Series":
-			row = [d.name, d.customer_name, credit_limit, outstanding_amt, bal,
-				d.bypass_credit_limit_check, d.is_frozen,
+			row = [d.customer_name, credit_limit, outstanding_amt, bal, d.is_frozen,
           d.disabled]
 		else:
-			row = [d.name, credit_limit, outstanding_amt, bal,
-          d.bypass_credit_limit_check_at_sales_order, d.is_frozen, d.disabled]
+			row = [d.customer_name, credit_limit, outstanding_amt, bal,
+          d.is_frozen, d.disabled]
 
 		if credit_limit:
 			data.append(row)
@@ -42,11 +41,10 @@ def execute(filters=None):
 
 def get_columns(customer_naming_type):
 	columns = [
-		_("Customer") + ":Link/Customer:120",
+		_("Customer Name") + ":Data:120",
 		_("Credit Limit") + ":Currency:120",
 		_("Outstanding Amt") + ":Currency:100",
 		_("Credit Balance") + ":Currency:120",
-		_("Bypass credit check at Sales Order ") + ":Check:80",
 		_("Is Frozen") + ":Check:80",
 		_("Disabled") + ":Check:80",
 	]

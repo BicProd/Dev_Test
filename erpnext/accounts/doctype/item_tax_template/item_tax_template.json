@@ -2,7 +2,6 @@
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "field:title",
  "creation": "2018-11-22 22:45:00.370913",
  "doctype": "DocType",
  "document_type": "Setup",
@@ -21,8 +20,7 @@
    "in_list_view": 1,
    "label": "Title",
    "no_copy": 1,
-   "reqd": 1,
-   "unique": 1
+   "reqd": 1
   },
   {
    "fieldname": "taxes",
@@ -41,7 +39,7 @@
   }
  ],
  "links": [],
- "modified": "2022-03-21 14:54:39.974786",
+ "modified": "2021-03-08 19:50:21.416513",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Item Tax Template",
@@ -67,7 +65,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "Finance Manager",
+   "role": "Accounts Manager",
    "share": 1,
    "write": 1
   },

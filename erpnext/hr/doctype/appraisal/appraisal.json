@@ -379,6 +379,7 @@
    "read_only": 1
   },
   {
+   "default": "2022",
    "fieldname": "year",
    "fieldtype": "Link",
    "label": "Year",
@@ -389,7 +390,7 @@
  "idx": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-04-08 14:27:14.345182",
+ "modified": "2022-11-17 11:55:28.504762",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Appraisal",
@@ -428,5 +429,6 @@
  "sort_field": "total_score",
  "sort_order": "ASC",
  "timeline_field": "employee",
- "title_field": "employee_name"
+ "title_field": "employee_name",
+ "track_changes": 1
 }

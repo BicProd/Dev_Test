@@ -280,13 +280,15 @@
    "bold": 1,
    "fieldname": "emergency_phone_number",
    "fieldtype": "Data",
-   "label": "Emergency Phone"
+   "label": "Emergency Phone",
+   "reqd": 1
   },
   {
    "bold": 1,
    "fieldname": "person_to_be_contacted",
    "fieldtype": "Data",
-   "label": "Emergency Contact Name"
+   "label": "Emergency Contact Name",
+   "reqd": 1
   },
   {
    "fieldname": "relation",
@@ -503,20 +505,23 @@
   {
    "fieldname": "cell_number",
    "fieldtype": "Data",
-   "label": "Mobile"
+   "label": "Mobile",
+   "reqd": 1
   },
   {
    "fieldname": "prefered_contact_email",
    "fieldtype": "Select",
    "label": "Prefered Contact Email",
-   "options": "\nCompany Email\nPersonal Email\nUser ID"
+   "options": "\nCompany Email\nPersonal Email\nUser ID",
+   "reqd": 1
   },
   {
    "fieldname": "prefered_email",
    "fieldtype": "Data",
    "label": "Prefered Email",
    "options": "Email",
-   "read_only": 1
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "description": "Provide Email Address registered in company",
@@ -525,13 +530,15 @@
    "label": "Company Email",
    "oldfieldname": "company_email",
    "oldfieldtype": "Data",
-   "options": "Email"
+   "options": "Email",
+   "reqd": 1
   },
   {
    "fieldname": "personal_email",
    "fieldtype": "Data",
    "label": "Personal Email",
-   "options": "Email"
+   "options": "Email",
+   "reqd": 1
   },
   {
    "default": "0",
@@ -549,26 +556,30 @@
    "fieldname": "permanent_accommodation_type",
    "fieldtype": "Select",
    "label": "Permanent Address Is",
-   "options": "\nHouse\nRent\nDorm\nParent's house\nOthers"
+   "options": "\nHouse\nRent\nDorm\nParent's house\nOthers",
+   "reqd": 1
   },
   {
    "fetch_from": "job_applicant.parent_email_address",
    "fieldname": "permanent_address",
    "fieldtype": "Small Text",
-   "label": "Permanent Address"
+   "label": "Permanent Address",
+   "reqd": 1
   },
   {
    "fetch_from": "job_applicant.living_status",
    "fieldname": "current_accommodation_type",
    "fieldtype": "Select",
    "label": "Current Address Is",
-   "options": "\nHouse\nRent\nDorm\nParent's house\nOthers"
+   "options": "\nHouse\nRent\nDorm\nParent's house\nOthers",
+   "reqd": 1
   },
   {
    "fetch_from": "job_applicant.current_address",
    "fieldname": "current_address",
    "fieldtype": "Small Text",
-   "label": "Current Address"
+   "label": "Current Address",
+   "reqd": 1
   },
   {
    "collapsible": 1,
@@ -592,22 +603,26 @@
    "fetch_from": "job_applicant.nik_ktp",
    "fieldname": "passport_number",
    "fieldtype": "Data",
-   "label": "NIK / Passport"
+   "label": "NIK / Passport",
+   "reqd": 1
   },
   {
    "fieldname": "date_of_issue",
    "fieldtype": "Date",
-   "label": "Date of Issue"
+   "label": "Date of Issue",
+   "reqd": 1
   },
   {
    "fieldname": "valid_upto",
    "fieldtype": "Date",
-   "label": "Valid Upto"
+   "label": "Valid Upto",
+   "reqd": 1
   },
   {
    "fieldname": "place_of_issue",
    "fieldtype": "Data",
-   "label": "Place of Issue"
+   "label": "Place of Issue",
+   "reqd": 1
   },
   {
    "fieldname": "column_break6",
@@ -619,13 +634,15 @@
    "fieldname": "marital_status",
    "fieldtype": "Select",
    "label": "Marital Status",
-   "options": "\nSingle\nMarried\nDivorced\nWidowed"
+   "options": "\nSingle\nMarried\nDivorced\nWidowed",
+   "reqd": 1
   },
   {
    "fieldname": "blood_group",
    "fieldtype": "Select",
    "label": "Blood Group",
-   "options": "\nA+\nA-\nB+\nB-\nAB+\nAB-\nO+\nO-"
+   "options": "\nA+\nA-\nB+\nB-\nAB+\nAB-\nO+\nO-",
+   "reqd": 1
   },
   {
    "description": "Here you can maintain family details like name and occupation of parent, spouse and children",
@@ -825,7 +842,8 @@
   {
    "fieldname": "npwp",
    "fieldtype": "Data",
-   "label": "NPWP"
+   "label": "NPWP",
+   "reqd": 1
   },
   {
    "depends_on": "eval:doc.salary_mode == 'Bank'",
@@ -860,7 +878,8 @@
    "fetch_from": "job_applicant.religion",
    "fieldname": "religion",
    "fieldtype": "Data",
-   "label": "Religion"
+   "label": "Religion",
+   "reqd": 1
   },
   {
    "fetch_from": "reports_to.prefered_email",
@@ -904,7 +923,7 @@
  "idx": 24,
  "image_field": "image",
  "links": [],
- "modified": "2022-03-22 14:06:10.479154",
+ "modified": "2022-06-17 08:17:46.259067",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Employee",
@@ -954,18 +973,6 @@
    "read": 1,
    "report": 1,
    "role": "HR Operation Staff",
-   "share": 1,
-   "write": 1
-  },
-  {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "Sales & SC General Manager",
    "share": 1,
    "write": 1
   }

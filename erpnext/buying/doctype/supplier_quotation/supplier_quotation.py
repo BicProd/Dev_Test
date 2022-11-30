@@ -110,12 +110,14 @@ def get_list_context(context=None):
 def make_purchase_order(source_name, target_doc=None):
 	def set_missing_values(source, target):
 		target.ignore_pricing_rule = 1
+		target.taxes_and_charges = source.taxes_and_charges
 		target.run_method("set_missing_values")
 		target.run_method("get_schedule_dates")
 		target.run_method("calculate_taxes_and_totals")
 
 	def update_item(obj, target, source_parent):
 		target.stock_qty = flt(obj.qty) * flt(obj.conversion_factor)
+		
 
 	doclist = get_mapped_doc("Supplier Quotation", source_name,		{
 		"Supplier Quotation": {
@@ -135,9 +137,9 @@ def make_purchase_order(source_name, target_doc=None):
 			],
 			"postprocess": update_item
 		},
-		"Purchase Taxes and Charges": {
-			"doctype": "Purchase Taxes and Charges",
-		},
+		#"Purchase Taxes and Charges": {
+		#	"doctype": "Purchase Taxes and Charges",
+		#},
 	}, target_doc, set_missing_values)
 
 	return doclist

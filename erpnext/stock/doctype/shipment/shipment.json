@@ -30,6 +30,29 @@
   "delivery_contact_name",
   "delivery_contact_email",
   "delivery_contact",
+  "shipment_information_section",
+  "shipment",
+  "purchase_invoice",
+  "change_of_origin",
+  "column_break_shipment_information",
+  "status",
+  "carrier",
+  "tracking_status",
+  "column_break_30",
+  "emkl",
+  "container_qty",
+  "container_type",
+  "clearance_status",
+  "no_aju",
+  "vessel_name",
+  "column_break_41",
+  "coo",
+  "etd",
+  "eta",
+  "document_receipt_date",
+  "document_sent_to_emkl",
+  "item_section",
+  "shipment_item",
   "parcels_section",
   "shipment_parcel",
   "parcel_template",
@@ -48,17 +71,12 @@
   "incoterm",
   "description_of_content",
   "section_break_40",
-  "shipment_information_section",
   "service_provider",
-  "shipment_id",
   "shipment_amount",
-  "status",
   "tracking_url",
   "column_break_55",
-  "carrier",
   "carrier_service",
   "awb_number",
-  "tracking_status",
   "tracking_status_info",
   "amended_from"
  ],
@@ -224,7 +242,7 @@
   {
    "fieldname": "shipment_parcel",
    "fieldtype": "Table",
-   "label": "Shipment Parcel",
+   "label": "Container Detail",
    "options": "Shipment Parcel"
   },
   {
@@ -240,41 +258,46 @@
    "label": "Add Template"
   },
   {
+   "depends_on": "eval:doc.delivery_to_type=='Customer'",
    "fieldname": "column_break_28",
-   "fieldtype": "Column Break"
+   "fieldtype": "Section Break",
+   "label": "Shipment Delivery Note"
   },
   {
    "fieldname": "shipment_details_section",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Shipment details"
   },
   {
    "default": "No",
    "fieldname": "pallets",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Pallets",
    "options": "No\nYes"
   },
   {
    "fieldname": "value_of_goods",
    "fieldtype": "Currency",
+   "hidden": 1,
    "label": "Value of Goods",
-   "precision": "2",
-   "reqd": 1
+   "precision": "2"
   },
   {
    "allow_on_submit": 1,
    "fieldname": "pickup_date",
    "fieldtype": "Date",
+   "hidden": 1,
    "in_list_view": 1,
-   "label": "Pickup Date",
-   "reqd": 1
+   "label": "Pickup Date"
   },
   {
    "allow_on_submit": 1,
    "default": "09:00",
    "fieldname": "pickup_from",
    "fieldtype": "Time",
+   "hidden": 1,
    "label": "Pickup from"
   },
   {
@@ -282,6 +305,7 @@
    "default": "17:00",
    "fieldname": "pickup_to",
    "fieldtype": "Time",
+   "hidden": 1,
    "label": "Pickup to"
   },
   {
@@ -292,6 +316,7 @@
    "default": "Goods",
    "fieldname": "shipment_type",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Shipment Type",
    "options": "Goods\nDocuments"
   },
@@ -299,14 +324,15 @@
    "default": "Pickup",
    "fieldname": "pickup_type",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Pickup Type",
    "options": "Pickup\nSelf delivery"
   },
   {
    "fieldname": "description_of_content",
    "fieldtype": "Small Text",
-   "label": "Description of Content",
-   "reqd": 1
+   "hidden": 1,
+   "label": "Description of Content"
   },
   {
    "fieldname": "section_break_40",
@@ -320,20 +346,15 @@
   {
    "fieldname": "service_provider",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Service Provider",
-   "no_copy": 1,
-   "print_hide": 1
-  },
-  {
-   "fieldname": "shipment_id",
-   "fieldtype": "Data",
-   "label": "Shipment ID",
    "no_copy": 1,
    "print_hide": 1
   },
   {
    "fieldname": "shipment_amount",
    "fieldtype": "Currency",
+   "hidden": 1,
    "label": "Shipment Amount",
    "no_copy": 1,
    "precision": "2",
@@ -359,14 +380,16 @@
   },
   {
    "fieldname": "carrier",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "label": "Carrier",
    "no_copy": 1,
+   "options": "Carrier List",
    "print_hide": 1
   },
   {
    "fieldname": "carrier_service",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Carrier Service",
    "no_copy": 1,
    "print_hide": 1
@@ -374,6 +397,7 @@
   {
    "fieldname": "awb_number",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "AWB Number",
    "no_copy": 1,
    "print_hide": 1
@@ -383,7 +407,7 @@
    "fieldtype": "Select",
    "label": "Tracking Status",
    "no_copy": 1,
-   "options": "\nIn Progress\nDelivered\nReturned\nLost",
+   "options": "\nEx Work\nTo Port\nArrive at Port Origin\nShipped\nRcv Ship Docs\nTax Paid\nReceived",
    "print_hide": 1
   },
   {
@@ -411,10 +435,12 @@
   {
    "fieldname": "incoterm",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Incoterm",
    "options": "EXW (Ex Works)\nFCA (Free Carrier)\nCPT (Carriage Paid To)\nCIP (Carriage and Insurance Paid to)\nDPU (Delivered At Place Unloaded)\nDAP (Delivered At Place)\nDDP (Delivered Duty Paid)"
   },
   {
+   "depends_on": "eval:doc.delivery_to_type=='Customer'",
    "fieldname": "shipment_delivery_note",
    "fieldtype": "Table",
    "label": "Shipment Delivery Note",
@@ -427,11 +453,126 @@
    "label": "Pickup Contact Person",
    "mandatory_depends_on": "eval:doc.pickup_from_type === 'Company'",
    "options": "User"
+  },
+  {
+   "fieldname": "shipment",
+   "fieldtype": "Data",
+   "label": "Shipment ID ",
+   "reqd": 1
+  },
+  {
+   "fieldname": "purchase_invoice",
+   "fieldtype": "Link",
+   "label": "Purchase Invoice",
+   "options": "Purchase Invoice"
+  },
+  {
+   "fieldname": "change_of_origin",
+   "fieldtype": "Data",
+   "label": "Change of Origin"
+  },
+  {
+   "fieldname": "etd",
+   "fieldtype": "Date",
+   "label": "ETD"
+  },
+  {
+   "fieldname": "column_break_30",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "container_qty",
+   "fieldtype": "Int",
+   "label": "Container Qty"
+  },
+  {
+   "fieldname": "container_type",
+   "fieldtype": "Select",
+   "label": "Container Type",
+   "options": "\nFCL 20\nFCL 40\nFCL 40 HC\nLCL"
+  },
+  {
+   "fieldname": "vessel_name",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Vessel Name"
+  },
+  {
+   "fieldname": "eta",
+   "fieldtype": "Date",
+   "label": "ETA"
+  },
+  {
+   "fieldname": "shipment_information_section",
+   "fieldtype": "Section Break",
+   "label": "Shipment Information"
+  },
+  {
+   "fieldname": "shipment_item",
+   "fieldtype": "Table",
+   "label": "Shipment Item",
+   "options": "Shipment Item"
+  },
+  {
+   "fieldname": "shipment_item",
+   "fieldtype": "Table",
+   "label": "Shipment Item",
+   "options": "Shipment Item"
+  },
+  {
+   "fieldname": "column_break_shipment_information",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "item_section",
+   "fieldtype": "Section Break",
+   "label": "Items Detail"
+  },
+  {
+   "fieldname": "emkl",
+   "fieldtype": "Link",
+   "label": "EMKL",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "clearance_status",
+   "fieldtype": "Select",
+   "label": "Clearance Status",
+   "options": "\nRed\nYellow\nGreen"
+  },
+  {
+   "fieldname": "column_break_41",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "coo",
+   "fieldtype": "Data",
+   "label": "COO"
+  },
+  {
+   "fieldname": "etd",
+   "fieldtype": "Date",
+   "label": "ETD"
+  },
+  {
+   "fieldname": "document_receipt_date",
+   "fieldtype": "Date",
+   "label": "Document Receipt Date"
+  },
+  {
+   "fieldname": "document_sent_to_emkl",
+   "fieldtype": "Date",
+   "label": "Document Sent to EMKL"
+  },
+  {
+   "fieldname": "no_aju",
+   "fieldtype": "Data",
+   "label": "No. Aju"
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2020-12-25 15:02:34.891976",
+ "modified": "2022-11-03 15:32:28.872193",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Shipment",

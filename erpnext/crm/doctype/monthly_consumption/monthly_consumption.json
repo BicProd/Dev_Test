@@ -6,7 +6,10 @@
  "engine": "InnoDB",
  "field_order": [
   "item_class",
-  "monthly_consumption"
+  "monthly_consumption",
+  "column_break_3",
+  "sub_class",
+  "remarks"
  ],
  "fields": [
   {
@@ -21,10 +24,26 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Monthly Consumption"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sub_class",
+   "fieldtype": "Link",
+   "label": "Sub Class",
+   "options": "Item Group"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Data",
+   "label": "Remarks"
   }
  ],
  "istable": 1,
- "modified": "2020-11-26 09:13:26.900520",
+ "links": [],
+ "modified": "2022-09-21 14:04:42.941023",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "Monthly Consumption",

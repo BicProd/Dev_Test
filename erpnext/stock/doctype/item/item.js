@@ -24,7 +24,25 @@ frappe.ui.form.on("Item", {
 		}
 	},
 
+	set_item_naming : function(frm) {
+		if (frm.doc.item_code){
+			frappe.call({
+                method: "erpnext.stock.doctype.item.item.set_item_naming_series",
+                args: {
+                    doctype: 'Item',
+                    item_class: frm.doc.item_class
+                },
+                callback: function(r) {
+                    // frm.set_df_property('naming_series', 'options', r.message);
+                    frm.set_value('naming_series', r.message);
+                    frm.refresh_field('naming_series');
+                }
+            });
+		}
+	},
+
 	refresh: function(frm) {
+		frm.trigger("set_item_naming");
 		if (frm.doc.is_stock_item) {
 			frm.add_custom_button(__("Stock Balance"), function() {
 				frappe.route_options = {
@@ -88,11 +106,11 @@ frappe.ui.form.on("Item", {
 				[`<a href="/app/item/${frm.doc.variant_of}" onclick="location.reload()">${frm.doc.variant_of}</a>`]), true);
 		}
 
-		// if (frappe.defaults.get_default("item_naming_by")!="Naming Series" || frm.doc.variant_of) {
-		// 	frm.toggle_display("naming_series", true);
-		// } else {
-		// 	erpnext.toggle_naming_series();
-		// }
+		if (frappe.defaults.get_default("item_naming_by")!="Naming Series" || frm.doc.variant_of) {
+			frm.toggle_display("naming_series", true);
+		} else {
+			erpnext.toggle_naming_series();
+		}
 
 		erpnext.item.edit_prices_button(frm);
 		erpnext.item.toggle_attributes(frm);
@@ -153,9 +171,9 @@ frappe.ui.form.on("Item", {
 	is_fixed_asset: function(frm) {
 		// set serial no to false & toggles its visibility
 		frm.set_value('has_serial_no', 0);
-		frm.toggle_enable(['has_serial_no', 'serial_no_series','item_class','item_group'], !frm.doc.is_fixed_asset);
+		frm.toggle_enable(['has_serial_no', 'serial_no_series'], !frm.doc.is_fixed_asset);
 		frm.toggle_reqd(['asset_category'], frm.doc.is_fixed_asset);
-		frm.toggle_display(['has_serial_no', 'serial_no_series','item_class','item_group'], !frm.doc.is_fixed_asset);
+		frm.toggle_display(['has_serial_no', 'serial_no_series'], !frm.doc.is_fixed_asset);
 
 		frm.call({
 			method: "set_asset_naming_series",
@@ -217,6 +235,10 @@ frappe.ui.form.on("Item", {
 	set_meta_tags(frm) {
 		frappe.utils.set_meta_tag(frm.doc.route);
 	}
+});
+
+frappe.ui.form.on("Item", "item_class", function(frm) {
+    frm.trigger("set_item_naming");
 });
 
 frappe.ui.form.on('Item Reorder', {

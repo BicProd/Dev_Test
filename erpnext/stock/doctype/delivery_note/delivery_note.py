@@ -14,6 +14,7 @@ from frappe.desk.notifications import clear_doctype_notifications
 from frappe.model.mapper import get_mapped_doc
 from frappe.model.utils import get_fetch_values
 from frappe.utils import cint, flt
+from erpnext.selling.doctype.customer.customer import check_credit_limit
 from erpnext.controllers.accounts_controller import get_taxes_and_charges
 
 form_grid_templates = {
@@ -119,6 +120,7 @@ class DeliveryNote(SellingController):
 
 	def validate(self):
 		self.validate_posting_time()
+		self.check_credit_limit()
 		super(DeliveryNote, self).validate()
 		self.set_status()
 		self.so_required()
@@ -201,7 +203,7 @@ class DeliveryNote(SellingController):
 
 	def on_submit(self):
 		self.validate_packed_qty()
-
+		self.check_credit_limit()
 		# Check for Approving Authority
 		frappe.get_doc('Authorization Control').validate_approving_authority(self.doctype, self.company, self.base_grand_total, self)
 
@@ -239,26 +241,34 @@ class DeliveryNote(SellingController):
 		self.ignore_linked_doctypes = ('GL Entry', 'Stock Ledger Entry', 'Repost Item Valuation')
 
 	def check_credit_limit(self):
-		from erpnext.selling.doctype.customer.customer import check_credit_limit
+		# if bypass credit limit check is set to true (1) at sales order level,
+		# then we need not to check credit limit and vise versa
+		if not cint(frappe.db.get_value("Customer Credit Limit",
+			{'parent': self.customer, 'parenttype': 'Customer', 'company': self.company},
+			"bypass_credit_limit_check")):
+			check_credit_limit(self.customer, self.company)	
 
-		extra_amount = 0
-		validate_against_credit_limit = False
-		bypass_credit_limit_check_at_sales_order = cint(frappe.db.get_value("Customer Credit Limit",
-			filters={'parent': self.customer, 'parenttype': 'Customer', 'company': self.company},
-			fieldname="bypass_credit_limit_check"))
+	# def check_credit_limit(self):
+	# 	from erpnext.selling.doctype.customer.customer import check_credit_limit
 
-		if bypass_credit_limit_check_at_sales_order:
-			validate_against_credit_limit = True
-			extra_amount = self.base_grand_total
-		else:
-			for d in self.get("items"):
-				if not (d.against_sales_order or d.against_sales_invoice):
-					validate_against_credit_limit = True
-					break
+	# 	extra_amount = 0
+	# 	validate_against_credit_limit = False
+	# 	bypass_credit_limit_check_at_sales_order = cint(frappe.db.get_value("Customer Credit Limit",
+	# 		filters={'parent': self.customer, 'parenttype': 'Customer', 'company': self.company},
+	# 		fieldname="bypass_credit_limit_check"))
 
-		if validate_against_credit_limit:
-			check_credit_limit(self.customer, self.company,
-				bypass_credit_limit_check_at_sales_order, extra_amount)
+	# 	if bypass_credit_limit_check_at_sales_order:
+	# 		validate_against_credit_limit = True
+	# 		extra_amount = self.base_grand_total
+	# 	else:
+	# 		for d in self.get("items"):
+	# 			if not (d.against_sales_order or d.against_sales_invoice):
+	# 				validate_against_credit_limit = True
+	# 				break
+
+	# 	if validate_against_credit_limit:
+	# 		check_credit_limit(self.customer, self.company,
+	# 			bypass_credit_limit_check_at_sales_order, extra_amount)
 
 	def validate_packed_qty(self):
 		"""

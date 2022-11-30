@@ -32,7 +32,7 @@ class BuyingController(StockController):
 			self.supplier_name = frappe.db.get_value("Supplier", self.supplier, "supplier_name")
 
 		self.validate_items()
-		self.set_qty_as_per_stock_uom()
+		# self.set_qty_as_per_stock_uom()
 		self.validate_stock_or_nonstock_items()
 		self.validate_warehouse()
 		self.validate_from_warehouse()
@@ -519,7 +519,6 @@ class BuyingController(StockController):
 					# Set Received Qty in Stock UOM
 				d.received_qty = flt(d.secondary_qty) * flt(d.conversion_factor, d.precision("conversion_factor"))
 				d.received_stock_qty = flt(d.received_qty)
-				d.qty_asu = 123
 
 	def validate_purchase_return(self):
 		for d in self.get("items"):
@@ -841,7 +840,7 @@ class BuyingController(StockController):
 		if not self.get("items"):
 			return
 
-		earliest_schedule_date = min([d.schedule_date for d in self.get("items")])
+		earliest_schedule_date = max([d.schedule_date for d in self.get("items")])
 		if earliest_schedule_date:
 			self.schedule_date = earliest_schedule_date
 

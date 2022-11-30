@@ -174,6 +174,7 @@
    "default": "Open",
    "fieldname": "status",
    "fieldtype": "Select",
+   "in_standard_filter": 1,
    "label": "Status",
    "no_copy": 1,
    "options": "Open\nApproved\nRejected\nCancelled"
@@ -261,8 +262,8 @@
  "idx": 1,
  "is_submittable": 1,
  "links": [],
- "max_attachments": 3,
- "modified": "2022-03-23 10:31:04.324920",
+ "max_attachments": 5,
+ "modified": "2022-08-18 05:58:29.904009",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Leave Application",
@@ -275,6 +276,7 @@
    "read": 1,
    "report": 1,
    "role": "Employee",
+   "select": 1,
    "share": 1,
    "write": 1
   },
@@ -293,11 +295,6 @@
    "share": 1,
    "submit": 1,
    "write": 1
-  },
-  {
-   "permlevel": 1,
-   "read": 1,
-   "role": "All"
   },
   {
    "amend": 1,
@@ -371,5 +368,6 @@
  "sort_field": "modified",
  "sort_order": "DESC",
  "timeline_field": "employee",
- "title_field": "employee_name"
+ "title_field": "employee_name",
+ "track_changes": 1
 }

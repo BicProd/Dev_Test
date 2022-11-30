@@ -77,8 +77,7 @@ class SalesInvoice(SellingController):
 
 		if not self.is_pos:
 			self.so_dn_required()
-		
-		self.set_tax_withholding()
+
 
 		self.validate_proj_cust()
 		self.validate_pos_return()
@@ -157,31 +156,31 @@ class SalesInvoice(SellingController):
 			if cost_center_company != self.company:
 				frappe.throw(_("Row #{0}: Cost Center {1} does not belong to company {2}").format(frappe.bold(item.idx), frappe.bold(item.cost_center), frappe.bold(self.company)))
 
-	def set_tax_withholding(self):
-		tax_withholding_details = get_party_tax_withholding_details(self)
+	# def set_tax_withholding(self):
+	# 	tax_withholding_details = get_party_tax_withholding_details(self)
 
-		if not tax_withholding_details:
-			return
+	# 	if not tax_withholding_details:
+	# 		return
 
-		accounts = []
-		tax_withholding_account = tax_withholding_details.get("account_head")
+	# 	accounts = []
+	# 	tax_withholding_account = tax_withholding_details.get("account_head")
 
-		for d in self.taxes:
-			if d.account_head == tax_withholding_account:
-				d.update(tax_withholding_details)
-			accounts.append(d.account_head)
+	# 	for d in self.taxes:
+	# 		if d.account_head == tax_withholding_account:
+	# 			d.update(tax_withholding_details)
+	# 		accounts.append(d.account_head)
 
-		if not accounts or tax_withholding_account not in accounts:
-			self.append("taxes", tax_withholding_details)
+	# 	if not accounts or tax_withholding_account not in accounts:
+	# 		self.append("taxes", tax_withholding_details)
 
-		to_remove = [d for d in self.taxes
-			if not d.tax_amount and d.charge_type == "Actual" and d.account_head == tax_withholding_account]
+	# 	to_remove = [d for d in self.taxes
+	# 		if not d.tax_amount and d.charge_type == "Actual" and d.account_head == tax_withholding_account]
 
-		for d in to_remove:
-			self.remove(d)
+	# 	for d in to_remove:
+	# 		self.remove(d)
 
-		# calculate totals again after applying TDS
-		self.calculate_taxes_and_totals()
+	# 	# calculate totals again after applying TDS
+	# 	self.calculate_taxes_and_totals()
 
 	def before_save(self):
 		set_account_for_mode_of_payment(self)
@@ -1147,7 +1146,7 @@ class SalesInvoice(SellingController):
 			if si_serial_nos - dn_serial_nos:
 				frappe.throw(_("Serial Numbers in row {0} does not match with Delivery Note").format(item.idx))
 
-			if item.serial_no and cint(item.qty) != len(si_serial_nos):
+			if item.serial_no and cint(item.secondary_qty) != len(si_serial_nos):
 				frappe.throw(_("Row {0}: {1} Serial numbers required for Item {2}. You have provided {3}.").format(
 					item.idx, item.qty, item.item_code, len(si_serial_nos)))
 

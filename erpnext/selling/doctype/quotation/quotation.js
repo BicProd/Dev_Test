@@ -25,6 +25,8 @@ frappe.ui.form.on('Quotation', {
 		frm.trigger("set_dynamic_field_label");
 	},
 
+	
+
 	quotation_to: function(frm) {
 		frm.trigger("set_label");
 		frm.trigger("toggle_reqd_lead_customer");
@@ -80,7 +82,11 @@ erpnext.selling.QuotationController = erpnext.selling.SellingController.extend({
 					});
 				}
 
-		
+			if(!doc.auto_repeat) {
+				cur_frm.add_custom_button(__('Subscription'), function() {
+					erpnext.utils.make_subscription(doc.doctype, doc.name)
+				}, __('Create'))
+			}
 
 			cur_frm.page.set_inner_btn_group_as_primary(__('Create'));
 		}
@@ -207,7 +213,7 @@ frappe.ui.form.on('Quotation Item', {
 		var total = 0;
 		frappe.model.set_value(cdt, cdn, "qty", total);
 		frappe.model.set_value(cdt, cdn, "secondary_qty", total);
-	}
+	},
 });
 
 cur_frm.script_manager.make(erpnext.selling.QuotationController);

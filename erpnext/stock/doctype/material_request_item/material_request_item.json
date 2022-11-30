@@ -7,7 +7,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "item_type",
+  "product_type",
   "item_class",
   "item_group",
   "brand",
@@ -15,8 +15,12 @@
   "item_code",
   "item_name",
   "schedule_date",
+  "delivery_date",
   "section_break_4",
   "description",
+  "column_break_12",
+  "item_group",
+  "brand",
   "image",
   "stock_qty_section",
   "secondary_qty",
@@ -83,6 +87,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "columns": 4,
    "fieldname": "item_name",
    "fieldtype": "Data",
    "in_global_search": 1,
@@ -92,6 +97,8 @@
    "oldfieldtype": "Data",
    "print_hide": 1,
    "print_width": "100px",
+   "read_only": 1,
+   "reqd": 1,
    "search_index": 1,
    "width": "100px"
   },
@@ -139,7 +146,6 @@
    "columns": 1,
    "fieldname": "uom",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "UOM",
    "oldfieldname": "uom",
    "oldfieldtype": "Link",
@@ -168,6 +174,7 @@
    "columns": 3,
    "fieldname": "warehouse",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Target Warehouse",
    "oldfieldname": "warehouse",
    "oldfieldtype": "Link",
@@ -390,6 +397,10 @@
    "options": "Manufacturer"
   },
   {
+   "fieldname": "column_break_12",
+   "fieldtype": "Column Break"
+  },
+  {
    "fieldname": "manufacturer_part_no",
    "fieldtype": "Data",
    "label": "Manufacturer Part Number",
@@ -436,13 +447,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "item_type",
-   "fieldtype": "Link",
-   "label": "Item Type",
-   "options": "Item Group",
-   "reqd": 1
-  },
-  {
    "fieldname": "item_class",
    "fieldtype": "Link",
    "label": "Item Class",
@@ -462,6 +466,8 @@
    "label": "Stock Qty"
   },
   {
+   "columns": 1,
+   "default": "0",
    "fieldname": "secondary_qty",
    "fieldtype": "Float",
    "in_list_view": 1,
@@ -485,13 +491,28 @@
    "label": "Brand",
    "options": "Brand",
    "reqd": 1
+  },
+  {
+   "fieldname": "product_type",
+   "fieldtype": "Link",
+   "label": "Item Type",
+   "options": "Item Group",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "delivery_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "ETA",
+   "reqd": 1
   }
  ],
  "idx": 1,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-04-20 13:18:53.564982",
+ "modified": "2022-06-29 16:46:26.975380",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Material Request Item",

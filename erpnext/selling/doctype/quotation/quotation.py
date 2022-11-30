@@ -162,11 +162,13 @@ def _make_sales_order(source_name, target_doc=None, ignore_permissions=False):
 
 	def update_item(obj, target, source_parent):
 		target.stock_qty = flt(obj.qty) * flt(obj.conversion_factor)
+		target.delivery_date = obj.delivery_date
 
 		if obj.against_blanket_order:
 			target.against_blanket_order = obj.against_blanket_order
 			target.blanket_order = obj.blanket_order
 			target.blanket_order_rate = obj.blanket_order_rate
+	
 
 	doclist = get_mapped_doc("Quotation", source_name, {
 			"Quotation": {
@@ -214,10 +216,8 @@ def set_expired_status():
 
 	# if not exists any SO, set status as Expired
 	frappe.db.sql(
-		"""UPDATE `tabQuotation` qo SET qo.status = 'Expired' WHERE {cond} and not exists({so_against_quo})"""
-			.format(cond=cond, so_against_quo=so_against_quo),
-			(nowdate())
-		)
+		"""UPDATE `tabQuotation` qo SET qo.status = 'Expired' WHERE {cond} and not exists({so_against_quo})""".format(cond=cond, so_against_quo=so_against_quo),(nowdate()),
+	)
 
 @frappe.whitelist()
 def make_sales_invoice(source_name, target_doc=None):

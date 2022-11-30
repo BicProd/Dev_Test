@@ -104,6 +104,7 @@
    "default": "0",
    "fieldname": "applicable_on_material_request",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Applicable on Material Request"
   },
   {
@@ -195,7 +196,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2020-10-06 15:13:54.055854",
+ "modified": "2022-10-11 14:14:29.356542",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Budget",
@@ -212,7 +213,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "Accounts Manager",
+   "role": "Finance Manager",
    "share": 1,
    "submit": 1,
    "write": 1

@@ -25,7 +25,8 @@ erpnext.buying.SupplierQuotationController = erpnext.buying.BuyingController.ext
 			cur_frm.add_custom_button(__("Purchase Order"), this.make_purchase_order,
 				__('Create'));
 			cur_frm.page.set_inner_btn_group_as_primary(__('Create'));
-			
+			cur_frm.add_custom_button(__("Quotation"), this.make_quotation,
+				__('Create'));
 		}
 		else if (this.frm.doc.docstatus===0) {
 
@@ -36,7 +37,7 @@ erpnext.buying.SupplierQuotationController = erpnext.buying.BuyingController.ext
 						source_doctype: "Material Request",
 						target: me.frm,
 						setters: {
-							schedule_date: undefined,
+						
 							status: undefined
 						},
 						get_query_filters: {

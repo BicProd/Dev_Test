@@ -13,10 +13,9 @@
   "supplier_name",
   "tax_id",
   "due_date",
-  "eta",
-  "etd",
-  "estimate_goods_receive",
   "tax_withholding_category",
+  "shipment_id",
+  "po_classification",
   "column_break1",
   "company",
   "posting_date",
@@ -26,6 +25,12 @@
   "is_return",
   "apply_tds",
   "amended_from",
+  "shipping_information_section",
+  "reference_number",
+  "carrier_name",
+  "column_break_20",
+  "container_number",
+  "mbl__booking_number",
   "accounting_dimensions_section",
   "cost_center",
   "dimension_col_break",
@@ -59,6 +64,7 @@
   "sec_warehouse",
   "set_warehouse",
   "rejected_warehouse",
+  "col_break_warehouse",
   "set_from_warehouse",
   "supplier_warehouse",
   "is_subcontracted",
@@ -87,10 +93,11 @@
   "taxes",
   "sec_tax_breakup",
   "other_charges_calculation",
-  "totals",
   "base_taxes_and_charges_added",
+  "column_break_80",
   "base_taxes_and_charges_deducted",
   "base_total_taxes_and_charges",
+  "totals",
   "taxes_and_charges_added",
   "column_break_40",
   "taxes_and_charges_deducted",
@@ -107,8 +114,8 @@
   "base_rounded_total",
   "base_in_words",
   "grand_total",
-  "rounding_adjustment",
   "column_break8",
+  "rounding_adjustment",
   "rounded_total",
   "in_words",
   "total_advance",
@@ -536,6 +543,10 @@
    "print_hide": 1
   },
   {
+   "fieldname": "col_break_warehouse",
+   "fieldtype": "Column Break"
+  },
+  {
    "default": "No",
    "fieldname": "is_subcontracted",
    "fieldtype": "Select",
@@ -553,6 +564,7 @@
    "default": "0",
    "fieldname": "update_stock",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Update Stock",
    "print_hide": 1
   },
@@ -1372,29 +1384,58 @@
    "width": "50px"
   },
   {
-   "allow_on_submit": 1,
-   "fieldname": "eta",
-   "fieldtype": "Date",
-   "label": "ETA"
+   "fieldname": "column_break_80",
+   "fieldtype": "Column Break"
   },
   {
-   "allow_on_submit": 1,
-   "fieldname": "etd",
-   "fieldtype": "Date",
-   "label": "ETD"
+   "collapsible": 1,
+   "fieldname": "shipping_information_section",
+   "fieldtype": "Section Break",
+   "label": "Shipping Information"
   },
   {
-   "allow_on_submit": 1,
-   "fieldname": "estimate_goods_receive",
-   "fieldtype": "Date",
-   "label": "Estimate Goods Receive"
+   "fieldname": "reference_number",
+   "fieldtype": "Data",
+   "label": "Reference Number"
+  },
+  {
+   "fieldname": "container_number",
+   "fieldtype": "Data",
+   "label": "Container Number"
+  },
+  {
+   "fieldname": "mbl__booking_number",
+   "fieldtype": "Data",
+   "label": "MBL / Booking Number"
+  },
+  {
+   "fieldname": "carrier_name",
+   "fieldtype": "Link",
+   "label": "Carrier Name",
+   "options": "Carrier List"
+  },
+  {
+   "fieldname": "column_break_20",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shipment_id",
+   "fieldtype": "Link",
+   "label": "Shipment ID",
+   "options": "Shipment"
+  },
+  {
+   "fieldname": "po_classification",
+   "fieldtype": "Select",
+   "label": "PO Classification",
+   "options": "Raw Material\nTransporter\nFreight\nAuxiliary\nSparepart\nSlitting\nGA\nIT"
   }
  ],
  "icon": "fa fa-file-text",
  "idx": 204,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-04-20 11:16:09.925741",
+ "modified": "2022-11-22 13:45:09.955408",
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Purchase Invoice",

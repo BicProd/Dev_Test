@@ -36,9 +36,9 @@ frappe.ui.form.on("Purchase Order", {
 
 	onload: function(frm) {
 		set_schedule_date(frm);
-		if (!frm.doc.transaction_date){
-			frm.set_value('transaction_date', frappe.datetime.get_today())
-		}
+		//if (!frm.doc.transaction_date){
+		//	frm.set_value('transaction_date', frappe.datetime.get_today())
+		//}
 
 		erpnext.queries.setup_queries(frm, "Warehouse", function() {
 			return erpnext.queries.warehouse(frm.doc);
@@ -65,15 +65,15 @@ frappe.ui.form.on("Purchase Order Item", {
 		total = d.secondary_qty * d.conversion_factor;
 		frappe.model.set_value(cdt, cdn, "qty", total);
 	},
-	rate : function(frm, cdt, cdn) {
-		var a = locals[cdt][cdn];
-		var b = a.base_price_list_rate;
-		if(a.rate > a.base_price_list_rate) {
-				frappe.model.set_value(cdt, cdn, "rate", b);
-				frappe.throw(__('Rate cannot be more than pricelist!'));
-			} 
+	//rate : function(frm, cdt, cdn) {
+	//	var a = locals[cdt][cdn];
+	//	var b = a.base_price_list_rate;
+	//	if(a.rate > a.base_price_list_rate) {
+	//			frappe.model.set_value(cdt, cdn, "rate", b);
+	//			frappe.throw(__('Rate cannot be more than pricelist!'));
+	//		} 
 		
-	},
+	//},
 	
 });
 
@@ -118,15 +118,15 @@ erpnext.buying.PurchaseOrderController = erpnext.buying.BuyingController.extend(
 			}
 
 			if(!in_list(["Closed", "Delivered"], doc.status)) {
-				if(this.frm.doc.status !== 'Closed' && flt(this.frm.doc.per_received) < 100 && flt(this.frm.doc.per_billed) < 100) {
-					this.frm.add_custom_button(__('Update Itemss'), () => {
-						erpnext.utils.update_child_items({
-							frm: this.frm,
-							child_docname: "items",
-							child_doctype: "Purchase Order Detail",
-							cannot_add_row: false,
-						})
-					});
+				if(this.frm.doc.status !== 'Closed' && flt(this.frm.doc.per_received) < 100 && flt(this.frm.doc.per_billed) < 100 && frappe.user_roles.includes('Manager')) {
+					//this.frm.add_custom_button(__('Update Items'), () => {
+					//	erpnext.utils.update_child_items({
+					//		frm: this.frm,
+					//		child_docname: "items",
+					//		child_doctype: "Purchase Order Detail",
+					//		cannot_add_row: false,
+					//	})
+					//});
 				}
 				if (this.frm.has_perm("submit")) {
 					if(flt(doc.per_billed, 6) < 100 || flt(doc.per_received, 6) < 100) {
@@ -163,7 +163,21 @@ erpnext.buying.PurchaseOrderController = erpnext.buying.BuyingController.extend(
 						cur_frm.add_custom_button(__('Purchase Invoice'),
 							this.make_purchase_invoice, __('Create'));
 
-					
+					if(flt(doc.per_billed)==0 && doc.status != "Delivered") {
+						cur_frm.add_custom_button(__('Payment'), cur_frm.cscript.make_payment_entry, __('Create'));
+					}
+
+					if(flt(doc.per_billed)==0) {
+						this.frm.add_custom_button(__('Payment Request'),
+							function() { me.make_payment_request() }, __('Create'));
+					}
+
+					if(!doc.auto_repeat) {
+						cur_frm.add_custom_button(__('Subscription'), function() {
+							erpnext.utils.make_subscription(doc.doctype, doc.name)
+						}, __('Create'))
+					}
+
 					if (doc.docstatus === 1 && !doc.inter_company_order_reference) {
 						let me = this;
 						let internal = me.frm.doc.is_internal_supplier;
@@ -207,7 +221,7 @@ erpnext.buying.PurchaseOrderController = erpnext.buying.BuyingController.extend(
 	},
 
 	validate: function() {
-		set_schedule_date(this.frm);
+		//set_schedule_date(this.frm);
 	},
 
 	has_unsupplied_items: function() {
@@ -540,11 +554,11 @@ erpnext.buying.PurchaseOrderController = erpnext.buying.BuyingController.extend(
 	},
 
 	items_on_form_rendered: function() {
-		set_schedule_date(this.frm);
+		//set_schedule_date(this.frm);
 	},
 
 	schedule_date: function() {
-		set_schedule_date(this.frm);
+		//set_schedule_date(this.frm);
 	}
 });
 

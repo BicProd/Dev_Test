@@ -12,6 +12,7 @@
   "column_break_3",
   "issue_type",
   "status",
+  "finish_time",
   "issue_weight_section",
   "issue_weight",
   "requested_by_section",
@@ -101,7 +102,8 @@
   {
    "fieldname": "description",
    "fieldtype": "Text Editor",
-   "label": "Description"
+   "label": "Description",
+   "reqd": 1
   },
   {
    "depends_on": "eval:doc.status==\"On Progress\" || doc.status==\"Resolved\" ",
@@ -207,11 +209,11 @@
    "label": "Proof"
   },
   {
-   "default": "\n\n<style>\ntable, td {\n  border: 1px solid black;\n  border-collapse: collapse;\n}\n</style>\n\n\n\n<table style=\"width: 100%;\">\n  <tbody><tr>\n    <th>Issue Type Priority Levels</th>\n    <th>Definition</th> \n    <th>Response Time</th>\n  </tr>\n  <tr>\n    <td>Critical (0)</td>\n    <td>BIC live system is at a halt and unable to process data. Critical Business Impact</td>\n    <td>Within 4 Hours</td>\n  </tr>\n  <tr>\n    <td>High (1)</td>\n    <td>Serious disruption of a BIC business function that limits the ability to conduct some portion of production business. Server or network response time impacting business applications</td>\n    <td>Within 6 Hours</td>\n  </tr>\n  <tr>\n    <td>Intermediate(2)</td>\n    <td>BIC live system continues to run without serious impact on production business</td>\n    <td>Within 1 Business Day</td>\n  </tr>\n <tr>\n    <td>Low (3)</td>\n    <td>Minor application issue. All questions and requests for information on use or implementation of software.  Non-critical hardware/software enhancement</td>\n    <td>Within 2 Business Day</td>\n  </tr>\n</tbody></table>\n\n\n",
+   "default": "\n\n<style>\ntable, td {\n  border: 1px solid black;\n  border-collapse: collapse;\n}\n</style>\n\n\n\n<table style=\"width: 100%;\">\n  <tbody><tr>\n    <th>Issue Type Priority Levels</th>\n    <th>Definition</th> \n    <th>Response Time</th>\n  </tr>\n  <tr>\n    <td>Critical (0)</td>\n    <td>BIC Group live system is at a halt and unable to process data. Critical Business Impact</td>\n    <td>Within 4 Hours</td>\n  </tr>\n  <tr>\n    <td>High (1)</td>\n    <td>Serious disruption of a BIC Group business function that limits the ability to conduct some portion of production business. Server or network response time impacting business applications</td>\n    <td>Within 6 Hours</td>\n  </tr>\n  <tr>\n    <td>Intermediate(2)</td>\n    <td>BIC Group live system continues to run without serious impact on production business</td>\n    <td>Within 1 Business Day</td>\n  </tr>\n <tr>\n    <td>Low (3)</td>\n    <td>Minor application issue. All questions and requests for information on use or implementation of software.  Non-critical hardware/software enhancement</td>\n    <td>Within 2 Business Day</td>\n  </tr>\n</tbody></table>\n\n\n",
    "fieldname": "issue_weight",
    "fieldtype": "HTML",
    "label": "Issue weight",
-   "options": "\n\n<style>\ntable,th, td {\n  border: 1px solid black;\n  border-collapse: collapse;\n}\n</style>\n\n\n\n<table style=\"width: 100%;\">\n  <tbody><tr>\n    <th>Issue Type Priority Levels</th>\n    <th>Definition</th> \n    <th>Response Time</th>\n  </tr>\n  <tr>\n    <td>Critical (0)</td>\n    <td>BIC live system is at a halt and unable to process data. Critical Business Impact</td>\n    <td>Within 4 Hours</td>\n  </tr>\n  <tr>\n    <td>High (1)</td>\n    <td>Serious disruption of a BIC business function that limits the ability to conduct some portion of production business. Server or network response time impacting business applications</td>\n    <td>Within 6 Hours</td>\n  </tr>\n  <tr>\n    <td>Intermediate(2)</td>\n    <td>BIC live system continues to run without serious impact on production business</td>\n    <td>Within 1 Business Day</td>\n  </tr>\n <tr>\n    <td>Low (3)</td>\n    <td>Minor application issue. All questions and requests for information on use or implementation of software.  Non-critical hardware/software enhancement</td>\n    <td>Within 2 Business Day</td>\n  </tr>\n</tbody></table>\n\n\n"
+   "options": "\n\n<style>\ntable,th, td {\n  border: 1px solid black;\n  border-collapse: collapse;\n}\n</style>\n\n\n\n<table style=\"width: 100%;\">\n  <tbody><tr>\n    <th>Issue Type Priority Levels</th>\n    <th>Definition</th> \n    <th>Response Time</th>\n  </tr>\n  <tr>\n    <td>Critical (0)</td>\n    <td>BIC Group live system is at a halt and unable to process data. Critical Business Impact</td>\n    <td>Within 4 Hours</td>\n  </tr>\n  <tr>\n    <td>High (1)</td>\n    <td>Serious disruption of a BIC Group business function that limits the ability to conduct some portion of production business. Server or network response time impacting business applications</td>\n    <td>Within 6 Hours</td>\n  </tr>\n  <tr>\n    <td>Intermediate(2)</td>\n    <td>BIC Group live system continues to run without serious impact on production business</td>\n    <td>Within 1 Business Day</td>\n  </tr>\n <tr>\n    <td>Low (3)</td>\n    <td>Minor application issue. All questions and requests for information on use or implementation of software.  Non-critical hardware/software enhancement</td>\n    <td>Within 2 Business Day</td>\n  </tr>\n</tbody></table>\n\n\n"
   },
   {
    "fieldname": "issue_weight_section",
@@ -250,10 +252,16 @@
    "fieldname": "attach_file",
    "fieldtype": "Attach",
    "label": "Attach file"
+  },
+  {
+   "fieldname": "finish_time",
+   "fieldtype": "Date",
+   "label": "Finish Time",
+   "read_only": 1
   }
  ],
  "links": [],
- "modified": "2021-08-06 10:41:56.134693",
+ "modified": "2022-09-28 17:38:32.116543",
  "modified_by": "Administrator",
  "module": "Information Technology",
  "name": "IT Support Request",

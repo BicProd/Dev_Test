@@ -211,13 +211,13 @@
   },
   {
    "fieldname": "send_sample",
-   "fieldtype": "Data",
-   "label": "Send Sample"
+   "fieldtype": "Date",
+   "label": "Actual Send Sample"
   }
  ],
  "istable": 1,
  "links": [],
- "modified": "2022-04-08 15:05:47.544507",
+ "modified": "2022-04-19 14:20:17.233970",
  "modified_by": "Administrator",
  "module": "CRM",
  "name": "Project Development",

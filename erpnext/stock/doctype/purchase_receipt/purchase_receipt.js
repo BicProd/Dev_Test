@@ -50,7 +50,26 @@ frappe.ui.form.on("Purchase Receipt", {
 		erpnext.accounts.dimensions.setup_dimension_filters(frm, frm.doctype);
 	},
 
+	set_container_no : function(frm) {
+		if (frm.doc.container_no){
+			frappe.call({
+                method: "erpnext.stock.doctype.purchase_receipt.purchase_receipt.get_container_no_shipment_query",
+                args: {
+                    doctype:'Shipment Parcel',
+            		shipment: frm.doc.shipment
+                },
+                callback: function(r) {
+                    // frm.set_df_property('naming_series', 'options', r.message);
+                    frm.set_df_property('container_no', 'options', r.message);
+            		frm.refresh_field('container_no');
+                }
+            });
+		}
+	},
+
 	refresh: function(frm) {
+		frm.trigger("set_container_no");
+		
 		if(frm.doc.company) {
 			frm.trigger("toggle_display_account_head");
 		}
@@ -275,6 +294,10 @@ cur_frm.fields_dict['items'].grid.get_field('bom').get_query = function(doc, cdt
 }
 
 frappe.provide("erpnext.buying");
+
+frappe.ui.form.on("Purchase Receipt", "shipment", function(frm) {
+    frm.trigger("set_container_no");
+});
 
 frappe.ui.form.on("Purchase Receipt", "is_subcontracted", function(frm) {
 	if (frm.doc.is_subcontracted === "Yes") {

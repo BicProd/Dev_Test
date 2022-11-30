@@ -12,6 +12,7 @@
   "gs",
   "item_group_name",
   "parent_item_group",
+  "id",
   "is_group_master",
   "is_asset_items",
   "is_group",
@@ -220,6 +221,11 @@
    "fieldname": "is_group_master",
    "fieldtype": "Check",
    "label": "Is Group Master"
+  },
+  {
+   "fieldname": "id",
+   "fieldtype": "Data",
+   "label": "ID"
   }
  ],
  "icon": "fa fa-sitemap",
@@ -228,7 +234,7 @@
  "is_tree": 1,
  "links": [],
  "max_attachments": 3,
- "modified": "2021-08-29 19:40:13.202812",
+ "modified": "2022-11-04 11:18:09.610154",
  "modified_by": "Administrator",
  "module": "Setup",
  "name": "Item Group",

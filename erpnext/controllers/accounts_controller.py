@@ -899,10 +899,10 @@ class AccountsController(TransactionBase):
 		date = self.get("due_date")
 		due_date = date or posting_date
 
-		if party_account_currency == self.company_currency:
-			grand_total = self.get("base_rounded_total") or self.base_grand_total
-		else:
-			grand_total = self.get("rounded_total") or self.grand_total
+		#if party_account_currency == self.company_currency:
+		#	grand_total = self.get("base_rounded_total") or self.base_grand_total
+		#else:
+		grand_total = self.get("rounded_total") or self.grand_total
 
 		if self.doctype in ("Sales Invoice", "Purchase Invoice"):
 			grand_total = grand_total - flt(self.write_off_amount)
@@ -961,12 +961,12 @@ class AccountsController(TransactionBase):
 			for d in self.get("payment_schedule"):
 				total += flt(d.payment_amount)
 
-			if party_account_currency == self.company_currency:
-				total = flt(total, self.precision("base_grand_total"))
-				grand_total = flt(self.get("base_rounded_total") or self.base_grand_total, self.precision('base_grand_total'))
-			else:
-				total = flt(total, self.precision("grand_total"))
-				grand_total = flt(self.get("rounded_total") or self.grand_total, self.precision('grand_total'))
+			#if party_account_currency == self.company_currency:
+			#	total = flt(total, self.precision("base_grand_total"))
+			#	grand_total = flt(self.get("base_rounded_total") or self.base_grand_total, self.precision('base_grand_total'))
+			#else:
+			total = flt(total, self.precision("grand_total"))
+			grand_total = flt(self.get("rounded_total") or self.grand_total, self.precision('grand_total'))
 
 			if self.get("total_advance"):
 				grand_total -= self.get("total_advance")
@@ -1245,10 +1245,10 @@ def get_payment_term_details(term, posting_date=None, grand_total=None, bill_dat
 
 	if bill_date:
 		term_details.due_date = get_due_date(term, bill_date)
-		term_details.discount_date = get_discount_date(term, bill_date)
+		#term_details.discount_date = get_discount_date(term, bill_date)
 	elif posting_date:
 		term_details.due_date = get_due_date(term, posting_date)
-		term_details.discount_date = get_discount_date(term, posting_date)
+		#term_details.discount_date = get_discount_date(term, posting_date)
 
 	if getdate(term_details.due_date) < getdate(posting_date):
 		term_details.due_date = posting_date
@@ -1476,6 +1476,8 @@ def update_child_qty_rate(parent_doctype, trans_items, parent_doctype_name, chil
 			prev_qty, new_qty = flt(child_item.get("qty")), flt(d.get("qty"))
 			prev_con_fac, new_con_fac = flt(child_item.get("conversion_factor")), flt(d.get("conversion_factor"))
 			prev_uom, new_uom = child_item.get("uom"), d.get("uom")
+			prev_secondary_qty, new_secondary_qty = child_item.get("secondary_qty"), d.get("secondary_qty")
+			
 
 			if parent_doctype == 'Sales Order':
 				prev_date, new_date = child_item.get("delivery_date"), d.get("delivery_date")
@@ -1484,15 +1486,17 @@ def update_child_qty_rate(parent_doctype, trans_items, parent_doctype_name, chil
 
 			rate_unchanged = prev_rate == new_rate
 			qty_unchanged = prev_qty == new_qty
+			secondary_qty_unchanged = prev_secondary_qty == new_secondary_qty
 			uom_unchanged = prev_uom == new_uom
 			conversion_factor_unchanged = prev_con_fac == new_con_fac
 			date_unchanged = prev_date == new_date if prev_date and new_date else False # in case of delivery note etc
-			if rate_unchanged and qty_unchanged and conversion_factor_unchanged and uom_unchanged and date_unchanged:
+			if rate_unchanged and qty_unchanged and conversion_factor_unchanged and uom_unchanged and date_unchanged and secondary_qty_unchanged:
 				continue
 
 		validate_quantity(child_item, d)
 
 		child_item.qty = flt(d.get("qty"))
+		child_item.secondary_qty = flt(d.get("secondary_qty"))
 		rate_precision = child_item.precision("rate") or 2
 		conv_fac_precision = child_item.precision("conversion_factor") or 2
 		qty_precision = child_item.precision("qty") or 2

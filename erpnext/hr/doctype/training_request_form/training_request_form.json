@@ -10,6 +10,7 @@
  "field_order": [
   "requested_by",
   "employee_name",
+  "approver_email",
   "column_break_3",
   "department",
   "job_grade",
@@ -95,10 +96,12 @@
    "fieldtype": "Section Break"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "trainer_name",
    "fieldtype": "Link",
    "label": "Speaker's Name",
-   "options": "Speaker Training"
+   "options": "Speaker Training",
+   "reqd": 1
   },
   {
    "fieldname": "trainer_email",
@@ -114,8 +117,7 @@
    "fieldname": "supplier",
    "fieldtype": "Link",
    "label": "Vendor",
-   "options": "Supplier",
-   "reqd": 1
+   "options": "Supplier"
   },
   {
    "fieldname": "contact_number",
@@ -311,11 +313,19 @@
    "fieldname": "end_time",
    "fieldtype": "Time",
    "label": "End Time"
+  },
+  {
+   "fetch_from": "requested_by.department_head_email",
+   "fieldname": "approver_email",
+   "fieldtype": "Data",
+   "label": "Approver Email",
+   "options": "Email",
+   "read_only": 1
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2021-12-09 10:15:04.733942",
+ "modified": "2022-10-03 15:29:43.166835",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Training Request Form",

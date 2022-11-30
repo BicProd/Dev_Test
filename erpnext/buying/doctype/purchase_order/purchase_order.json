@@ -15,10 +15,10 @@
   "supplier",
   "get_items_from_open_material_requests",
   "supplier_name",
+  "po_reference",
   "column_break1",
   "company",
   "transaction_date",
-  "sales_contract",
   "schedule_date",
   "order_confirmation_no",
   "order_confirmation_date",
@@ -34,6 +34,8 @@
   "section_addresses",
   "supplier_address",
   "address_display",
+  "supplier_shipping",
+  "shipping_display",
   "contact_person",
   "contact_display",
   "contact_mobile",
@@ -134,6 +136,11 @@
   "column_break_97",
   "auto_repeat",
   "update_auto_repeat_reference",
+  "signature_section",
+  "regards",
+  "employee",
+  "employee_name",
+  "position",
   "more_info",
   "ref_sq",
   "column_break_74",
@@ -223,8 +230,7 @@
    "default": "Today",
    "fieldname": "transaction_date",
    "fieldtype": "Date",
-   "in_list_view": 1,
-   "label": "Transaction date",
+   "label": "Transaction Date",
    "oldfieldname": "transaction_date",
    "oldfieldtype": "Date",
    "reqd": 1,
@@ -232,7 +238,15 @@
   },
   {
    "allow_on_submit": 1,
-   "depends_on": "eval:doc.docstatus===1",
+   "default": "Today",
+   "fieldname": "schedule_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "ETD",
+   "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
    "fieldname": "order_confirmation_no",
    "fieldtype": "Data",
    "label": "Order Confirmation No"
@@ -309,7 +323,6 @@
    "print_hide": 1
   },
   {
-   "collapsible": 1,
    "fieldname": "section_addresses",
    "fieldtype": "Section Break",
    "label": "Address and Contact"
@@ -447,7 +460,8 @@
    "fieldtype": "Link",
    "label": "Set Target Warehouse",
    "options": "Warehouse",
-   "print_hide": 1
+   "print_hide": 1,
+   "reqd": 1
   },
   {
    "fieldname": "col_break_warehouse",
@@ -573,6 +587,7 @@
   {
    "fieldname": "total_net_weight",
    "fieldtype": "Float",
+   "hidden": 1,
    "label": "Total Net Weight",
    "print_hide": 1,
    "read_only": 1
@@ -584,6 +599,7 @@
    "options": "fa fa-money"
   },
   {
+   "fetch_from": "supplier.default_tax_and_charges",
    "fieldname": "taxes_and_charges",
    "fieldtype": "Link",
    "label": "Purchase Taxes and Charges Template",
@@ -857,6 +873,7 @@
    "label": "Payment Terms"
   },
   {
+   "fetch_from": "supplier.payment_terms",
    "fieldname": "payment_terms_template",
    "fieldtype": "Link",
    "label": "Payment Terms Template",
@@ -1135,26 +1152,66 @@
    "fieldname": "po_classification",
    "fieldtype": "Select",
    "label": "PO Classification",
-   "options": "Transporter\nFreight\nRaw Material\nAuxiliary\nSparepart\nSlitting\nGA\nIT"
+   "options": "Raw Material\nTransporter\nFreight\nAuxiliary\nSlitting\nGA\nIT"
   },
   {
-   "fieldname": "schedule_date",
-   "fieldtype": "Date",
-   "hidden": 1,
-   "label": "ETD",
+   "description": "PO From ESP. If none type 'NONE'",
+   "fieldname": "po_reference",
+   "fieldtype": "Data",
+   "label": "PO Reference",
+   "reqd": 1
+  },
+  {
+   "fieldname": "signature_section",
+   "fieldtype": "Section Break",
+   "label": "Signature"
+  },
+  {
+   "fetch_from": "employee.signature",
+   "fieldname": "regards",
+   "fieldtype": "Signature",
+   "label": "Regards",
    "read_only": 1
   },
   {
-   "fieldname": "sales_contract",
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
    "fieldtype": "Data",
-   "label": "Sales Contract"
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "employee.designation",
+   "fieldname": "position",
+   "fieldtype": "Data",
+   "label": "Position",
+   "read_only": 1
+  },
+  {
+   "fieldname": "supplier_shipping",
+   "fieldtype": "Link",
+   "label": "Supplier Shipping",
+   "options": "Address",
+   "reqd": 1
+  },
+  {
+   "fieldname": "shipping_display",
+   "fieldtype": "Small Text",
+   "label": "Supplier Shipping Details",
+   "read_only": 1
   }
  ],
  "icon": "fa fa-file-text",
  "idx": 105,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-06-02 16:59:02.707823",
+ "modified": "2022-11-23 10:44:15.908934",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Purchase Order",
@@ -1206,5 +1263,7 @@
  "sort_order": "DESC",
  "timeline_field": "supplier",
  "title_field": "supplier_name",
- "track_changes": 1
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
 }

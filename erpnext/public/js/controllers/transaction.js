@@ -223,14 +223,6 @@ erpnext.TransactionController = erpnext.taxes_and_totals.extend({
 		}
 
 	},
-	before_save: function(){
-		this.recalculate_terms();
-		this.payment_terms_template();
-	},
-	validate: function(){
-		this.recalculate_terms();
-		this.payment_terms_template();
-	},
 	onload: function() {
 		var me = this;
 
@@ -344,7 +336,6 @@ erpnext.TransactionController = erpnext.taxes_and_totals.extend({
 		this.set_dynamic_labels();
 		this.setup_sms();
 		this.setup_quality_inspection();
-		this.recalculate_terms();
 		let scan_barcode_field = this.frm.get_field('scan_barcode');
 		if (scan_barcode_field && scan_barcode_field.get_value()) {
 			scan_barcode_field.set_value("");
@@ -842,7 +833,6 @@ erpnext.TransactionController = erpnext.taxes_and_totals.extend({
 					() => me.frm.script_manager.trigger("currency"),
 					() => me.update_item_tax_map(),
 					() => me.apply_default_taxes(),
-					() => me.payment_terms_template(),
 					() => me.apply_pricing_rule()
 				]);
 			}
@@ -1173,7 +1163,7 @@ erpnext.TransactionController = erpnext.taxes_and_totals.extend({
 		if(frappe.meta.get_docfield(cdt, "stock_qty", cdn)) {
 			var item = frappe.get_doc(cdt, cdn);
 			frappe.model.round_floats_in(item, ["qty", "conversion_factor"]);
-			// item.stock_qty = flt(item.secondary_qty * item.conversion_factor, precision("stock_qty", item));
+			item.stock_qty = flt(item.qty * item.conversion_factor, precision("stock_qty", item));
 			refresh_field("stock_qty", item.name, item.parentfield);
 			this.toggle_conversion_factor(item);
 
@@ -1216,20 +1206,12 @@ erpnext.TransactionController = erpnext.taxes_and_totals.extend({
 		this.calculate_stock_uom_rate(doc, cdt, cdn);
 		this.apply_pricing_rule(item, true);
 	},
-	secondary_qty: function(doc, cdt, cdn) {
-		let item = frappe.get_doc(cdt, cdn);
-		this.conversion_factor(doc, cdt, cdn, true);
-		this.calculate_stock_uom_rate(doc, cdt, cdn);
-		this.apply_pricing_rule(item, true);
-	},
-	
 
 	calculate_stock_uom_rate: function(doc, cdt, cdn) {
 		let item = frappe.get_doc(cdt, cdn);
 		item.stock_uom_rate = flt(item.rate)/flt(item.conversion_factor);
 		refresh_field("stock_uom_rate", item.name, item.parentfield);
 	},
-
 	service_stop_date: function(frm, cdt, cdn) {
 		var child = locals[cdt][cdn];
 
@@ -2003,7 +1985,7 @@ erpnext.TransactionController = erpnext.taxes_and_totals.extend({
 	payment_terms_template: function() {
 		var me = this;
 		const doc = this.frm.doc;
-		//if(doc.payment_terms_template && doc.doctype !== 'Delivery Note') {
+		if(doc.payment_terms_template && doc.doctype !== 'Delivery Note') {
 			var posting_date = doc.posting_date || doc.transaction_date;
 			frappe.call({
 				method: "erpnext.controllers.accounts_controller.get_payment_terms",
@@ -2019,7 +2001,7 @@ erpnext.TransactionController = erpnext.taxes_and_totals.extend({
 					}
 				}
 			})
-		//}
+		}
 	},
 
 	payment_term: function(doc, cdt, cdn) {

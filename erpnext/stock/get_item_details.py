@@ -286,7 +286,7 @@ def get_basic_details(args, item, overwrite_warehouse=True):
 		"description": cstr(item.description).strip(),
 		"image": cstr(item.image).strip(),
 		#code jo
-		"supplier":item.supplier,
+		#"supplier":item.supplier,
 		"warehouse": warehouse,
 		"income_account": get_default_income_account(args, item_defaults, item_group_defaults, brand_defaults),
 		"expense_account": expense_account or get_default_expense_account(args, item_defaults, item_group_defaults, brand_defaults) ,
@@ -328,6 +328,7 @@ def get_basic_details(args, item, overwrite_warehouse=True):
 	if item.stock_uom == args.stock_uom_1:
 		out.conversion_factor = 1.0
 	else:
+		# Jo
 		out.conversion_factor = get_conversion_factor(item.name, args.stock_uom_1).get("conversion_factor")
 
 	args.conversion_factor = out.conversion_factor

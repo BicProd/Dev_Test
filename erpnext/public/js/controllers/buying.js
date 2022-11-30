@@ -10,11 +10,10 @@ cur_frm.cscript.tax_table = "Purchase Taxes and Charges";
 cur_frm.email_field = "contact_email";
 
 erpnext.buying.BuyingController = erpnext.TransactionController.extend({
-	
 	setup: function() {
 		this._super();
 	},
-	
+
 	onload: function(doc, cdt, cdn) {
 		this.setup_queries(doc, cdt, cdn);
 		this._super();
@@ -73,7 +72,7 @@ erpnext.buying.BuyingController = erpnext.TransactionController.extend({
 		me.frm.set_query('supplier', erpnext.queries.supplier);
 		me.frm.set_query('contact_person', erpnext.queries.contact_query);
 		me.frm.set_query('supplier_address', erpnext.queries.address_query);
-
+		me.frm.set_query('supplier_shipping', erpnext.queries.address_query);
 		me.frm.set_query('billing_address', erpnext.queries.company_address_query);
 
 		if(this.frm.fields_dict.supplier) {
@@ -111,7 +110,7 @@ erpnext.buying.BuyingController = erpnext.TransactionController.extend({
 			});
 		}
 	},
-	
+
 	refresh: function(doc) {
 		frappe.dynamic_link = {doc: this.frm.doc, fieldname: 'supplier', doctype: 'Supplier'};
 
@@ -137,6 +136,11 @@ erpnext.buying.BuyingController = erpnext.TransactionController.extend({
 		erpnext.utils.get_address_display(this.frm);
 		erpnext.utils.set_taxes_from_address(this.frm, "supplier_address", "supplier_address", "supplier_address");
 	},
+	supplier_shipping: function() {
+		var me = this;
+		erpnext.utils.get_address_display(this.frm, "supplier_shipping",
+			"shipping_display", true);
+	},
 
 	buying_price_list: function() {
 		this.apply_price_list();
@@ -153,7 +157,7 @@ erpnext.buying.BuyingController = erpnext.TransactionController.extend({
 		item.discount_percentage = 0.0;
 		this.price_list_rate(doc, cdt, cdn);
 	},
-	
+
 	qty: function(doc, cdt, cdn) {
 		var item = frappe.get_doc(cdt, cdn);
 		if ((doc.doctype == "Purchase Receipt") || (doc.doctype == "Purchase Invoice" && (doc.update_stock || doc.is_return))) {
@@ -167,31 +171,10 @@ erpnext.buying.BuyingController = erpnext.TransactionController.extend({
 
 			frappe.model.round_floats_in(item, ["qty", "received_qty"]);
 			item.rejected_qty = flt(item.received_qty - item.qty, precision("rejected_qty", item));
-			//Penentu Received Qty in Primary UOM (received_stock_qty) di Purchase Receipt
-			item.received_stock_qty = flt(item.received_qty);
-			item.qty_asu = flt(item.qty);
-			item.stock_qty = flt(item.qty);
+			item.received_stock_qty = flt(item.conversion_factor, precision("conversion_factor", item)) * flt(item.received_qty);
 		}
 		this._super(doc, cdt, cdn);
-	},/*
-	secondary_qty: function(doc, cdt, cdn) {
-		var item = frappe.get_doc(cdt, cdn);
-		if ((doc.doctype == "Purchase Receipt") || (doc.doctype == "Purchase Invoice" && (doc.update_stock || doc.is_return))) {
-			frappe.model.round_floats_in(item, ["qty", "received_qty"]);
-
-			if(!doc.is_return && this.validate_negative_quantity(cdt, cdn, item, ["qty", "received_qty"])){ return }
-
-			if(!item.rejected_qty && item.qty) {
-				item.received_qty = item.qty;
-			}
-
-			frappe.model.round_floats_in(item, ["qty", "received_qty"]);
-			item.rejected_qty = flt(item.received_qty - item.qty, precision("rejected_qty", item));
-			item.received_qty =  flt(item.secondary_qty)  ;
-			
-		}
-		this._super(doc, cdt, cdn);
-	},*/
+	},
 
 	batch_no: function(doc, cdt, cdn) {
 		this._super(doc, cdt, cdn);
@@ -386,7 +369,7 @@ erpnext.buying.link_to_mrs = function(frm) {
 						var my_qty = Math.min(qty, d.qty);
 						qty = qty - my_qty;
 						d.qty = d.qty - my_qty;
-						//item.stock_qty = my_qty*item.conversion_factor;
+						item.stock_qty = my_qty*item.conversion_factor;
 						item.qty = my_qty;
 
 						frappe.msgprint("Assigning " + d.mr_name + " to " + d.item_code + " (row " + item.idx + ")");
@@ -402,8 +385,7 @@ erpnext.buying.link_to_mrs = function(frm) {
 							}
 
 							newrow.idx = item_length;
-							// newrow["stock_qty"] = newrow.conversion_factor*qty;
-							newrow["stock_qty"] = 12;
+							newrow["stock_qty"] = newrow.conversion_factor*qty;
 							newrow["qty"] = qty;
 
 							newrow["material_request"] = "";

@@ -16,6 +16,7 @@
   "supplier",
   "supplier_name",
   "supplier_delivery_note",
+  "po_classification",
   "column_break1",
   "company",
   "posting_date",
@@ -24,6 +25,9 @@
   "apply_putaway_rule",
   "is_return",
   "return_against",
+  "shipment_details_section",
+  "shipment",
+  "container_no",
   "section_addresses",
   "supplier_address",
   "contact_person",
@@ -46,8 +50,8 @@
   "ignore_pricing_rule",
   "sec_warehouse",
   "set_warehouse",
-  "col_break_warehouse",
   "rejected_warehouse",
+  "col_break_warehouse",
   "set_from_warehouse",
   "is_subcontracted",
   "supplier_warehouse",
@@ -1141,13 +1145,35 @@
    "label": "Represents Company",
    "options": "Company",
    "read_only": 1
+  },
+  {
+   "fieldname": "shipment",
+   "fieldtype": "Link",
+   "label": "Shipment ID",
+   "options": "Shipment"
+  },
+  {
+   "fieldname": "container_no",
+   "fieldtype": "Select",
+   "label": "Container No"
+  },
+  {
+   "fieldname": "shipment_details_section",
+   "fieldtype": "Section Break",
+   "label": "Shipment Details"
+  },
+  {
+   "fieldname": "po_classification",
+   "fieldtype": "Select",
+   "label": "PO Classification",
+   "options": "Raw Material\nTransporter\nFreight\nAuxiliary\nSparepart\nSlitting\nGA\nIT"
   }
  ],
  "icon": "fa fa-truck",
  "idx": 261,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-04-20 10:42:54.091690",
+ "modified": "2022-11-22 13:43:03.635773",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Purchase Receipt",

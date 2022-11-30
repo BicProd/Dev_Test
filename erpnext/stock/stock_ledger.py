@@ -174,7 +174,7 @@ class update_entries_after(object):
 		warehouse_dict = self.data[args.warehouse]
 		previous_sle = self.get_previous_sle_of_current_voucher(args)
 		warehouse_dict.previous_sle = previous_sle
-		#jo
+
 		for key in ("qty_after_transaction","secondary_uom_after", "valuation_rate", "stock_value"):
 			setattr(warehouse_dict, key, flt(previous_sle.get(key)))
 
@@ -215,8 +215,7 @@ class update_entries_after(object):
 				self.update_bin()
 		else:
 			entries_to_fix = self.get_future_entries_to_fix()
-			#Jo
-			
+
 			i = 0
 			while i < len(entries_to_fix):
 				sle = entries_to_fix[i]
@@ -288,13 +287,11 @@ class update_entries_after(object):
 	def process_sle(self, sle):
 		# previous sle data for this warehouse
 		self.wh_data = self.data[sle.warehouse]
-
 		if (sle.serial_no and not self.via_landed_cost_voucher) or not cint(self.allow_negative_stock):
 			# validate negative stock for serialized items, fifo valuation
 			# or when negative stock is not allowed for moving average
 			if not self.validate_negative_stock(sle):
 				self.wh_data.qty_after_transaction += flt(sle.actual_qty)
-				#jo
 				self.wh_data.secondary_uom_after += flt(sle.secondary_uom)
 				return
 
@@ -303,9 +300,8 @@ class update_entries_after(object):
 
 		if sle.serial_no:
 			self.get_serialized_values(sle)
-			#jo
-			self.wh_data.secondary_uom_after += flt(sle.secondary_uom)
 			self.wh_data.qty_after_transaction += flt(sle.actual_qty)
+			self.wh_data.secondary_uom_after += flt(sle.secondary_uom)
 			if sle.voucher_type == "Stock Reconciliation":
 				self.wh_data.qty_after_transaction = sle.qty_after_transaction
 				self.wh_data.secondary_uom_after = sle.secondary_uom_after
@@ -328,7 +324,6 @@ class update_entries_after(object):
 				else:
 					self.get_fifo_values(sle)
 					self.wh_data.qty_after_transaction += flt(sle.actual_qty)
-					#??????????
 					self.wh_data.secondary_uom_after += flt(sle.secondary_uom)
 					self.wh_data.stock_value = sum((flt(batch[0]) * flt(batch[1]) for batch in self.wh_data.stock_queue))
 
@@ -338,7 +333,6 @@ class update_entries_after(object):
 		self.wh_data.prev_stock_value = self.wh_data.stock_value
 
 		# update current sle
-		# update recon stock disini
 		sle.secondary_uom_after = self.wh_data.secondary_uom_after
 		sle.qty_after_transaction = self.wh_data.qty_after_transaction
 		sle.valuation_rate = self.wh_data.valuation_rate
@@ -461,6 +455,7 @@ class update_entries_after(object):
 	def get_serialized_values(self, sle):
 		incoming_rate = flt(sle.incoming_rate)
 		actual_qty = flt(sle.actual_qty)
+		secondary_uom = flt(sle.secondary_uom)
 		serial_nos = cstr(sle.serial_no).split("\n")
 
 		if incoming_rate < 0:
@@ -697,8 +692,6 @@ class update_entries_after(object):
 			bin_doc.update({
 				"valuation_rate": data.valuation_rate,
 				"actual_qty": data.qty_after_transaction,
-				#Jo
-				"secondary_uom": data.secondary_uom_after,
 				"stock_value": data.stock_value
 			})
 			bin_doc.flags.via_stock_ledger_entry = True
@@ -824,7 +817,7 @@ def get_valuation_rate(item_code, warehouse, voucher_type, voucher_no,
 def update_qty_in_future_sle(args, allow_negative_stock=None):
 	frappe.db.sql("""
 		update `tabStock Ledger Entry`
-		set qty_after_transaction = qty_after_transaction + {qty}, secondary_uom_after = secondary_uom_after + {qty2}
+		set qty_after_transaction = qty_after_transaction + {qty}
 		where
 			item_code = %(item_code)s
 			and warehouse = %(warehouse)s
@@ -836,7 +829,7 @@ def update_qty_in_future_sle(args, allow_negative_stock=None):
 					and creation > %(creation)s
 				)
 			)
-	""".format(qty=args.actual_qty, qty2=args.secondary_uom), args)
+	""".format(qty=args.actual_qty), args)
 
 	validate_negative_qty_in_future_sle(args, allow_negative_stock)
 

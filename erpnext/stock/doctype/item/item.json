@@ -12,8 +12,6 @@
  "engine": "InnoDB",
  "field_order": [
   "name_and_description_section",
-  "opportunity",
-  "opportunity_name",
   "naming_series",
   "item_code",
   "variant_of",
@@ -39,17 +37,17 @@
   "over_delivery_receipt_allowance",
   "over_billing_allowance",
   "stock_uom_1",
+  "is_auxiliary_item",
   "image",
   "section_break_11",
   "brand",
-  "supplier",
   "description",
   "print_title_in_faktur",
   "print_title_in_dn",
   "sb_dimensions",
   "original_weight",
-  "width",
   "length",
+  "width",
   "thickness",
   "group_thickness",
   "density",
@@ -90,6 +88,7 @@
   "min_order_qty",
   "safety_stock",
   "purchase_details_cb",
+  "sailing_time_days",
   "lead_time_days",
   "last_purchase_rate",
   "is_customer_provided_item",
@@ -100,6 +99,7 @@
   "supplier_items",
   "foreign_trade_details",
   "country_of_origin",
+  "hs_code",
   "column_break_59",
   "customs_tariff_number",
   "sales_details",
@@ -201,7 +201,6 @@
    "label": "Item Name",
    "oldfieldname": "item_name",
    "oldfieldtype": "Data",
-   "reqd": 1,
    "search_index": 1
   },
   {
@@ -225,7 +224,6 @@
    "read_only": 1
   },
   {
-   "default": "Kg",
    "fieldname": "stock_uom",
    "fieldtype": "Link",
    "ignore_user_permissions": 1,
@@ -324,6 +322,8 @@
   {
    "fieldname": "brand",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Brand",
    "oldfieldname": "brand",
    "oldfieldtype": "Link",
@@ -405,10 +405,11 @@
    "oldfieldtype": "Data"
   },
   {
-   "depends_on": "is_stock_item",
+   "depends_on": "is_stock_item || is_auxiliary_item",
    "fieldname": "weight_per_unit",
    "fieldtype": "Float",
-   "label": "Weight Per Unit"
+   "label": "Weight Per Unit",
+   "reqd": 1
   },
   {
    "depends_on": "eval:doc.is_stock_item",
@@ -1111,48 +1112,9 @@
    "label": "Dimensions"
   },
   {
-   "fieldname": "stock_uom_1",
-   "fieldtype": "Link",
-   "label": "Stock UOM",
-   "options": "UOM",
-   "reqd": 1
-  },
-  {
-   "fieldname": "density",
+   "fieldname": "length",
    "fieldtype": "Float",
-   "label": "Density",
-   "reqd": 1
-  },
-  {
-   "fieldname": "opportunity",
-   "fieldtype": "Link",
-   "label": "Opportunity",
-   "options": "Opportunity"
-  },
-  {
-   "fetch_from": "opportunity.opportunity_from",
-   "fieldname": "opportunity_name",
-   "fieldtype": "Data",
-   "label": "Opportunity Name",
-   "read_only": 1
-  },
-  {
-   "fieldname": "supplier",
-   "fieldtype": "Link",
-   "hidden": 1,
-   "label": "Supplier",
-   "options": "Supplier"
-  },
-  {
-   "fieldname": "group_thickness",
-   "fieldtype": "Float",
-   "label": "Group Thickness/GSM",
-   "reqd": 1
-  },
-  {
-   "fieldname": "original_weight",
-   "fieldtype": "Float",
-   "label": "% Paper",
+   "label": "Length",
    "reqd": 1
   },
   {
@@ -1162,16 +1124,50 @@
    "reqd": 1
   },
   {
-   "fieldname": "length",
-   "fieldtype": "Float",
-   "label": "Length",
-   "reqd": 1
-  },
-  {
    "fieldname": "thickness",
    "fieldtype": "Float",
    "label": "Thickness/GSM",
    "reqd": 1
+  },
+  {
+   "fieldname": "stock_uom_1",
+   "fieldtype": "Link",
+   "label": "Stock UOM",
+   "options": "UOM",
+   "reqd": 1
+  },
+  {
+   "fieldname": "density",
+   "fieldtype": "Float",
+   "label": "Density"
+  },
+  {
+   "fieldname": "original_weight",
+   "fieldtype": "Float",
+   "label": "% Paper",
+   "reqd": 1
+  },
+  {
+   "fieldname": "group_thickness",
+   "fieldtype": "Float",
+   "label": "Group Thickness/GSM",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sailing_time_days",
+   "fieldtype": "Int",
+   "label": "Sailing Time in days"
+  },
+  {
+   "fieldname": "hs_code",
+   "fieldtype": "Data",
+   "label": "HS Code"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_auxiliary_item",
+   "fieldtype": "Check",
+   "label": "is Auxiliary Item"
   }
  ],
  "has_web_view": 1,
@@ -1181,7 +1177,7 @@
  "index_web_pages_for_search": 1,
  "links": [],
  "max_attachments": 1,
- "modified": "2022-05-10 06:32:24.253754",
+ "modified": "2022-11-11 17:58:41.937990",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Item",

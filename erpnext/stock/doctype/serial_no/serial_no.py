@@ -8,7 +8,7 @@ import json
 from frappe.model.naming import make_autoname
 from frappe.utils import cint, cstr, flt, add_days, nowdate, getdate, get_link_to_form
 from erpnext.stock.get_item_details import get_reserved_qty_for_so
-
+from erpnext.stock.get_item_details import get_conversion_factor
 from frappe import _, ValidationError
 
 from erpnext.controllers.stock_controller import StockController
@@ -89,6 +89,10 @@ class SerialNo(StockController):
 		self.item_name = item.item_name
 		self.brand = item.brand
 		self.warranty_period = item.warranty_period
+		# test Jo
+		self.default_uom = item.stock_uom
+		self.conversion_rate = item.weight_per_unit
+		self.secondary_uom_kg = get_conversion_factor(self.item_code, item.stock_uom).get("conversion_factor") or 2.0
 
 	def set_purchase_details(self, purchase_sle):
 		if purchase_sle:
@@ -97,6 +101,7 @@ class SerialNo(StockController):
 			self.purchase_date = purchase_sle.posting_date
 			self.purchase_time = purchase_sle.posting_time
 			self.purchase_rate = purchase_sle.incoming_rate
+			self.secondary_uom_kg = purchase_sle.received_qty
 			if purchase_sle.voucher_type in ("Purchase Receipt", "Purchase Invoice"):
 				self.supplier, self.supplier_name = \
 					frappe.db.get_value(purchase_sle.voucher_type, purchase_sle.voucher_no,
@@ -107,7 +112,7 @@ class SerialNo(StockController):
 				self.sales_invoice = None
 		else:
 			for fieldname in ("purchase_document_type", "purchase_document_no",
-				"purchase_date", "purchase_time", "purchase_rate", "supplier", "supplier_name"):
+				"purchase_date", "purchase_time", "purchase_rate", "secondary_uom_kg", "supplier", "supplier_name"):
 					self.set(fieldname, None)
 
 	def set_sales_details(self, delivery_sle):
@@ -232,9 +237,10 @@ def validate_serial_no(sle, item_det):
 				# frappe.throw(_("Serial No {0} quantity {1} cannot be a fraction").format(sle.item_code, sle.actual_qty))
 				frappe.throw(_("Serial No {0} quantity 123 cannot be a fraction").format(sle.item_code))
 
-			if len(serial_nos) and len(serial_nos) != abs(cint(sle.actual_qty)):
-				frappe.throw(_("{0} Serial Numbers required for Item {1}. You have provided {2}.").format(abs(sle.actual_qty), sle.item_code, len(serial_nos)),
-					SerialNoQtyError)
+			# commented by Agung
+			# if len(serial_nos) and len(serial_nos) != abs(cint(sle.actual_qty)):
+			# 	frappe.throw(_("{0} Serial Numbers required for Item {1}. You have provided {2}.").format(abs(sle.actual_qty), sle.item_code, len(serial_nos)),
+			# 		SerialNoQtyError)
 
 			if len(serial_nos) != len(set(serial_nos)):
 				frappe.throw(_("Duplicate Serial No entered for Item {0}").format(sle.item_code), SerialNoDuplicateError)
@@ -392,7 +398,8 @@ def update_serial_nos(sle, item_det):
 	if sle.skip_update_serial_no: return
 	if not sle.is_cancelled and not sle.serial_no and cint(sle.actual_qty) > 0 \
 			and item_det.has_serial_no == 1 and item_det.serial_no_series:
-		serial_nos = get_auto_serial_nos(item_det.serial_no_series, sle.actual_qty)
+		serial_nos = get_auto_serial_nos(item_det.serial_no_series, sle.secondary_uom)
+		# serial_nos = get_auto_serial_nos(item_det.serial_no_series, sle.actual_qty)
 		frappe.db.set(sle, "serial_no", serial_nos)
 		validate_serial_no(sle, item_det)
 	if sle.serial_no:

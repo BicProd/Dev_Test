@@ -8,7 +8,7 @@
  "engine": "InnoDB",
  "field_order": [
   "barcode",
-  "item_type",
+  "product_type",
   "item_class",
   "col_break1",
   "item_group",
@@ -22,22 +22,23 @@
   "image_section",
   "image",
   "image_view",
+  "stock_qty_section",
+  "secondary_qty",
+  "conversion_factor",
+  "column_break_19",
+  "stock_uom_1",
   "quantity_and_rate",
   "qty",
   "stock_uom",
-  "col_break2",
-  "secondary_qty",
+  "column_break_21",
   "uom",
-  "conversion_factor",
   "stock_qty_sec_break",
   "stock_qty",
   "stock_qty_col_break",
-  "stock_uom_1",
-  "secondary_qty",
   "returned_qty",
   "section_break_17",
   "price_list_rate",
-  "column_break_31",
+  "col_break34",
   "base_price_list_rate",
   "discount_and_margin",
   "margin_type",
@@ -67,8 +68,8 @@
   "incoming_rate",
   "item_weight_details",
   "weight_per_unit",
+  "col_break56",
   "total_weight",
-  "column_break_21",
   "weight_uom",
   "warehouse_and_reference",
   "warehouse",
@@ -85,7 +86,7 @@
   "serial_no",
   "actual_batch_qty",
   "actual_qty",
-  "column_break_34",
+  "col_break46",
   "installed_qty",
   "item_tax_rate",
   "accounting_details_section",
@@ -110,7 +111,6 @@
    "fieldname": "item_code",
    "fieldtype": "Link",
    "in_global_search": 1,
-   "in_list_view": 1,
    "label": "Item Code",
    "oldfieldname": "item_code",
    "oldfieldtype": "Link",
@@ -124,6 +124,7 @@
    "fieldname": "item_name",
    "fieldtype": "Data",
    "in_global_search": 1,
+   "in_list_view": 1,
    "label": "Item Name",
    "oldfieldname": "item_name",
    "oldfieldtype": "Data",
@@ -179,6 +180,7 @@
    "label": "Quantity and Rate"
   },
   {
+   "columns": 1,
    "fieldname": "qty",
    "fieldtype": "Float",
    "in_list_view": 1,
@@ -190,8 +192,10 @@
    "width": "100px"
   },
   {
+   "columns": 1,
    "fieldname": "stock_uom",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Stock UOM",
    "oldfieldname": "stock_uom",
    "oldfieldtype": "Data",
@@ -203,13 +207,8 @@
    "width": "50px"
   },
   {
-   "fieldname": "col_break2",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "uom",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "UOM",
    "options": "UOM",
    "reqd": 1
@@ -325,7 +324,6 @@
   {
    "fieldname": "rate",
    "fieldtype": "Currency",
-   "in_list_view": 1,
    "label": "Rate",
    "oldfieldname": "export_rate",
    "oldfieldtype": "Currency",
@@ -336,7 +334,6 @@
   {
    "fieldname": "amount",
    "fieldtype": "Currency",
-   "in_list_view": 1,
    "label": "Amount",
    "oldfieldname": "export_amount",
    "oldfieldtype": "Currency",
@@ -448,8 +445,7 @@
   },
   {
    "fieldname": "column_break_21",
-   "fieldtype": "Column Break",
-   "print_hide": 1
+   "fieldtype": "Column Break"
   },
   {
    "fieldname": "weight_uom",
@@ -465,7 +461,6 @@
   {
    "fieldname": "warehouse",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "Warehouse",
    "oldfieldname": "warehouse",
    "oldfieldtype": "Link",
@@ -501,7 +496,6 @@
   {
    "fieldname": "batch_no",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "Batch No",
    "oldfieldname": "batch_no",
    "oldfieldtype": "Link",
@@ -536,7 +530,6 @@
   {
    "fieldname": "serial_no",
    "fieldtype": "Text",
-   "in_list_view": 1,
    "label": "Serial No",
    "no_copy": 1,
    "oldfieldname": "serial_no",
@@ -758,26 +751,6 @@
    "read_only": 1
   },
   {
-   "fieldname": "secondary_qty",
-   "fieldtype": "Float",
-   "label": "Stock Qty",
-   "reqd": 1
-  },
-  {
-   "fetch_from": "item_code.stock_uom_1",
-   "fieldname": "stock_uom_1",
-   "fieldtype": "Link",
-   "label": "Stock UOM",
-   "options": "UOM"
-  },
-  {
-   "fieldname": "item_type",
-   "fieldtype": "Link",
-   "label": "Product Type",
-   "options": "Item Group",
-   "reqd": 1
-  },
-  {
    "fieldname": "item_class",
    "fieldtype": "Link",
    "label": "Item Class ",
@@ -792,25 +765,58 @@
    "reqd": 1
   },
   {
+   "fieldname": "column_break_21",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "col_break34",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "col_break56",
+   "fieldtype": "Column Break",
+   "print_hide": 1
+  },
+  {
+   "fieldname": "col_break46",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "stock_qty_section",
+   "fieldtype": "Section Break",
+   "label": "Stock Qty"
+  },
+  {
    "fieldname": "secondary_qty",
    "fieldtype": "Float",
-   "label": "Stock Qty",
+   "in_list_view": 1,
+   "label": "Stock Qty"
+  },
+  {
+   "fetch_from": "item_code.stock_uom_1",
+   "fieldname": "stock_uom_1",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Stock UOM",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "column_break_19",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "product_type",
+   "fieldtype": "Link",
+   "label": "Product Type",
+   "options": "Item Group",
    "reqd": 1
-  },
-  {
-   "fieldname": "column_break_31",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "column_break_34",
-   "fieldtype": "Column Break"
   }
  ],
  "idx": 1,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-04-26 09:28:34.293944",
+ "modified": "2022-11-23 17:14:17.646328",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Delivery Note Item",

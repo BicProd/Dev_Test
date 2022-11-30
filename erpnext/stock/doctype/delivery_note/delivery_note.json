@@ -17,8 +17,10 @@
   "column_break1",
   "amended_from",
   "company",
+  "delivery_date",
   "posting_date",
   "posting_time",
+  "sales_order_no",
   "set_posting_time",
   "is_return",
   "issue_credit_note",
@@ -106,8 +108,8 @@
   "transporter",
   "driver",
   "lr_no",
-  "vehicle_no",
   "col_break34",
+  "vehicle_no",
   "transporter_name",
   "driver_name",
   "lr_date",
@@ -136,6 +138,7 @@
   "column_break_89",
   "per_returned",
   "excise_page",
+  "note_section",
   "instructions",
   "subscription_section",
   "auto_repeat",
@@ -243,7 +246,7 @@
    "default": "Today",
    "fieldname": "posting_date",
    "fieldtype": "Date",
-   "label": "Date",
+   "label": "Posting Date",
    "no_copy": 1,
    "oldfieldname": "posting_date",
    "oldfieldtype": "Date",
@@ -408,6 +411,7 @@
    "read_only": 1
   },
   {
+   "default": "Bersaudara Inti, PT.-Billing",
    "fieldname": "company_address",
    "fieldtype": "Link",
    "label": "Company Address Name",
@@ -497,8 +501,7 @@
    "fieldtype": "Link",
    "label": "Set Source Warehouse",
    "options": "Warehouse",
-   "print_hide": 1,
-   "read_only": 1
+   "print_hide": 1
   },
   {
    "fieldname": "col_break_warehouse",
@@ -879,6 +882,7 @@
    "oldfieldtype": "Text Editor"
   },
   {
+   "allow_on_submit": 1,
    "collapsible": 1,
    "collapsible_depends_on": "transporter",
    "fieldname": "transporter_info",
@@ -897,6 +901,7 @@
    "width": "150px"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "driver",
    "fieldtype": "Link",
    "label": "Driver",
@@ -904,6 +909,7 @@
    "print_hide": 1
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "lr_no",
    "fieldtype": "Data",
    "label": "Transport Receipt No",
@@ -914,6 +920,7 @@
    "width": "100px"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "vehicle_no",
    "fieldtype": "Data",
    "label": "Vehicle No",
@@ -1134,7 +1141,7 @@
   {
    "fieldname": "instructions",
    "fieldtype": "Text",
-   "label": "Instructions",
+   "label": "Note",
    "oldfieldname": "instructions",
    "oldfieldtype": "Text"
   },
@@ -1272,13 +1279,32 @@
    "label": "Represents Company",
    "options": "Company",
    "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "note_section",
+   "fieldtype": "Section Break",
+   "label": "Note"
+  },
+  {
+   "default": "Today",
+   "fieldname": "delivery_date",
+   "fieldtype": "Date",
+   "label": "Delivery Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sales_order_no",
+   "fieldtype": "Link",
+   "label": "Sales Order No ",
+   "options": "Sales Order"
   }
  ],
  "icon": "fa fa-truck",
  "idx": 146,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-04-26 09:19:31.240342",
+ "modified": "2022-11-23 16:47:47.794325",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Delivery Note",

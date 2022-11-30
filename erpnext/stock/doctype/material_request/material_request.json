@@ -272,7 +272,6 @@
    "label": "Warehouse"
   },
   {
-   "default": "WH PASAR KEMIS - BIC",
    "description": "Sets 'Target Warehouse' in each row of the Items table.",
    "fieldname": "set_warehouse",
    "fieldtype": "Link",
@@ -309,14 +308,14 @@
    "fieldname": "po_classification",
    "fieldtype": "Select",
    "label": "PO Classification",
-   "options": "Transporter\nFreight\nRaw Material\nAuxiliary\nSparepart\nSlitting\nGA\nIT"
+   "options": "Raw Material\nTransporter\nFreight\nAuxiliary\nSlitting\nGA\nIT"
   }
  ],
  "icon": "fa fa-ticket",
  "idx": 70,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-04-25 11:26:21.389061",
+ "modified": "2022-11-23 10:43:59.437713",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Material Request",
@@ -387,5 +386,8 @@
  "show_name_in_global_search": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "title_field": "title"
+ "title_field": "title",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
 }

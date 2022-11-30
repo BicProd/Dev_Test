@@ -124,7 +124,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-11-26 15:15:20.823415",
+ "modified": "2022-03-22 10:44:32.548653",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Leave Ledger Entry",
@@ -187,5 +187,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "ASC",
- "title_field": "employee"
+ "title_field": "employee",
+ "track_changes": 1
 }

@@ -21,11 +21,11 @@
   "allow_negative",
   "include_holiday",
   "is_compensatory",
+  "allow_encashment",
   "carry_forward_section",
   "maximum_carry_forwarded_leaves",
   "expire_carry_forwarded_leaves_after_days",
   "encashment",
-  "allow_encashment",
   "encashment_threshold_days",
   "column_break_17",
   "earning_component",
@@ -136,7 +136,6 @@
    "default": "0",
    "fieldname": "allow_encashment",
    "fieldtype": "Check",
-   "hidden": 1,
    "label": "Allow Encashment"
   },
   {
@@ -219,7 +218,7 @@
  "icon": "fa fa-flag",
  "idx": 1,
  "links": [],
- "modified": "2021-04-27 16:11:07.911556",
+ "modified": "2022-03-30 10:48:01.619517",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Leave Type",
@@ -243,7 +242,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "HR Manager",
+   "role": "HRGA Manager",
    "share": 1,
    "write": 1
   },

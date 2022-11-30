@@ -17,5 +17,5 @@ class AppraisalTemplate(Document):
 		for d in self.get("goals"):
 			total_points += flt(d.per_weightage)
 
-		if cint(total_points) != 100:
-			frappe.throw(_("Sum of points for all goals should be 100. It is {0}").format(total_points))
+		#if cint(total_points) != 100 or cint(total_points) != 0:
+			#frappe.throw(_("Sum of points for all goals should be 100. It is {0}").format(total_points))

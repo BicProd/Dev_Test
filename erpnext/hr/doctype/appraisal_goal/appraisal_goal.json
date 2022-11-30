@@ -1,7 +1,5 @@
 {
- "allow_copy": 0, 
- "allow_import": 0, 
- "allow_rename": 0, 
+ "actions": [],
  "autoname": "hash",
  "creation": "2013-02-22 01:27:44",
  "doctype": "DocType",
@@ -24,12 +22,10 @@
    "description": "Key Responsibility Area",
    "fieldname": "kra",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "Goal",
    "oldfieldname": "kra",
    "oldfieldtype": "Small Text",
-   "options": "Task",
-   "reqd": 1
+   "options": "Task"
   },
   {
    "fieldname": "section_break_2",
@@ -42,8 +38,7 @@
    "in_list_view": 1,
    "label": "Weightage (%)",
    "oldfieldname": "per_weightage",
-   "oldfieldtype": "Currency",
-   "reqd": 1
+   "oldfieldtype": "Currency"
   },
   {
    "fieldname": "column_break_4",
@@ -97,11 +92,12 @@
  ],
  "idx": 1,
  "istable": 1,
- "modified": "2021-03-04 13:31:52.619997",
+ "links": [],
+ "modified": "2022-04-12 15:56:36.530072",
  "modified_by": "Administrator",
  "module": "HR",
  "name": "Appraisal Goal",
- "owner": "ashwini@webnotestech.com",
+ "owner": "Administrator",
  "permissions": [],
  "sort_field": "modified",
  "sort_order": "DESC"

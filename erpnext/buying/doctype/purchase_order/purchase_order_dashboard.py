@@ -17,7 +17,7 @@ def get_data():
 		'transactions': [
 			{
 				'label': _('Related'),
-				'items': ['Purchase Receipt', 'Purchase Invoice']
+				'items': ['Purchase Receipt', 'Purchase Invoice', 'Material Request']
 			},
 			{
 				'label': _('Payment'),
@@ -25,7 +25,7 @@ def get_data():
 			},
 			{
 				'label': _('Reference'),
-				'items': ['Material Request', 'Supplier Quotation', 'Project', 'Auto Repeat']
+				'items': ['Supplier Quotation', 'Project', 'Auto Repeat']
 			},
 			{
 				'label': _('Sub-contracting'),

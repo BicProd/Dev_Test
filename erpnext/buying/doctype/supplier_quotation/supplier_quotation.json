@@ -13,14 +13,15 @@
   "naming_series",
   "supplier",
   "supplier_name",
+  "po_classification",
+  "column_break1",
   "company",
-  "column_break8",
   "transaction_date",
   "valid_till",
   "amended_from",
   "address_section",
   "supplier_address",
-  "column_break1",
+  "column_break14",
   "contact_person",
   "address_display",
   "contact_display",
@@ -35,6 +36,8 @@
   "plc_conversion_rate",
   "ignore_pricing_rule",
   "items_section",
+  "section_break_28",
+  "set_warehouse",
   "items",
   "pricing_rule_details",
   "pricing_rules",
@@ -97,7 +100,8 @@
   "column_break_57",
   "is_subcontracted",
   "reference",
-  "opportunity"
+  "opportunity",
+  "supplier_quotation"
  ],
  "fields": [
   {
@@ -151,7 +155,10 @@
   },
   {
    "fieldname": "column_break1",
-   "fieldtype": "Column Break"
+   "fieldtype": "Column Break",
+   "oldfieldtype": "Column Break",
+   "print_width": "50%",
+   "width": "50%"
   },
   {
    "default": "Today",
@@ -328,7 +335,8 @@
    "fieldname": "pricing_rules",
    "fieldtype": "Table",
    "label": "Pricing Rule Detail",
-   "options": "Pricing Rule Detail"
+   "options": "Pricing Rule Detail",
+   "read_only": 1
   },
   {
    "fieldname": "section_break_22",
@@ -416,6 +424,7 @@
    "fieldtype": "Section Break"
   },
   {
+   "fetch_from": "supplier.default_tax_and_charges",
    "fieldname": "taxes_and_charges",
    "fieldtype": "Link",
    "label": "Purchase Taxes and Charges Template",
@@ -794,15 +803,29 @@
    "label": "Valid Till"
   },
   {
-   "fieldname": "column_break1",
+   "fieldname": "column_break14",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "column_break8",
-   "fieldtype": "Column Break",
-   "oldfieldtype": "Column Break",
-   "print_width": "50%",
-   "width": "50%"
+   "fieldname": "supplier_quotation",
+   "fieldtype": "Attach",
+   "label": "Supplier Quotation"
+  },
+  {
+   "fieldname": "section_break_28",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "set_warehouse",
+   "fieldtype": "Link",
+   "label": "Set Target Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "po_classification",
+   "fieldtype": "Select",
+   "label": "PO Classification",
+   "options": "Raw Material\nTransporter\nFreight\nAuxiliary\nSparepart\nSlitting\nGA\nIT"
   }
  ],
  "icon": "fa fa-shopping-cart",
@@ -810,7 +833,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-04-20 10:26:05.014705",
+ "modified": "2022-11-22 13:41:34.348786",
  "modified_by": "Administrator",
  "module": "Buying",
  "name": "Supplier Quotation",
@@ -875,5 +898,8 @@
  "sort_field": "modified",
  "sort_order": "DESC",
  "timeline_field": "supplier",
- "title_field": "title"
+ "title_field": "title",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
 }

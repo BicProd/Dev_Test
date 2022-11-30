@@ -259,12 +259,12 @@ class SellingController(StockController):
 			where new_item_code=%s and docstatus != 2""", item_code)
 
 	def get_already_delivered_qty(self, current_docname, so, so_detail):
-		delivered_via_dn = frappe.db.sql("""select sum(qty) from `tabDelivery Note Item`
+		delivered_via_dn = frappe.db.sql("""select sum(secondary_qty) from `tabDelivery Note Item`
 			where so_detail = %s and docstatus = 1
 			and against_sales_order = %s
 			and parent != %s""", (so_detail, so, current_docname))
 
-		delivered_via_si = frappe.db.sql("""select sum(si_item.qty)
+		delivered_via_si = frappe.db.sql("""select sum(si_item.secondary_qty)
 			from `tabSales Invoice Item` si_item, `tabSales Invoice` si
 			where si_item.parent = si.name and si.update_stock = 1
 			and si_item.so_detail = %s and si.docstatus = 1
