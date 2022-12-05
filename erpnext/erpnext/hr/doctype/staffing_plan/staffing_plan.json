@@ -1,0 +1,516 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2018-04-13 18:07:21.582747",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "user_name",
+  "requested_by",
+  "employee_grade",
+  "section_break_4",
+  "company",
+  "department",
+  "department_head",
+  "column_break_3",
+  "approve_by",
+  "from_date",
+  "to_date",
+  "staffing_plan_details",
+  "required_employee",
+  "job_designation",
+  "salary_range",
+  "job_title",
+  "column_break_18",
+  "employee_status",
+  "job_level",
+  "salary_range_to",
+  "job_request_type",
+  "new_employee_reason",
+  "section_break_8",
+  "staffing_details",
+  "section_break_24",
+  "sex",
+  "job_experience",
+  "education",
+  "others",
+  "column_break_29",
+  "age_from",
+  "age_to",
+  "skill_map_section",
+  "english",
+  "mandarin",
+  "microsoft_office",
+  "column_break_36",
+  "leadership",
+  "problem_solving",
+  "communication_skills",
+  "column_break_40",
+  "attention_to_detail",
+  "wllingless_to_learn",
+  "time_management",
+  "column_break_44",
+  "crictical_thinking",
+  "creativity",
+  "teamwork",
+  "column_break_48",
+  "other_skills",
+  "amended_from",
+  "section_break_51",
+  "data_53",
+  "user",
+  "column_break_55",
+  "signed_by_2",
+  "user_superior",
+  "signed_by_hrga_section",
+  "signed_by_3",
+  "signature",
+  "manager_hrga",
+  "column_break_63",
+  "signed_by_director_section",
+  "signed_by_5",
+  "signed_by_6",
+  "director"
+ ],
+ "fields": [
+  {
+   "fetch_from": "user_name.company",
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "user_name.department",
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval: doc.docstatus == 1",
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "Approved Date",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval: doc.docstatus == 1",
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "Deadline"
+  },
+  {
+   "fieldname": "staffing_plan_details",
+   "fieldtype": "Section Break",
+   "label": "Staffing Plan Details"
+  },
+  {
+   "fieldname": "section_break_8",
+   "fieldtype": "Section Break",
+   "label": "Job Description"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Staffing Plan",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fetch_from": "user_name.department_head",
+   "fieldname": "department_head",
+   "fieldtype": "Data",
+   "label": "Department Head",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "user_name.employee_name",
+   "fieldname": "requested_by",
+   "fieldtype": "Data",
+   "label": "Requested by",
+   "read_only": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "required_employee",
+   "fieldtype": "Int",
+   "label": "Required Employee"
+  },
+  {
+   "fieldname": "job_designation",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Job Designation",
+   "options": "Designation"
+  },
+  {
+   "fieldname": "employee_status",
+   "fieldtype": "Select",
+   "label": "Employee Status",
+   "options": "\nFixed\nContract\nInternship\nFreelance"
+  },
+  {
+   "fieldname": "salary_range",
+   "fieldtype": "Currency",
+   "label": "Salary Range (From)"
+  },
+  {
+   "fieldname": "job_request_type",
+   "fieldtype": "Select",
+   "label": "Job Request Type",
+   "options": "New\nReplace"
+  },
+  {
+   "depends_on": "eval:doc.job_request_type=='New'",
+   "fieldname": "new_employee_reason",
+   "fieldtype": "Data",
+   "label": "New Employee Reason"
+  },
+  {
+   "fieldname": "column_break_18",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "job_level",
+   "fieldtype": "Link",
+   "label": "Job Grade",
+   "options": "Employee Grade"
+  },
+  {
+   "fieldname": "salary_range_to",
+   "fieldtype": "Currency",
+   "label": "Salary Range (To)"
+  },
+  {
+   "fieldname": "section_break_24",
+   "fieldtype": "Section Break",
+   "label": "Job Qualification"
+  },
+  {
+   "fieldname": "sex",
+   "fieldtype": "Link",
+   "label": "Sex",
+   "options": "Gender"
+  },
+  {
+   "fieldname": "job_experience",
+   "fieldtype": "Select",
+   "label": "Job Experience",
+   "options": "Freshgraduate\n1-2 Years\n3-5 Years\n6-8 Years\n&gt;8 Years"
+  },
+  {
+   "fieldname": "education",
+   "fieldtype": "Select",
+   "label": "Education",
+   "options": "Highschool\nDiploma\nUndergraduate\nPostgraduate\nOthers"
+  },
+  {
+   "depends_on": "eval:doc.education=='Others'",
+   "fieldname": "others",
+   "fieldtype": "Data",
+   "label": "Others "
+  },
+  {
+   "fieldname": "column_break_29",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "age_from",
+   "fieldtype": "Int",
+   "label": "Age (From)"
+  },
+  {
+   "fieldname": "age_to",
+   "fieldtype": "Int",
+   "label": "Age (To)"
+  },
+  {
+   "fieldname": "skill_map_section",
+   "fieldtype": "Section Break",
+   "label": "Skill Map"
+  },
+  {
+   "default": "0",
+   "fieldname": "english",
+   "fieldtype": "Check",
+   "label": "English"
+  },
+  {
+   "default": "0",
+   "fieldname": "mandarin",
+   "fieldtype": "Check",
+   "label": "Mandarin"
+  },
+  {
+   "default": "0",
+   "fieldname": "microsoft_office",
+   "fieldtype": "Check",
+   "label": "Microsoft Office"
+  },
+  {
+   "fieldname": "column_break_36",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "leadership",
+   "fieldtype": "Check",
+   "label": "Leadership"
+  },
+  {
+   "default": "0",
+   "fieldname": "problem_solving",
+   "fieldtype": "Check",
+   "label": "Problem Solving"
+  },
+  {
+   "default": "0",
+   "fieldname": "communication_skills",
+   "fieldtype": "Check",
+   "label": "Communication Skills"
+  },
+  {
+   "fieldname": "column_break_40",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "attention_to_detail",
+   "fieldtype": "Check",
+   "label": "Attention to Detail"
+  },
+  {
+   "default": "0",
+   "fieldname": "wllingless_to_learn",
+   "fieldtype": "Check",
+   "label": "Willingless To Learn"
+  },
+  {
+   "default": "0",
+   "fieldname": "time_management",
+   "fieldtype": "Check",
+   "label": "Time Management"
+  },
+  {
+   "fieldname": "column_break_44",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "crictical_thinking",
+   "fieldtype": "Check",
+   "label": "Crictical Thinking"
+  },
+  {
+   "default": "0",
+   "fieldname": "creativity",
+   "fieldtype": "Check",
+   "label": "Creativity"
+  },
+  {
+   "default": "0",
+   "fieldname": "teamwork",
+   "fieldtype": "Check",
+   "label": "Teamwork"
+  },
+  {
+   "fieldname": "column_break_48",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "other_skills",
+   "fieldtype": "Data",
+   "label": "Other Skills"
+  },
+  {
+   "fieldname": "section_break_51",
+   "fieldtype": "Section Break",
+   "label": "Signed By (User)"
+  },
+  {
+   "fieldname": "data_53",
+   "fieldtype": "Signature",
+   "label": "Signature"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Name",
+   "options": "BIC-HRGA-PR01-",
+   "read_only": 1
+  },
+  {
+   "fieldname": "staffing_details",
+   "fieldtype": "Table",
+   "label": "Job description",
+   "options": "Job Description Staffing",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "user_name.employee_name",
+   "fieldname": "user",
+   "fieldtype": "Data",
+   "label": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_55",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.workflow_state=='Approved by HR Manager'|| \ndoc.workflow_state=='Approved By Director' ||\ndoc.workflow_state=='Approved by HR Manager (Staff)' ||\ndoc.workflow_state=='Approved by HR' ||\ndoc.workflow_state=='Approved by User Superior'\n\n",
+   "fieldname": "signed_by_2",
+   "fieldtype": "Signature",
+   "label": "Signed by"
+  },
+  {
+   "depends_on": "eval:doc.workflow_state=='Approved by HR Manager'|| \ndoc.workflow_state=='Approved By Director' ||\ndoc.workflow_state=='Approved by HR Manager (Staff)' ||\ndoc.workflow_state=='Approved by HR' ||\ndoc.workflow_state=='Approved by User Superior'\n\n",
+   "fetch_from": "user_name.department_head",
+   "fieldname": "user_superior",
+   "fieldtype": "Data",
+   "label": "User Superior",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.workflow_state=='Approved by HR Manager'|| \ndoc.workflow_state=='Approved By Director' ||\ndoc.workflow_state=='Approved by HR Manager (Staff)' ||\ndoc.workflow_state=='Approved by User Superior'\n",
+   "fieldname": "signed_by_hrga_section",
+   "fieldtype": "Section Break",
+   "label": "Signed By (HRGA)"
+  },
+  {
+   "default": "HR-EMP-00002",
+   "fieldname": "signed_by_3",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Signed By",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "signature",
+   "fieldtype": "Signature",
+   "label": "Signature"
+  },
+  {
+   "fetch_from": "signed_by_3.employee_name",
+   "fieldname": "manager_hrga",
+   "fieldtype": "Data",
+   "label": "Manager HRGA",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_63",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.workflow_state=='Approved by HR Manager'|| \ndoc.workflow_state=='Approved By Director'\n",
+   "fieldname": "signed_by_director_section",
+   "fieldtype": "Section Break",
+   "label": "Signed By (Director)"
+  },
+  {
+   "default": "HR-EMP-00001",
+   "fieldname": "signed_by_5",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Signed By",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "signed_by_6",
+   "fieldtype": "Signature",
+   "label": "Signature"
+  },
+  {
+   "fetch_from": "signed_by_5.employee_name",
+   "fieldname": "director",
+   "fieldtype": "Data",
+   "label": "Director",
+   "read_only": 1
+  },
+  {
+   "fieldname": "user_name",
+   "fieldtype": "Link",
+   "label": "User Name",
+   "options": "Employee"
+  },
+  {
+   "default": "Today",
+   "fieldname": "approve_by",
+   "fieldtype": "Date",
+   "label": "Created on",
+   "set_only_once": 1
+  },
+  {
+   "fetch_from": "user_name.grade",
+   "fieldname": "employee_grade",
+   "fieldtype": "Data",
+   "label": "Employee grade",
+   "read_only": 1
+  },
+  {
+   "fieldname": "job_title",
+   "fieldtype": "Data",
+   "label": "Job Title",
+   "reqd": 1
+  }
+ ],
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2022-06-27 13:52:28.313785",
+ "modified_by": "Administrator",
+ "module": "HR",
+ "name": "Staffing Plan",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HRGA Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR User",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

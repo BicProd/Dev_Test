@@ -1,0 +1,237 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2020-10-21 08:25:14.566948",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "subject",
+  "category",
+  "requested_on",
+  "column_break_9",
+  "priority",
+  "status",
+  "requested_by_section",
+  "requested_by",
+  "employee_name",
+  "column_break_10",
+  "designation",
+  "department",
+  "issue_details_section",
+  "description",
+  "section_break_16",
+  "responded_by_section",
+  "res",
+  "responded_by_name",
+  "column_break_17",
+  "respo_on",
+  "section_break_19",
+  "plan_of",
+  "rating_section",
+  "rating",
+  "user_feedback"
+ ],
+ "fields": [
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "requested_by.department",
+   "fieldname": "department",
+   "fieldtype": "Data",
+   "label": "Department",
+   "read_only": 1
+  },
+  {
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "label": "Subject"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Request Code",
+   "options": "GA-REQ-.YYYY.-.MM."
+  },
+  {
+   "fieldname": "requested_by",
+   "fieldtype": "Link",
+   "label": "Requested by",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Open\nOn Progress\nResolved\nClosed"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "label": "Category",
+   "options": "\nFacilities & Building Maintainance\nAc\nFurniture\nTelephone\nElectricity\nHotel and Tickets"
+  },
+  {
+   "fieldname": "requested_by_section",
+   "fieldtype": "Section Break",
+   "label": "Requested by"
+  },
+  {
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Priority",
+   "options": "Low\nMedium\nHigh\nCrictical"
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "issue_details_section",
+   "fieldtype": "Section Break",
+   "label": "issue Details"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "depends_on": "eval:doc.status==\"On Progress\" || doc.status==\"Resolved\" ",
+   "fieldname": "responded_by_section",
+   "fieldtype": "Section Break",
+   "label": "Responded by"
+  },
+  {
+   "fetch_from": "res.employee_name",
+   "fieldname": "responded_by_name",
+   "fieldtype": "Data",
+   "label": "Responded by (Name)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_17",
+   "fieldtype": "Column Break"
+  },
+  {
+   "collapsible_depends_on": "eval:doc.status==\"On Progress\" || doc.status==\"Resolved\" ",
+   "depends_on": "eval:!doc.__islocal",
+   "fieldname": "section_break_19",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "requested_by.designation",
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "label": "Designation",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "requested_by.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rating_section",
+   "fieldtype": "Section Break",
+   "label": "Rating"
+  },
+  {
+   "default": "5",
+   "fieldname": "rating",
+   "fieldtype": "Rating",
+   "label": "Rating"
+  },
+  {
+   "default": "Today",
+   "fieldname": "requested_on",
+   "fieldtype": "Date",
+   "label": "Requested on",
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "user_feedback",
+   "fieldtype": "Small Text",
+   "label": "User Feedback"
+  },
+  {
+   "fieldname": "section_break_16",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "res",
+   "fieldtype": "Link",
+   "label": "Responded by",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "respo_on",
+   "fieldtype": "Date",
+   "label": "Responded on"
+  },
+  {
+   "fieldname": "plan_of",
+   "fieldtype": "Text Editor",
+   "label": "Plan Of Action"
+  }
+ ],
+ "modified": "2021-01-22 15:13:04.677751",
+ "modified_by": "Administrator",
+ "module": "HR",
+ "name": "GA Support Request",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Administrator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Employee",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "GA Administrator",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "subject",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

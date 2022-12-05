@@ -1,0 +1,434 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2013-01-10 16:34:12",
+ "doctype": "DocType",
+ "document_type": "Setup",
+ "engine": "InnoDB",
+ "field_order": [
+  "performance_okr_section",
+  "q1",
+  "column_break_3",
+  "q2",
+  "column_break_5",
+  "q3",
+  "column_break_7",
+  "q4",
+  "employee_details",
+  "naming_series",
+  "employee",
+  "employee_name",
+  "kra_template",
+  "quartal1",
+  "column_break0",
+  "status",
+  "department",
+  "grade",
+  "start_date",
+  "end_date",
+  "year",
+  "section_break0",
+  "weight_1",
+  "column_break_14",
+  "okr_total",
+  "section_break_17",
+  "goals",
+  "okr_weight_total",
+  "section_break_16",
+  "weight_2",
+  "column_break_18",
+  "routine_total",
+  "section_break_20",
+  "routine",
+  "routine_total_weight",
+  "section_break_24",
+  "calculate_total_score",
+  "column_break_26",
+  "total_score",
+  "section_break_28",
+  "section_break1",
+  "remarks",
+  "other_details",
+  "comment",
+  "section_break_36",
+  "company",
+  "column_break_17",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee_details",
+   "fieldtype": "Section Break",
+   "oldfieldtype": "Section Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "no_copy": 1,
+   "options": "HR-APR-.YY.-.MM.",
+   "print_hide": 1,
+   "read_only": 1,
+   "reqd": 1,
+   "set_only_once": 1
+  },
+  {
+   "depends_on": "employee",
+   "fieldname": "kra_template",
+   "fieldtype": "Link",
+   "label": "Appraisal Template",
+   "oldfieldname": "kra_template",
+   "oldfieldtype": "Link",
+   "options": "Appraisal Template",
+   "reqd": 1
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "label": "For Employee",
+   "oldfieldname": "employee",
+   "oldfieldtype": "Link",
+   "options": "Employee",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "depends_on": "kra_template",
+   "fieldname": "column_break0",
+   "fieldtype": "Column Break",
+   "oldfieldtype": "Column Break",
+   "width": "50%"
+  },
+  {
+   "default": "Draft",
+   "depends_on": "kra_template",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "no_copy": 1,
+   "oldfieldname": "status",
+   "oldfieldtype": "Select",
+   "options": "\nDraft\nSubmitted\nCompleted\nCancelled",
+   "read_only": 1,
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "depends_on": "kra_template",
+   "fetch_from": "kra_template.start_date",
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Start Date",
+   "oldfieldname": "start_date",
+   "oldfieldtype": "Date",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "depends_on": "kra_template",
+   "fetch_from": "kra_template.end_date",
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date",
+   "oldfieldname": "end_date",
+   "oldfieldtype": "Date",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "employee.department",
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department",
+   "read_only": 1
+  },
+  {
+   "depends_on": "quartal1",
+   "fieldname": "section_break0",
+   "fieldtype": "Section Break",
+   "label": "<p style=\"font-size: 20px;\">Project</p>",
+   "oldfieldtype": "Section Break",
+   "options": "Simple"
+  },
+  {
+   "depends_on": "quartal1",
+   "fieldname": "goals",
+   "fieldtype": "Table",
+   "label": "Goals",
+   "oldfieldname": "appraisal_details",
+   "oldfieldtype": "Table",
+   "options": "Appraisal Goal"
+  },
+  {
+   "depends_on": "quartal1",
+   "fieldname": "calculate_total_score",
+   "fieldtype": "Button",
+   "label": "<p style=\"font-size: 20px;\">Calculate total score</p>",
+   "oldfieldtype": "Button",
+   "options": "calculate_total"
+  },
+  {
+   "fieldname": "total_score",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Total Score (Out of 5)",
+   "no_copy": 1,
+   "oldfieldname": "total_score",
+   "oldfieldtype": "Currency",
+   "read_only": 1
+  },
+  {
+   "depends_on": "kra_template",
+   "fieldname": "section_break1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Any other remarks, noteworthy effort that should go in the records.",
+   "fieldname": "remarks",
+   "fieldtype": "Text Editor",
+   "label": "Remarks"
+  },
+  {
+   "depends_on": "kra_template",
+   "fieldname": "other_details",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "oldfieldname": "company",
+   "oldfieldtype": "Link",
+   "options": "Company",
+   "remember_last_selected_value": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_17",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "ignore_user_permissions": 1,
+   "label": "Amended From",
+   "no_copy": 1,
+   "oldfieldname": "amended_from",
+   "oldfieldtype": "Data",
+   "options": "Appraisal",
+   "print_hide": 1,
+   "read_only": 1,
+   "report_hide": 1,
+   "width": "150px"
+  },
+  {
+   "depends_on": "quartal1",
+   "fieldname": "routine",
+   "fieldtype": "Table",
+   "label": "Routine",
+   "options": "Appraisal Goal 2"
+  },
+  {
+   "fieldname": "okr_total",
+   "fieldtype": "Float",
+   "label": "OKR Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "routine_total",
+   "fieldtype": "Float",
+   "label": "Routine Total",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "kra_template.weight_1",
+   "fieldname": "weight_1",
+   "fieldtype": "Int",
+   "label": "OKR Weight %",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "kra_template.weight_2",
+   "fieldname": "weight_2",
+   "fieldtype": "Int",
+   "label": "Routine Weight %",
+   "read_only": 1
+  },
+  {
+   "depends_on": "kra_template",
+   "fieldname": "quartal1",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Quartal",
+   "options": "\nQ1\nQ2\nQ3\nQ4",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_16",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_18",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_20",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_14",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_17",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_24",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_26",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_28",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "employee.grade",
+   "fieldname": "grade",
+   "fieldtype": "Link",
+   "label": "Grade",
+   "options": "Employee Grade",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "kra_template.routine_weight_total",
+   "fieldname": "routine_total_weight",
+   "fieldtype": "Int",
+   "label": "Routine Total Weight",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "kra_template.okr_weight_total",
+   "fieldname": "okr_weight_total",
+   "fieldtype": "Int",
+   "label": "OKR Weight Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "comment",
+   "fieldtype": "Text Editor",
+   "label": "Comment"
+  },
+  {
+   "fieldname": "section_break_36",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "performance_okr_section",
+   "fieldtype": "Section Break",
+   "label": "Performance OKR "
+  },
+  {
+   "fieldname": "q1",
+   "fieldtype": "Data",
+   "label": "Q1",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "q2",
+   "fieldtype": "Data",
+   "label": "Q2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "q3",
+   "fieldtype": "Data",
+   "label": "Q3",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "q4",
+   "fieldtype": "Data",
+   "label": "Q4",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "default": "2022",
+   "fieldname": "year",
+   "fieldtype": "Link",
+   "label": "Year",
+   "options": "Fiscal Year"
+  }
+ ],
+ "icon": "fa fa-thumbs-up",
+ "idx": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2022-11-17 11:55:28.504762",
+ "modified_by": "Administrator",
+ "module": "HR",
+ "name": "Appraisal",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR User",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "status, employee",
+ "sort_field": "total_score",
+ "sort_order": "ASC",
+ "timeline_field": "employee",
+ "title_field": "employee_name",
+ "track_changes": 1
+}

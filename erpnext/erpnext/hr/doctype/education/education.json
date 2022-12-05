@@ -1,0 +1,78 @@
+{
+ "creation": "2020-11-30 20:27:24.872516",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "education_level",
+  "institution_name",
+  "city",
+  "course",
+  "year_from",
+  "to_to",
+  "graduatednot"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "education_level",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Education Level (Tingkat Pendidikan)",
+   "options": "Junior High / Middle School\nSenior High / High School\nDiploma/Associate's Degree\nBachelor's Degree\nMaster's Degree"
+  },
+  {
+   "columns": 2,
+   "fieldname": "institution_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "School Name (Nama Sekolah)"
+  },
+  {
+   "columns": 2,
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "City (Kota)"
+  },
+  {
+   "columns": 2,
+   "fieldname": "course",
+   "fieldtype": "Data",
+   "label": "Major (Jurusan)"
+  },
+  {
+   "columns": 1,
+   "fieldname": "year_from",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Year (From) (Dari Tahun)"
+  },
+  {
+   "columns": 1,
+   "fieldname": "to_to",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Year (To) (Sampai Tahun)"
+  },
+  {
+   "columns": 2,
+   "fieldname": "graduatednot",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Graduate (Lulus/Tidak)",
+   "options": "Yes\nNo"
+  }
+ ],
+ "istable": 1,
+ "modified": "2021-01-29 09:37:27.881658",
+ "modified_by": "Administrator",
+ "module": "HR",
+ "name": "Education",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

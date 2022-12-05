@@ -1,0 +1,77 @@
+{
+ "actions": [],
+ "creation": "2020-07-09 11:28:48.887737",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "purchase_receipt_no",
+  "container_no",
+  "length",
+  "width",
+  "height",
+  "weight",
+  "count"
+ ],
+ "fields": [
+  {
+   "fieldname": "length",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Length (cm)"
+  },
+  {
+   "fieldname": "width",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Width (cm)"
+  },
+  {
+   "fieldname": "height",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Height (cm)"
+  },
+  {
+   "default": "1",
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Weight (kg)",
+   "precision": "1"
+  },
+  {
+   "default": "1",
+   "fieldname": "count",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Count"
+  },
+  {
+   "fieldname": "purchase_receipt_no",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Purchase Receipt No.",
+   "options": "Purchase Receipt"
+  },
+  {
+   "fieldname": "container_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Container No.",
+   "reqd": 1
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2022-11-24 13:54:54.009364",
+ "modified_by": "Administrator",
+ "module": "Stock",
+ "name": "Shipment Parcel",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

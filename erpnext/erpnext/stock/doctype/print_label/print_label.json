@@ -1,0 +1,83 @@
+{
+ "actions": [],
+ "autoname": "format:LABEL-{####}",
+ "creation": "2022-08-29 16:06:38.391615",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "purchase_receipt_no",
+  "column_break_2",
+  "supplier",
+  "label_print_out_section",
+  "label_serial_no",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "purchase_receipt_no",
+   "fieldtype": "Link",
+   "label": "Purchase Receipt No ",
+   "options": "Purchase Receipt"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "purchase_receipt_no.supplier",
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier",
+   "read_only": 1
+  },
+  {
+   "fieldname": "label_print_out_section",
+   "fieldtype": "Section Break",
+   "label": "Label Print Out"
+  },
+  {
+   "fieldname": "label_serial_no",
+   "fieldtype": "Table",
+   "label": "Label Serial No",
+   "options": "Label Serial No"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Print Label",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2022-09-28 11:21:04.402274",
+ "modified_by": "Administrator",
+ "module": "Stock",
+ "name": "Print Label",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

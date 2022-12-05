@@ -1,0 +1,43 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2022-10-26 13:52:28.806198",
+ "disable_prepared_report": 0,
+ "disabled": 1,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "json": "{\"filters\":[],\"fields\":[[\"name\",\"Shipment\"],[\"docstatus\",\"Shipment\"],[\"po_number\",\"Shipment Item\"],[\"carrier\",\"Shipment\"],[\"etd\",\"Shipment\"],[\"eta\",\"Shipment\"],[\"container_qty\",\"Shipment\"],[\"container_no\",\"Shipment Parcel\"]],\"order_by\":\"`tabShipment`.`modified` desc\",\"add_totals_row\":0,\"page_length\":20,\"column_widths\":{\"name\":176,\"Shipment Item:po_number\":206,\"carrier\":120,\"etd\":120,\"eta\":120,\"container_qty\":120,\"Shipment Parcel:container_no\":120},\"group_by\":null}",
+ "letter_head": "Bersaudara Inti Corpora",
+ "modified": "2022-10-26 14:26:07.487670",
+ "modified_by": "Administrator",
+ "module": "Stock",
+ "name": "ShipmentReport",
+ "owner": "yofan@bersaudarainti.com",
+ "prepared_report": 0,
+ "ref_doctype": "Shipment",
+ "report_name": "ShipmentReport",
+ "report_type": "Report Builder",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Stock Manager"
+  },
+  {
+   "role": "Warehouse Support"
+  },
+  {
+   "role": "Purchasing Support Import"
+  },
+  {
+   "role": "SC Leader"
+  },
+  {
+   "role": "Supply Chain Manager"
+  }
+ ]
+}

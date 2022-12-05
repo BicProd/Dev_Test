@@ -1,0 +1,56 @@
+{
+ "actions": [],
+ "creation": "2020-11-20 11:12:51.358646",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_class",
+  "monthly_consumption",
+  "column_break_3",
+  "sub_class",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_class",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Class",
+   "options": "Item Group"
+  },
+  {
+   "fieldname": "monthly_consumption",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Monthly Consumption"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sub_class",
+   "fieldtype": "Link",
+   "label": "Sub Class",
+   "options": "Item Group"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Data",
+   "label": "Remarks"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2022-09-21 14:04:42.941023",
+ "modified_by": "Administrator",
+ "module": "CRM",
+ "name": "Monthly Consumption",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

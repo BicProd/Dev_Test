@@ -1,0 +1,45 @@
+{
+ "autoname": "hash",
+ "creation": "2021-03-01 18:26:43.458475",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "kra",
+  "per_weightage"
+ ],
+ "fields": [
+  {
+   "description": "Key Performance Area",
+   "fieldname": "kra",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "KRA",
+   "oldfieldname": "kra",
+   "oldfieldtype": "Small Text",
+   "print_width": "200px",
+   "reqd": 1,
+   "width": "200px"
+  },
+  {
+   "fieldname": "per_weightage",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Weightage (%)",
+   "oldfieldname": "per_weightage",
+   "oldfieldtype": "Currency",
+   "print_width": "100px",
+   "reqd": 1,
+   "width": "100px"
+  }
+ ],
+ "istable": 1,
+ "modified": "2021-03-01 18:26:43.458475",
+ "modified_by": "Administrator",
+ "module": "HR",
+ "name": "Appraisal Template Goal 2",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

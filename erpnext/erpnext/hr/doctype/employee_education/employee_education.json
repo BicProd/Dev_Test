@@ -1,0 +1,84 @@
+{
+ "creation": "2013-02-22 01:27:45",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "education_level",
+  "institution_name",
+  "city",
+  "course",
+  "year_from",
+  "to_to",
+  "graduatednot"
+ ],
+ "fields": [
+  {
+   "fieldname": "education_level",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Education Level",
+   "oldfieldname": "school_univ",
+   "oldfieldtype": "Small Text",
+   "options": "Junior High / Middle School\nSenior High / High School\nDiploma/Associate's Degree\nBachelor's Degree\nMaster's Degree"
+  },
+  {
+   "fieldname": "institution_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "School Name",
+   "oldfieldname": "qualification",
+   "oldfieldtype": "Data",
+   "print_width": "100px",
+   "width": "100px"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "course",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Major",
+   "oldfieldname": "level",
+   "oldfieldtype": "Select"
+  },
+  {
+   "fieldname": "year_from",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Year (From)",
+   "oldfieldname": "year_of_passing",
+   "oldfieldtype": "Int"
+  },
+  {
+   "fieldname": "to_to",
+   "fieldtype": "Color",
+   "in_list_view": 1,
+   "label": "Year (To)",
+   "oldfieldname": "class_per",
+   "oldfieldtype": "Data"
+  },
+  {
+   "fieldname": "graduatednot",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Graduate",
+   "oldfieldname": "maj_opt_subj",
+   "oldfieldtype": "Text",
+   "options": "Yes\nNo"
+  }
+ ],
+ "idx": 1,
+ "istable": 1,
+ "modified": "2021-03-12 11:25:42.405657",
+ "modified_by": "Administrator",
+ "module": "HR",
+ "name": "Employee Education",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
